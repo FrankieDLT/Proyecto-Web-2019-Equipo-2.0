@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Consultas</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <style>
+ 
+    body{
+        background-color: rgb(214, 214, 214);
+    }
+
+    img[id=Logo_iteso]{
+        width: 5em;
+    }
+
+    table[id=Main_Table]{
+        border-collapse: collapse;
+        position: fixed;
+    }
+
+    table[id=Main_Table] td{
+        text-align: center;
+        background-color: #004270;
+        color: whitesmoke;
+    }
+
+    table[id=Main_Table] td:first-child{
+        text-align: center;
+        background-color: whitesmoke;
+    }
+
+    /*PARA RELLENO***********************************************************************/
+    input[type="radio"]{
+            display: none;
+        }
+
+        input[type="radio"]:checked+.page{ /*If(radio==true && Ispage==true)*/
+            display: block;
+        }
+        
+        iframe{
+            border: 1em;
+            width: 100%;                /*Iframe para los tres cuadros*/
+            height: 500px;
+        }
+        
+        span{
+            font-size: 5em;
+            top: 65%;                   /*Flechas*/
+            position: fixed;
+        }         
+        
+        /*> = Hijo inmediato*/
+        .page>span:nth-last-of-type(2){     /*If(Page.sonspan==Penultimo)*/
+            left: 0;
+        }                                                    /*Centrando los pages para alinearnos con el frame*/
+       
+        .page>span:nth-last-of-type(1){     /*If(Page.sonspan==Ultimo)*/
+            right: 0;
+        }
+
+        .page{
+            display: none;      /*No visibility hidden porque queremos que su espacio se use*/
+            position: unset; /*Lo colocamos en posición*/
+            width: 100%;        /*Hacemos que avarque todo el espacio*/
+            }
+       
+        
+        .page:first-of-type>span:nth-of-type(1), /*If(Page.son==FirstSon) then son.leftarr=notvisible*/
+         .page:last-of-type>span:nth-of-type(2){ /*If(Page.son==LastSon) then son.rightarr=notvisible*/
+
+            display: none;                          /*Se le oculta la flecha izquierda al primero
+                                                        y derecha al ultimo si no esta activo el MC*/
+        }
+
+        label{
+            color:rgba(0, 0, 0, 0.5);           /*Color "semitrasparente" para el MC*/
+        }
+
+
+        /*MC Modo Circular*/
+        input[type="checkbox"]:checked~.page:first-of-type>span:nth-of-type(1) {
+            /*If(Cb==True && Page.Firstson.leftarr) then Firstson.leftarr=visible*/
+            display: block;
+    }
+
+        input[type="checkbox"]:checked~.page:last-of-type>span:nth-of-type(2) {
+            /*If(Cb==True && Page.Lastson.rightarr) then Lastson.rightarr=visible*/
+            display: block; }
+    /************************************************************************************/
+
+    a{
+        color: whitesmoke;
+        text-decoration: none;
+    }
+    
+    </style>
+</head>
+<body>
+    <table border="0" width="100%" id="Main_Table">
+        <tr>
+            <td width="20%"><a href=""><img src="Logo_ITESO_normal.jpg" id="Logo_iteso"></a></td>
+            <td width="20%"><a href="Deudores.html" target="FFra">Deudores</a></td>
+            <td width="20%"><a href="Historial de Problemas.html" target="FFra">Historial de Problemas</a></td>
+            <td width="20%"><a href="Disponibilidad.html" target="FFra">Disponibilidad</a> </td>
+            <td width="20%"><a href="UsuBloq.html" target="FFra">Usuarios Bloqueados</a></td>
+        </tr>
+    </table>
+    <table border="0" width="100%" >
+            <tr>
+                <td width="20%"></td>
+                <td width="20%">DUMMY</td>
+                <td width="20%">DUMMY</td>
+                <td width="20%">DUMMY</td>
+                <td width="20%">DUMMY</td>
+            </tr>
+        </table>
+
+   <!--***********************************  -->
+
+    <input type="checkbox" name="" id="ch1">
+    <label for="ch1"> Modo circular </label>
+    <input type="radio" name="rd" id="i1" checked>
+    <div class="page">
+         <iframe src="https://iteso.mx" name="FFra" ></iframe>
+         <span ><label for="i3"><i class="fas fa-arrow-circle-left   "></i></label></span>
+         <span ><label for="i2"><i class="fas fa-arrow-circle-right     "></i></label></span>
+    </div>
+    <input type="radio" name="rd" id="i2" >
+    <div class="page">
+         <iframe src="https://www.iteso.mx/acerca-de-iteso"></iframe>
+         <span ><label for="i1"><i class="fas fa-arrow-circle-left   "></i> </label></span>
+         <span ><label for="i3"><i class="fas fa-arrow-circle-right     "></i> </label></span>
+    </div>
+    <input type="radio" name="rd" id="i3" >
+    <div class="page">
+         <iframe src="https://serviciosescolares.iteso.mx/documents/11769/0/Calendario+2019/b3f3b892-16fc-4c45-b1bc-ec26a8dfdd6e" ></iframe>
+         <span ><label for="i2"><i class="fas fa-arrow-circle-left   "></i></label></span>
+         <span ><label for="i1"><i class="fas fa-arrow-circle-right     "></i> </label></span>
+    </div>
+
+     <!--********************************************************************  -->
+    
+</body>
+</html>

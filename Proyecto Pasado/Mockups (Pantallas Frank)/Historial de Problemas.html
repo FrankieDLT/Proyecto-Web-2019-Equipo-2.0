@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Historial De Problemas</title>
+    <style>
+        
+           
+
+        table[id=Main_TableH] {
+            border-collapse: collapse;
+            position: fixed;
+            width: 100%;
+            position: relative;
+        }
+
+        table[id=Main_TableH] tr:first-child {
+            background-color: #004270;
+            border-collapse: collapse;
+        }
+        th{
+            background-color: #7D9ABF;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <h1>PADDING</h1>
+    <h1 align="center">Reporte de Problemas</h1>
+    <table border="1" id="Main_TableH">
+        <tr>
+            <td colspan="2" >
+                <div style="float:left," >
+                    <img src="Logo_ITESO_blanco.jpg" width=90em; onclick="cambio(5)">
+                </div>
+                <div style="float:right,">
+                    <input  type="text" name="name" placeholder="Id del Problema (XXXX)"><button>Buscar</button></inputid>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td width="20%" align="center">
+                <table border="1">
+                    <th colspan="2">Clasificación</th>
+                    <tr><td onclick="cambio(1)">Pérdidas</td></tr>
+                    <tr><td onclick="cambio(2)">Equipo Descompuesto</td></tr>
+                    <tr><td onclick="cambio(3)">Deudas</td></tr>
+                    <tr><td onclick="cambio(4)">Descontinuación</td></tr>
+
+                </table>
+        </td>
+
+            <td width="80%">
+                <h2 id="h2R">Reportes Recientes:</h2>
+                <div id="divR">
+
+                <h3><b>Mejoras incluidas en la versión 9.0.0 (distribuida el 09/09/2019)</b> </h3>
+
+                <ol>
+
+                    <li>(20-10-19) Malfuncionamiento en las bocinas id:A59F
+                        <ul>
+                            <li>adipisicing elit. Accusantium harum </li>
+                            <li>maiores adipisci reiciendis fugit vitae!</li>
+                            <li>Eligendi consequatur, ipsam animi velit </li>
+                        </ul>
+                    </li>
+
+                    <li>(29-09-19) Extravio de Cable auxiliar id:A113 por estudiante expediente:is150028
+                            <ul>
+                                    <li>Lorem ipsum dolor sit amet consectetur</li>
+                                    <li>sed esse quas veniam earum dolores fuga iusto?</li>
+                                    <li>maiores adipisci reiciendis fugit vitae!</li>
+                                </ul>
+                    </li>
+
+                    <li>(13-08-19) Descontinuación de Proyector Portatil id:935D
+                            <ul>
+                                    <li>El proyector presentaba muchas fallas</li>
+                                    <li>La imagen no era clara</li>
+                                    <li>Se sobrecalentaba después de poco tiempo</li>
+                                </ul>
+                    </li>
+
+                    <li>(2-08-19) Equipo no devuelto: Cable auxiliar id:A113 por estudiante expediente:is150028
+                            <ul>
+                                    <li>Fecha de Préstamo: 1-08-19</li>
+                                    <li>Clase: Arquitectura Computacional</li>
+                                    <li>Maestro: Aldana</li>
+                                    <li>Horario Prestado: 13:00-15:00</li>
+                                </ul>
+                    </li>
+
+
+
+                </ol>
+            </div>
+            </td>
+        </tr>
+
+        </tr>
+
+    </table>
+
+<script>
+
+function cambio(n){
+    if(n==1){
+        document.getElementById('h2R').innerText="Pérdidas";
+        document.getElementById('divR').innerHTML=`<ul>(29-09-19) Extravio de Cable auxiliar id:A113 por estudiante expediente:is150028
+                            
+                                    <li>Lorem ipsum dolor sit amet consectetur</li>
+                                    <li>sed esse quas veniam earum dolores fuga iusto?</li>
+                                    <li>maiores adipisci reiciendis fugit vitae!</li>
+                                </ul>
+                    `
+    }else if(n ==2){
+        document.getElementById('h2R').innerText="Equipo Descompuesto"
+        document.getElementById('divR').innerHTML=`<ul>(20-10-19) Malfuncionamiento en las bocinas id:A59F
+                        
+                            <li>adipisicing elit. Accusantium harum </li>
+                            <li>maiores adipisci reiciendis fugit vitae!</li>
+                            <li>Eligendi consequatur, ipsam animi velit </li>
+                        </ul>`
+    }else if(n==3){
+        document.getElementById('h2R').innerText="Deudas"
+        document.getElementById('divR').innerHTML=`<ul>(2-08-19) Equipo no devuelto: Cable auxiliar id:A113 por estudiante expediente:is150028
+                            
+                                    <li>Fecha de Préstamo: 1-08-19</li>
+                                    <li>Clase: Arquitectura Computacional</li>
+                                    <li>Maestro: Aldana</li>
+                                    <li>Horario Prestado: 13:00-15:00</li>
+                                </ul>`
+    }else if(n==4){
+        document.getElementById('h2R').innerText="Descontinueación"
+        document.getElementById('divR').innerHTML=`<ul>(13-08-19) Descontinuación de Proyector Portatil id:935D
+        
+                <li>El proyector presentaba muchas fallas</li>
+                <li>La imagen no era clara</li>
+                <li>Se sobrecalentaba después de poco tiempo</li>
+            </ul>`
+    }else{
+        document.getElementById('h2R').innerText="Reportes Recientes:"
+        document.getElementById('divR').innerHTML=`<ol>
+
+<li>(20-10-19) Malfuncionamiento en las bocinas id:A59F
+    <ul>
+        <li>adipisicing elit. Accusantium harum </li>
+        <li>maiores adipisci reiciendis fugit vitae!</li>
+        <li>Eligendi consequatur, ipsam animi velit </li>
+    </ul>
+</li>
+
+<li>(29-09-19) Extravio de Cable auxiliar id:A113 por estudiante expediente:is150028
+        <ul>
+                <li>Lorem ipsum dolor sit amet consectetur</li>
+                <li>sed esse quas veniam earum dolores fuga iusto?</li>
+                <li>maiores adipisci reiciendis fugit vitae!</li>
+            </ul>
+</li>
+
+<li>(13-08-19) Descontinuación de Proyector Portatil id:935D
+        <ul>
+                <li>El proyector presentaba muchas fallas</li>
+                <li>La imagen no era clara</li>
+                <li>Se sobrecalentaba después de poco tiempo</li>
+            </ul>
+</li>
+
+
+
+</ol>`
+    }
+}
+</script>
+</body>
+
+</html>

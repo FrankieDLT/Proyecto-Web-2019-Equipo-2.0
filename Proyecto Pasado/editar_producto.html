@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Inventario</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: rgb(124, 165, 170);
+            border: 5em;
+            width: 100%;
+            height: 500px;
+        }
+
+        img[id=Logo_iteso] {
+            width: 5em;
+        }
+
+        table[id=Main_Table] {
+            border-collapse: collapse;
+            position: auto;
+            margin: 0 auto
+        }
+
+        table[id=Main_Table] td {
+            text-align: center;
+            background-color: #004270;
+            color: whitesmoke;
+        }
+
+        table[id=Main_Table] td:first-child {
+            text-align: center;
+            background-color: whitesmoke;
+        }
+
+
+        label {
+            color: rgba(0, 0, 0, 0.5);
+            /*Color "semitrasparente" para el MC*/
+        }
+        /************************************************************************************/
+
+        a {
+            color: whitesmoke;
+            text-decoration: none;
+        }
+
+
+        img {
+            width: 4em;
+        }
+
+        table {
+            width: 70%;
+            margin-left: 20%;
+            margin-right: 15%;
+            background-color: whitesmoke;
+            margin: 0 auto;
+        }
+
+        td[id=nuevo_producto] {
+            background-color: #014372;
+            color: whitesmoke;
+            margin: 0 auto;
+        }
+        label{
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <table border="0" width="100%" id="Main_Table">
+        <tr>
+            <td width="5%"><a href=""><img src="Logo_ITESO_normal.jpg" id="Logo_iteso"></a></td>
+            <td width="10%"><a href="home.html" target="home">Inicio</a></td>
+            <td width="10%"><a href="productos.html" target="home">Inventario</a></td>
+            <td width="10%"><a href="Deudores.html" target="FFra">Deudores</a></td>
+            <td width="10%">Historial de Problemas</td>
+            <td width="10%">Disponibilidad</td>
+            <td width="10%">Usuarios Bloqueados</td>
+        </tr>
+    </table>
+    <br /><br /><br />
+
+    <div class="container" aria-hidden="true" width="100%">
+        <table border="0" width="100%">
+
+            <tr>
+                <td align="left" id="nuevo_producto">
+                    <form name='formulario' id='formulario' method='post' action='' target='_self'
+                        enctype="multipart/form-data">
+                        <br/>
+                        <label for="imagen">Imágenes</label>
+                        <input name="archivo1" type="file" id="archivo1"><br /><br />
+                        <label for="descripcion">Descripción:</label>
+                        <input id="descripcion" type="text" name="descripcion" placeholder="Descricpión" required /><br /><br/>
+                        <label for="categoria">Categoria:</label>
+                        <input id="categoria" type="categoria" name="categoria" placeholder="Categoria" required />
+                        <br/><br/>
+                        <label for="stock">Cantidad</label>
+                        <input type='number' name='stock' id='stock' placeholder="Cantidad" required /> <br /><br />
+                        <input id="submit" type="submit" name="submit" value="Enviar" />
+                        
+                    </form>
+                </td>
+            </tr>
+
+
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="almacenamiento.js"></script>
+    <script src="users.js"></script>
+
+    <!--********************************************************************  -->
+
+</body>
+
+</html>
