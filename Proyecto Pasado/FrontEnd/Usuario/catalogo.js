@@ -3,6 +3,35 @@ let uid = 732019;
 let Usuarios=[];
 
 
+let us1 = {
+  "id": uid,
+  "image":'https://www.steren.com.mx/media/catalog/product/cache/b69086f136192bea7a4d681a8eaf533d/image/20506a711/bocinas-vintage-multimedia-para-pc-laptop-de-70wpmpo.jpg',
+  "nombre":'Bocinas',
+  "condicion":'Excelente',
+  "cantidad":'3'};
+
+Usuarios.push(us1);
+
+let us2 = {
+  "id": uid+5,
+  "image":'https://www.radioshack.com.mx/medias/81228-1200ftw?context=cmFkaW9zaGFja3xyb290fDE4OTAxNHxpbWFnZS9naWZ8aGQ0L2g3MC84ODYwNTcwOTEwNzUwLmdpZnw0MGZlMjA1MGJkMjM3ZmE1OTdmODczYTBhNGY0ODdkMjk1NmI4MTM5MGE1NzdkZWQ4MGMzMzg1YzI5ODNiYjE5',
+  "nombre":'Cable Auxiliar',
+  "condicion":'Bueno',
+  "cantidad":'5'};
+
+Usuarios.push(us2);
+
+let us3 = {
+  "id": uid+5,
+  "image":'https://images-na.ssl-images-amazon.com/images/I/51GEClpO2kL._SX466_.jpg',
+  "nombre":'Adaptador HDMI',
+  "condicion":'Muy Bueno',
+  "cantidad":'2'};
+
+Usuarios.push(us3);
+userListToHTML(Usuarios);
+
+
 let Modal = document.body;
 let valid = Modal.querySelectorAll(':invalid'); //Se define con su valor inical
 let Nombre = document.getElementById('nam');
@@ -36,7 +65,7 @@ function userToHTML(user){
       let sResultado = `<table border ="1" width ="100%">
       <tr>
           <td width="20%">${user.id}</td>
-          <td width="20%"><img src="${user.image}"></td>  
+          <td width="20%" align="center"><img src="${user.image}"></td>  
           <td width="20%">${user.nombre}</td>       
           <td width="20%">${user.cantidad}</td>
           <td width="20%">${user.condicion}</td>
