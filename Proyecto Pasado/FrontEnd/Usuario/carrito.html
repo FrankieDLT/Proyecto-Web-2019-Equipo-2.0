@@ -68,7 +68,7 @@
         }
 
         table {
-            width: 70%;
+            width: 80%;
             margin-left: 20%;
             margin-right: 15%;
             background-color: whitesmoke;
@@ -98,6 +98,18 @@
             text-align: center;
 
         }
+
+        .titulo{
+            margin-left: 10%;
+            margin-right: 15%;
+
+        }
+
+        .btnSolicitar{
+            margin-left: 76%;
+            margin-right: 5%;
+            margin-top: 10px;
+        }
     </style>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
@@ -112,10 +124,12 @@
 </head>
 
 <body>
+
+
     <table border="0" width="100%" id="Main_Table">
         <tr>
             <td width="5%"><a href=""><img src="../../Imagenes/Logo_ITESO_normal.jpg" id="Logo_iteso"></a></td>
-            <td width="10%"><a href="home.html" target="home">Inicio</a></td>
+            <td width="10%"><a href="../Registro y login (Publico)/home.html" target="home">Inicio</a></td>
             <td width="10%"><a href="productos.html" target="home">Inventario</a></td>
             <td width="10%"><a href="Deudores.html" target="FFra">Deudores</a></td>
             <td width="10%">Historial de Problemas</td>
@@ -123,48 +137,38 @@
 
         </tr>
     </table>
-    <br /><br /><br />
+    <br />
 
     <div class="container" aria-hidden="true" width="100%">
-        <table class="add_product" border="0" width="100%">
-            <tr>
-                <td colspan="7" text-align="right" id="productos"><button type="button" class="btn btn-default"><a
-                            href="Agregar_productos.html">Agregar
-                            Producto</a></button></td>
-            </tr>
-        </table>
+        <div class ="titulo">
+            <h3><b>Mi carrito</b></h3>
+        </div>
+    </div>
+    <br>
+
+
+    <div class="container" aria-hidden="true" width="100%">
+
         <table border="2" width="100%">
 
             <tr>
-                <td colspan="7" align="center" id="productos">Productos</td>
+                <td colspan="6" align="center" id="productos">Productos</td>
             </tr>
             <tr id="tr1">
-                <td width="10%">#</td>
-                <td width="20%">Imagen</td>
-                <td width="20%">Descripcion</td>
-                <td width="20%">Categoria</td>
-                <td width="20%">Stock</td>
-                <td width="20%">Agregado</td>
-                <td width="20%">Acciones</td>
+                <td width="12%">#</td>
+                <td width="25%">Imagen</td>
+                <td width="25%">Descripcion</td>
+                <td width="25%">Categoria</td>
+                <td width="25%">Cantidad</td>
 
             </tr>
             <tr id="info">
                 <td width="10%">1</td>
                 <td width="10%" align="center"><img src="../../Imagenes/cableaux.jpg"></td>
-                <td width="20%">Cable Auxiliar</td>
-                <td width="20%">Cables</td>
+                <td width="25%">Cable Auxiliar</td>
+                <td width="25%">Cables</td>
                 <td width="25%">100</td>
-                <td width="25%">16/06/2010</td>
-                <td width="25%" class="text-center">
-                    <div class="btn-group">
-                        <a href="editar_producto.html" class="btn btn-info btn-xs" title="Editar" data-toggle="tooltip">
-                            <span class="glyphicon glyphicon-edit"></span>
-                        </a>
-                        <a href="" class="btn btn-danger btn-xs" title="Eliminar" data-toggle="tooltip">
-                            <span class="glyphicon glyphicon-trash"></span>
-                        </a>
-                    </div>
-                </td>
+           
 
             </tr>
             <tr id="info">
@@ -173,17 +177,7 @@
                 <td width="20%">Bocinas</td>
                 <td width="20%">Audio </td>
                 <td width="25%">50</td>
-                <td width="25%">12/04/2008</td>
-                <td width="25%" class="text-center">
-                    <div class="btn-group">
-                        <a href="editar_producto.html" class="btn btn-info btn-xs" title="Editar" data-toggle="tooltip">
-                            <span class="glyphicon glyphicon-edit"></span>
-                        </a>
-                        <a href="" class="btn btn-danger btn-xs" title="Eliminar" data-toggle="tooltip">
-                            <span class="glyphicon glyphicon-trash"></span>
-                        </a>
-                    </div>
-                </td>
+                <td width="25%" class="text-center"> </td>
             </tr>
             <tr id="info">
                 <td width="10%">3</td>
@@ -191,20 +185,16 @@
                 <td width="20%">Proyector Portable</td>
                 <td width="20%">Proyector</td>
                 <td width="20%">50</td>
-                <td width="20%">05/12/2012</td>
-                <td width="25%" class="text-center">
-                    <div class="btn-group">
-                        <a href="editar_producto.html" class="btn btn-info btn-xs" title="Editar">
-                            <span class="glyphicon glyphicon-edit"></span>
-                        </a>
-                        <a href="" class="btn btn-danger btn-xs" title="Eliminar" data-toggle="tooltip">
-                            <span class="glyphicon glyphicon-trash"></span>
-                        </a>
-                    </div>
-                </td>
+             
             </tr>
 
         </table>
+
+        <div class ="btnSolicitar">
+            <button  href="productos.html" target="home">
+              <b>  Solicitar Material</b>
+            </button>
+        </div>
 
     </div>
 

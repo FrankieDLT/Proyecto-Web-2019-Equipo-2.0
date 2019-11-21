@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
         integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+
+
     <style>
         body {
             background-color: rgb(214, 214, 214);
             border: 1em;
             width: 100%;
-            /*Iframe para los tres cuadros*/
+            /*Ifra
+            me para los tres cuadros*/
             height: 500px;
         }
 
@@ -24,6 +33,7 @@
         table[id=Main_Table] {
             border-collapse: collapse;
             position: fixed;
+            z-index: 1;
         }
 
         table[id=Main_Table] td {
@@ -38,22 +48,44 @@
         }
 
 
+
         label {
             color: rgba(0, 0, 0, 0.5);
             /*Color "semitrasparente" para el MC*/
         }
 
-        h3{
+        h3 {
             font-style: oblique;
             color: darkblue;
             font-size: 3rem;
 
         }
+
         /************************************************************************************/
 
         a {
             color: whitesmoke;
             text-decoration: none;
+        }
+
+        .card-img-top {
+            width: 200px;
+            margin-left: 20px;
+        }
+
+        /* Three image containers (use 25% for four, and 50% for two, etc) */
+        .row {
+            display: flex;
+        }
+
+
+        .column {
+            flex: 33.33%;
+            padding: 5px;
+        }
+
+        .elements{
+            padding-top: 90px;
         }
     </style>
 </head>
@@ -61,9 +93,9 @@
 <body>
     <table border="0" width="100%" id="Main_Table">
         <tr>
-            <td width="5%"><a href=""><img src="Logo_ITESO_normal.jpg" id="Logo_iteso"></a></td>
+            <td width="5%"><a href=""><img src="../../Imagenes/Logo_ITESO_normal.jpg" id="Logo_iteso"></a></td>
             <td width="10%"><a href="home.html" target="home">Inicio</a></td>
-            <td width="10%"><a href="productos.html" target="home">Inventario</a></td>
+            <td width="10%"><a href="../Administrador/productos.html" target="home">Inventario</a></td>
             <td width="10%">Transacciones</td>
             <td width="10%"><a href="Deudores.html" target="FFra">Deudores</a></td>
             <td width="10%">Historial de Problemas</td>
@@ -71,16 +103,84 @@
             <td width="10%">Usuarios Bloqueados</td>
         </tr>
     </table>
-      <br/><br/><br/>
-      <div class="container" aria-hidden="true" width="100%">
-            <div><h3><b>Sistema de prestámos</b></h3></div>
 
-      </div>
-      
+   
+    <div class="container elements" aria-hidden="true" width="100%">
+        <div>
+            <h3><b>Sistema de préstamos</b></h3>
+        </div>
+
+        <div class="row" id="listaProductos">
+            <div class="column">
     
+                <div class="card card1" style="width: 15rem;">
+                    <img src="../../Imagenes/cableaux.jpg" class="card-img-top" alt="..." id="imagen">
+                    <div class="card-body">
+                        <h5 class="card-title" id="name">Cable Auxiliar</h5>
+                        <p class="card-text" id="categoria"> Categoria: Cables</p>
+                        <p class="card-text" id="name"> Stock: 20</p>
+                        <p class="card-text">Disponible: Ahora</p>
+                        <a id="btn1" onclick="agregarCarrito()" href="#" class="btn btn-primary">Agregar al carrito</a>
+                    </div>
+                </div>
+    
+    
+            </div>
+            <div class="column">
+                <div class="card" style="width: 15rem;">
+                    <img src="../../Imagenes/cableaux.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Cable Auxiliar</h5>
+                        <p class="card-text">Categoria: Cables</p>
+                        <p class="card-text">Stock: 20</p>
+                        <p class="card-text">Disponible: Ahora</p>
+                        <a href="#" class="btn btn-primary">Agregar al carrito </a>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card" style="width: 15rem;">
+                    <img src="../../Imagenes/cableaux.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Cable Auxiliar</h5>
+                        <p class="card-text">Categoria: Cables</p>
+                        <p class="card-text">Stock: 20</p>
+                        <p class="card-text">Disponible: Ahora</p>
+    
+                        <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    
+    </div>
+
+
+
+
+
+
+    <div>
+        <a href="../Usuario/carrito.html"><button>Ir al carrito</button></a>
+
+    </div>
+
+
 
     <!--********************************************************************  -->
+    <script src="home.js"></script>
 
+    <!--Bootstrap  -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
