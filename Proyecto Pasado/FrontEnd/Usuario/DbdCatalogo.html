@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Catálogo de Materiales</title>
+     <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+    integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+ 
+    <style>
+        img {
+            width: 4em;
+        }
+
+        table {
+            width: 70%;
+            margin-left: 15%;
+            margin-right: 15%;
+            background-color: whitesmoke;
+        }
+
+        td[id=deudor] {
+            background-color: #42B4E3;
+            color: whitesmoke;
+        }
+
+        tr[id=tr1] {
+            background-color: #004270;
+            color: whitesmoke;
+        }
+
+        div[id=padd]{
+            width: 100%;
+            font-size: 3.5em;
+            opacity: 0.0001;
+        }
+
+        body{
+            background-image: url('https://iteso.mx/image/journal/article?img_id=7699185&t=1494435594945');
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+
+        button[id=regis]{
+            background-color: #004270;
+            margin-left: 15%;
+            margin-right: 15%;
+            margin-top: 2.5%;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="padd" >Padding</div>
+
+    
+
+
+    <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#registro" id="regis">
+    Registrar Equipo
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="registro" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Registrar Equipo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="">
+          
+              <input type="text" name="" id="nam" class="form-control" placeholder="Nombre" aria-describedby="helpId" required>
+             
+              <input type="text" name="" id="cond" class="form-control mt-3" placeholder="Condición: <Excelente> <Muy Bueno> <Bueno> <Dañado>" aria-describedby="helpId" required>
+ 
+              <input type="text" name="" id="cantd" class="form-control mt-3" placeholder="Cantidad Disponible" aria-describedby="helpId" required >
+
+              <input type="url" name="" id="imm" class="form-control mt-3" placeholder="Url de imagen del equipo" aria-describedby="helpId" required>
+
+
+            <button type="submit" class="btn btn-success mt-3" id="Registrar">Registrar</button>
+             <button type="button" class="btn btn-secondary mt-3" data-dismiss="modal">Close</button>
+          
+            </form> 
+
+
+        </div>
+        
+      </div>
+    </div>
+  </div> 
+  <!--Fin del Modal -->
+
+  <table border="2" width="100%" >
+      <tr>
+          <td colspan="5" align="center" id="deudor">Equipo</td>
+      </tr>
+      <tr id="tr1" align="center">
+        
+          <td width="20%">Id</td>
+          <td width="20%">Imagen</td>
+          <td width="20%">Nombre</td>
+          <td width="20%">Condición</td>
+          <td width="20%">Cantidad Disponible</td>
+      </tr>
+     
+  </table>
+
+  <table border="2" width="100%" id="tablecat">
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script>
+<script src="/catalogo.js"></script>
+</body>
+
+</html>
