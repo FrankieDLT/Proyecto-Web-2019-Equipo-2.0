@@ -39,7 +39,7 @@ Usuarios.push(us3);
 userListToHTML(Usuarios);
 
 
-let Modal = document.body;
+let Modal = document.getElementById('registro');
 let valid = Modal.querySelectorAll(':invalid'); //Se define con su valor inical
 let Nombre = document.getElementById('nam');
 let Condicion = document.getElementById('cond');
@@ -144,8 +144,24 @@ function addUser(u_n, u_i, u_ca, u_co) {
   Nuser.id = uid;
   Nuser.image = u_i;
   Nuser.nombre = u_n;
-  Nuser.condicion = u_co;
-  Nuser.cantidad = u_ca;
+
+  if (u_co.toLowerCase() === 'excelente' || 
+      u_co.toLowerCase() === 'muy bueno' ||
+      u_co.toLowerCase() === 'bueno' ||
+      u_co.toLowerCase() === 'dañado' ) {
+          Nuser.condicion = u_co;
+          }else{
+          Nuser.condicion = 'Dañada';
+          alert('CONDICION DEBE SER COMO SE MUESTRA EN EL TEXTO');
+          }
+
+  let finaca = 0;
+  if (u_ca > -1) {
+    Nuser.cantidad = u_ca;
+  } else {
+    Nuser.cantidad = finaca;
+    alert('CANTIDAD INVALIDA');
+  }
 
 
   function checkEm(user) {
@@ -180,7 +196,7 @@ bttnRegistrar.onclick = function () {
 
 };
 
-sielibttn.onclick = function () {//Eliminar Equipos
+sielibttn.onclick = function () { //Eliminar Equipos
   event.preventDefault();
 
   let ind = Usuarios.findIndex(obj => obj.nombre == Namel.value);
@@ -196,23 +212,53 @@ sielibttn.onclick = function () {//Eliminar Equipos
 
 };
 
-editabutto.onclick = function () {//Editar Equipos
+editabutto.onclick = function () { //Editar Equipos
   event.preventDefault();
 
-  let ind = Usuarios.findIndex(obj => obj.nombre == oldnam.value);
+  let ind = Usuarios.findIndex(obj => obj.nombre == oldnam.value.trim());
+  let ind2 = Usuarios.findIndex(obj => obj.nombre == newnam.value.trim());
   console.log(Usuarios[ind]);
+  console.log(Usuarios[ind2]);
+
+  let equ = !(Usuarios[ind].id == Usuarios[ind2].id);
+  console.log(equ);
 
   if (ind == -1) {
     alert('Equipo no Registrado');
   } else {
 
+    
+    if (ind2 != -1 && equ) {
+      alert("Este nombre de equipo ya está en uso, el nombre: " + newnam.value.trim());
 
-    Usuarios[ind].nombre  =newnam.value;
-    Usuarios[ind].condicion  =newcond.value;
-    Usuarios[ind].cantidad  =newcantd.value;
-    Usuarios[ind].image  =newimm.value;
+      
+    } else {
+      Usuarios[ind].nombre = newnam.value;
+      Usuarios[ind].image = newimm.value;
 
-    userListToHTML(Usuarios);
+      if (newcond.value.toLowerCase() === 'excelente' || 
+          newcond.value.toLowerCase() === 'muy bueno' ||
+          newcond.value.toLowerCase() === 'bueno' ||
+          newcond.value.toLowerCase() === 'dañado' ) {
+
+        Usuarios[ind].condicion = newcond.value;
+      } else {
+        Usuarios[ind].condicion = 'Dañada';
+        alert('CONDICION DEBE SER COMO SE MUESTRA EN EL TEXTO');
+      }
+
+
+      let finaca = 0;
+      if (newcantd.value > -1) {
+
+        Usuarios[ind].cantidad = newcantd.value;
+      } else {
+        Usuarios[ind].cantidad = finaca;
+        alert('CANTIDAD INVALIDA');
+      }
+
+      userListToHTML(Usuarios);
+    }
 
   }
 
