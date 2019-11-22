@@ -4,7 +4,7 @@ var cart = {
 
 
 //limpiar localStorage
-// localStorage.setItem('cart', JSON.stringify(cart));
+ //localStorage.setItem('cart', JSON.stringify(cart));
 
 if(localStorage.cart) {
     cart = JSON.parse(localStorage.cart);
@@ -14,7 +14,7 @@ function productToHTML(productos){
     let sResultado =`         <tr id="info">
     <td width="10%">2</td>
     <td width="10%" align="center"><img src="${productos.imagen}"></td>
-    <td width="20%">${productos.nombre}</td>
+    <td width="20%">${productos.descripcion}</td>
     <td width="20%">${productos.categoria} </td>
     <td width="25%">${productos.cantidad}</td>
     <td width="25%" class="text-center"> </td>
