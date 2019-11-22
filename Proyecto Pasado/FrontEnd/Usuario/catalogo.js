@@ -230,10 +230,13 @@ editabutto.onclick = function () { //Editar Equipos
     
     if (ind2 != -1 && equ) {
       alert("Este nombre de equipo ya está en uso, el nombre: " + newnam.value.trim());
-
+      Usuarios[ind].nombre = oldnam.value;
       
     } else {
-      Usuarios[ind].nombre = newnam.value;
+      Usuarios[ind].nombre = newnam.value;}
+
+    
+      
       Usuarios[ind].image = newimm.value;
 
       if (newcond.value.toLowerCase() === 'excelente' || 
@@ -258,7 +261,7 @@ editabutto.onclick = function () { //Editar Equipos
       }
 
       userListToHTML(Usuarios);
-    }
+    
 
   }
 
