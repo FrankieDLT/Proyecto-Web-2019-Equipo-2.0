@@ -66,9 +66,9 @@ function userToHTML(user){
       <tr>
           <td width="20%">${user.id}</td>
           <td width="20%" align="center"><img src="${user.image}"></td>  
-          <td width="20%">${user.nombre}</td>       
-          <td width="20%">${user.cantidad}</td>
-          <td width="20%">${user.condicion}</td>
+          <td width="20%" contenteditable="true">${user.nombre}</td>       
+          <td width="20%" contenteditable="true">${user.cantidad}</td>
+          <td width="20%" contenteditable="true">${user.condicion}</td>
         </tr>
     </table>`;
   
