@@ -1,11 +1,26 @@
 "use strict"
+//No id
+//let url = "https://api.myjson.com/bins/dqo4m"
 
-let url = "https://api.myjson.com/bins/dqo4m"
+//With id 
+let url = "https://api.myjson.com/bins/1cwzea"
+
+var cart = {
+    items: []
+};
+
+//limpiar localStorage
+//localStorage.setItem('cart', JSON.stringify(cart));
+
+if(localStorage.cart) {
+    cart = JSON.parse(localStorage.cart);
+}
+
 let cbOk_1 = (data) => {
     console.log("Callback_OK")
     productos = data;
     console.log(productos);
-    userListToHTML(productos);
+    productListToHTML(productos);
     console.log(productos[0].cantidad)
 }
 
@@ -51,7 +66,7 @@ function initData(){
 
         });
 }
-initData()
+initData();
 
 function productToHTML(productos){
     let sResultado =`<div class="column">
@@ -63,32 +78,62 @@ function productToHTML(productos){
                 <p class="card-text">Stock: ${productos.cantidad}</p>
                 <p class="card-text">Disponible: Ahora</p>
 
-            <a href="#" class="btn btn-primary">Agregar al carrito</a>
+            <a href="#" class="btn btn-primary" onclick="agregarCarrito(${productos.id})">Agregar al carrito</a>
         </div>
     </div>
 </div>`; 
-
-
     return sResultado;
 }
 
-function userListToHTML (usuarios){
-    let usersList = 
-    usuarios.map( user => {
-         return productToHTML(user)
+/*
+function productListToHTML (productos){
+    let cartList;
+    if (cart.items.length > 0) {
+    cartList = cart.items.map( producto => {
+         return productToHTML(producto)
          } )
-     console.table(usersList);
-     let html = usersList.join("");
+    }
+     console.table(productsList);
+     let html = cartList.join("");
+     carrito-tabla.innerHTML += "" + html;
+ }
+
+*/
+
+function productListToHTML (productos){
+    let productsList = 
+    productos.map( producto => {
+         return productToHTML(producto)
+         } )
+     console.table(productsList);
+     let html = productsList.join("");
      listaProductos.innerHTML += "" + html;
  }
 
-//btn1 = document.getElementById("btn1"); 
 
-function agregarCarrito() {
-    alert("Tu producto se ha añadido al carrito!");
+function agregarCarrito(id) {
+    let index = cart.items.filter(function (item) { return item.id === id }).length;
+    if (index === 0) {
+        let producto = {
+            imagen: productos[id].imagen,
+            descripcion: productos[id].descripcion,
+            categoria: productos[id].categoria,
+            id: id,
+            cantidad: 1
+        }
+        cart.items.push(producto); 
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert("Tu producto se ha añadido al carrito!");
+   
+    }else {
+        alert("Este producto ya esta en tu carrito!");
 
+    }
+
+    
 }
 
+/*
 let tdId = document.createElement('td');
 let tdDescripcion = document.createElement('td');
 let tdImagen = document.createElement('td');
@@ -96,3 +141,5 @@ let tdCategoria = document.createElement('td');
 let tdCantidad = document.createElement('td');
 
 let newRow = document.createElement('tr');
+
+*/
