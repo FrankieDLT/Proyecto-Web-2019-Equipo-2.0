@@ -54,11 +54,16 @@
 
         button[id=dele]{
             background-color: #004270;
+            margin-top: 2.5%;
+        }
+
+        button[id=edici]{
+            background-color: #004270;
             margin-right: 15%;
             margin-top: 2.5%;
         }
         
-
+        
 
     </style>
 </head>
@@ -77,6 +82,11 @@
   <!-- Button trigger modal Eliminar-->
   <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#delete" id="dele">
     Eliminar Equipo
+  </button>
+
+   <!-- Button trigger modal Editar-->
+   <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#edicion" id="edici">
+    Editar Equipo
   </button>
   
 
@@ -162,6 +172,50 @@
     </div>
   </div> 
   <!--Fin del Modal Confirmar-->
+
+
+<!-- Modal Editar-->
+<div class="modal fade" id="edicion" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Editar Equipo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="">
+
+        <div class="modal-header">
+          <input type="text" name="" id="oldnam" class="form-control" placeholder="Nombre del equipo a editar" aria-describedby="helpId" required>
+        </div>
+          
+
+            <input type="text" name="" id="newnam" class="form-control" placeholder="Nombre" aria-describedby="helpId" required>
+           
+            <input type="text" name="" id="newcond" class="form-control mt-3" placeholder="Condición: <Excelente> <Muy Bueno> <Bueno> <Dañado>" aria-describedby="helpId" required>
+
+            <input type="text" name="" id="newcantd" class="form-control mt-3" placeholder="Cantidad Disponible" aria-describedby="helpId" required >
+
+            <input type="url" name="" id="newimm" class="form-control mt-3" placeholder="Url de imagen del equipo" aria-describedby="helpId" required>
+
+
+          <button type="submit" class="btn btn-success mt-3" id="editabutto">Editar</button>
+           <button type="button" class="btn btn-secondary mt-3" data-dismiss="modal">Close</button>
+        
+          </form> 
+
+
+      </div>
+      
+    </div>
+  </div>
+</div> 
+<!--Fin del Modal Editar-->
+
+
+
 
   <table border="2" width="100%" >
       <tr>
