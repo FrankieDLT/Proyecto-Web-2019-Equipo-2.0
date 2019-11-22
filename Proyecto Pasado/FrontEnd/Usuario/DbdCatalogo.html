@@ -49,9 +49,15 @@
         button[id=regis]{
             background-color: #004270;
             margin-left: 15%;
+            margin-top: 2.5%;
+        }
+
+        button[id=dele]{
+            background-color: #004270;
             margin-right: 15%;
             margin-top: 2.5%;
         }
+        
 
 
     </style>
@@ -63,12 +69,18 @@
     
 
 
-    <!-- Button trigger modal -->
+    <!-- Button trigger modal Registrar-->
   <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#registro" id="regis">
     Registrar Equipo
   </button>
 
-  <!-- Modal -->
+  <!-- Button trigger modal Eliminar-->
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#delete" id="dele">
+    Eliminar Equipo
+  </button>
+  
+
+  <!-- Modal Registrar-->
   <div class="modal fade" id="registro" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -101,7 +113,55 @@
       </div>
     </div>
   </div> 
-  <!--Fin del Modal -->
+  <!--Fin del Modal Registrar-->
+
+  <!-- Modal Eliminar-->
+  <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">¿Cuál Equipo Se Eliminará?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="">
+          
+             <input type="text" name="" id="namel" class="form-control" placeholder="Nombre" aria-describedby="helpId" required>
+
+             <button type="button" class="btn btn-secondary mt-3" data-toggle="modal" data-target="#yesno" id="elimbutt">
+              Eliminar Equipo
+            </button>
+
+             <button type="button" class="btn btn-secondary mt-3" data-dismiss="modal">Close</button>
+            </form> 
+        </div>
+      </div>
+    </div>
+  </div> 
+  <!--Fin del Modal Eliminar-->
+
+  <!-- Modal Confirmar-->
+  <div class="modal fade" id="yesno" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">¿Seguro que desea eliminar este equipo?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="">
+             <button type="submit" class="btn btn-success mt-3" id="sielib">Sí</button>
+             <button type="button" class="btn btn-secondary mt-3" data-dismiss="modal">No</button>
+            </form> 
+        </div>
+      </div>
+    </div>
+  </div> 
+  <!--Fin del Modal Confirmar-->
 
   <table border="2" width="100%" >
       <tr>

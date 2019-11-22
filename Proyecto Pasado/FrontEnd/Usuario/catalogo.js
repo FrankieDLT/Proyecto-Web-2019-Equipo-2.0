@@ -12,8 +12,10 @@ let us1 = {
 
 Usuarios.push(us1);
 
+uid+=5;
+
 let us2 = {
-  "id": uid+5,
+  "id": uid,
   "image":'https://www.radioshack.com.mx/medias/81228-1200ftw?context=cmFkaW9zaGFja3xyb290fDE4OTAxNHxpbWFnZS9naWZ8aGQ0L2g3MC84ODYwNTcwOTEwNzUwLmdpZnw0MGZlMjA1MGJkMjM3ZmE1OTdmODczYTBhNGY0ODdkMjk1NmI4MTM5MGE1NzdkZWQ4MGMzMzg1YzI5ODNiYjE5',
   "nombre":'Cable Auxiliar',
   "condicion":'Bueno',
@@ -21,8 +23,10 @@ let us2 = {
 
 Usuarios.push(us2);
 
+uid+=5;
+
 let us3 = {
-  "id": uid+5,
+  "id": uid,
   "image":'https://images-na.ssl-images-amazon.com/images/I/51GEClpO2kL._SX466_.jpg',
   "nombre":'Adaptador HDMI',
   "condicion":'Muy Bueno',
@@ -52,6 +56,19 @@ Modal.addEventListener("change", function (event) {
         bttnRegistrar.disabled = true;
       }
 
+  });
+
+
+  let Namel = document.getElementById('namel');
+  let Elimbutt=document.getElementById('elimbutt');
+  let sielibttn = document.getElementById('sielib');
+
+  Namel.addEventListener("change", function (event) {
+    if(Namel.value!=''){
+      Elimbutt.disabled = false;
+    }else{
+      Elimbutt.disabled = true;
+    }
   });
 
 
@@ -130,6 +147,22 @@ function addUser(u_n,u_i,u_ca,u_co){
       cantidad: Cantidad.value
     }
     
-    addUser(obj.nombre,obj.image,obj.cantidad,obj.condicion);
+    addUser(obj.nombre.trim(),obj.image.trim(),obj.cantidad.trim(),obj.condicion.trim());
+  
+  };
+
+  sielibttn.onclick = function () {
+    event.preventDefault();
+  
+    let ind = Usuarios.findIndex(obj => obj.nombre==Namel.value);
+    console.log(Usuarios[ind]);
+
+    if(ind == -1){
+      alert('Equipo no Registrado');
+    }else{
+      Usuarios.splice(ind, 1);
+    userListToHTML(Usuarios);
+
+    }
   
   };
