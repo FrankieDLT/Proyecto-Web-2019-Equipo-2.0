@@ -145,13 +145,13 @@ function addUser(u_n, u_i, u_ca, u_co) {
   Nuser.image = u_i;
   Nuser.nombre = u_n;
 
-  if (u_co.toLowerCase() === 'excelente' || 
-      u_co.toLowerCase() === 'muy bueno' ||
-      u_co.toLowerCase() === 'bueno' ||
-      u_co.toLowerCase() === 'dañado' ) {
+  if (u_co.trim().toLowerCase() === 'excelente' || 
+      u_co.trim().toLowerCase() === 'muy bueno' ||
+      u_co.trim().toLowerCase() === 'bueno' ||
+      u_co.trim().toLowerCase() === 'dañado' ) {
           Nuser.condicion = u_co;
           }else{
-          Nuser.condicion = 'Dañada';
+          Nuser.condicion = 'Dañado';
           alert('CONDICION DEBE SER COMO SE MUESTRA EN EL TEXTO');
           }
 
@@ -217,10 +217,17 @@ editabutto.onclick = function () { //Editar Equipos
 
   let ind = Usuarios.findIndex(obj => obj.nombre == oldnam.value.trim());
   let ind2 = Usuarios.findIndex(obj => obj.nombre == newnam.value.trim());
+
+    console.log("break");
   console.log(Usuarios[ind]);
   console.log(Usuarios[ind2]);
 
-  let equ = !(Usuarios[ind].id == Usuarios[ind2].id);
+  let equ = false;
+
+  if(Usuarios[ind2]!= undefined){
+    equ = !(Usuarios[ind].id == Usuarios[ind2].id);
+}
+
   console.log(equ);
 
   if (ind == -1) {
@@ -230,23 +237,23 @@ editabutto.onclick = function () { //Editar Equipos
     
     if (ind2 != -1 && equ) {
       alert("Este nombre de equipo ya está en uso, el nombre: " + newnam.value.trim());
-      Usuarios[ind].nombre = oldnam.value;
+      Usuarios[ind].nombre = oldnam.value.trim();
       
     } else {
-      Usuarios[ind].nombre = newnam.value;}
+      Usuarios[ind].nombre = newnam.value.trim();}
 
     
       
-      Usuarios[ind].image = newimm.value;
+      Usuarios[ind].image = newimm.value.trim();
 
-      if (newcond.value.toLowerCase() === 'excelente' || 
-          newcond.value.toLowerCase() === 'muy bueno' ||
-          newcond.value.toLowerCase() === 'bueno' ||
-          newcond.value.toLowerCase() === 'dañado' ) {
+      if (newcond.value.trim().toLowerCase() === 'excelente' || 
+          newcond.value.trim().toLowerCase() === 'muy bueno' ||
+          newcond.value.trim().toLowerCase() === 'bueno' ||
+          newcond.value.trim().toLowerCase() === 'dañado' ) {
 
-        Usuarios[ind].condicion = newcond.value;
+        Usuarios[ind].condicion = newcond.value.trim();
       } else {
-        Usuarios[ind].condicion = 'Dañada';
+        Usuarios[ind].condicion = 'Dañado';
         alert('CONDICION DEBE SER COMO SE MUESTRA EN EL TEXTO');
       }
 
@@ -264,5 +271,4 @@ editabutto.onclick = function () { //Editar Equipos
     
 
   }
-
 };
