@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
-    <title>Prestamos Iteso</title>
+    <title>Prestamos ITESO</title>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="Content-Type" content="text/html" charset=UTF-8">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -13,109 +13,160 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
         integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 
+    <link rel="icon" type="image/x-icon" href="https://sso.iteso.mx/sso/XUI/favicon.ico?v=13.0.1-SNAPSHOT">
+    <link rel="shortcut icon" type="image/x-icon" href="https://sso.iteso.mx/sso/XUI/favicon.ico?v=13.0.1-SNAPSHOT">
+    <link rel="stylesheet" type="text/css" href="./ITESO_files/structure.css">
+    <link rel="stylesheet" type="text/css" href="./ITESO_files/theme.css">
+    <link rel="stylesheet" type="text/css" href="./ITESO_files/iteso.css">
+
     <style>
         body {
-            background-color: rgb(214, 214, 214);
-            border: 1em;
-            width: 100%;
-            /*Ifra
-                    me para los tres cuadros*/
-            height: 500px;
+            /* background-image: url('https://iteso.mx/image/journal/article?img_id=7699185&t=1494435594945'); */
+            background-image: url('https://iteso.mx/documents/11109/12605470/Campus++30.jpg/cafbc1b6-713b-460f-b22f-e3290ca0ed20?t=1533336672075');
+            background-repeat: no-repeat;
         }
-
-        img[id=Logo_iteso] {
-            width: 3em;
-            background-color: azure;
-        }
-
-        a {
-            color: white;
-            text-align: center;
-            vertical-align: middle;
-            font-size: large;
-            text-indent: 1.5em
-        }
-
-        form[id=navSearch] {
-            margin-left: 1200px;
-        }
-
-        nav.navbar {
-            background-color: #004270;
-        }
-
-        /************************************************************************************/
     </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand navbar-dark">
-        <div class="nav navbar-nav">
-            <a href=""><img src="../../Imagenes/Logo_ITESO_normal.jpg" id="Logo_iteso"></a>
-            <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#registro">Registrarse</a>
-            <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#modelId">Login</a>
-            <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#recuperacionId">Recuperación de contraseña</a>
-        </div>
-    </nav>
 
     <!-- Aqui se agregara el menu de inico -->
-    <h1>Aqui se agregara el menu de inicio o algun tipo de imagen de inicio</h1>
+    <div id="messages" class="clearfix" wfd-id="28"></div>
+    <div id="wrapper" aria-busy="false" wfd-id="4">
+        <!-- Copyright 2015 ForgeRock AS.
+	License terms: https://forgerock.org/cddlv1-0/ -->
+        <div id="login-base" wfd-id="5">
+            <div id="loginBaseLogo" class="main-logo-holder" wfd-id="27">
+                <!-- Copyright 2015 ForgeRock AS.
+	License terms: https://forgerock.org/cddlv1-0/ -->
+                <!--<img class="main-logo"
+     src="./images/Logo-ITESO-Vertical.png?v=13.0.1-SNAPSHOT"
+     
+     height="240px"
+     alt="ITESO" />-->
+            </div>
+            <div id="content" wfd-id="6">
+                <div class="container" wfd-id="7">
 
-    <!-- Modal -->
-    <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Login</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+
+                    <form class="form login" data-stage="DataStore1" wfd-id="8">
+
+                        <fieldset class="row">
+                            <div class="modal-dialog" style="max-width: 370px; margin: 30px auto;" wfd-id="9">
+                                <div class="modal-content" style="background-color: #f5f5f5;" wfd-id="10">
+                                    <div class="modal-body" wfd-id="11">
+                                        <div style="text-align:center" wfd-id="25">
+
+                                            <!-- <img class="main-logo"
+     src="./images/Logo-ITESO-Vertical.png?v=13.0.1-SNAPSHOT"
+     
+     height="240px"
+     alt="ITESO" /> -->
+
+                                            <object data="./ITESO_files/Logo-ITESO-Vertical.svg" type="image/svg+xml"
+                                                alt="ITESO" style="max-width: 250px;"></object>
+
+
+                                        </div>
+
+
+                                        <div class="form-group" wfd-id="22">
+                                            <label class="sr-only separator" for="idToken1" wfd-id="24">
+                                                <span>Nombre de usuario</span>
+                                            </label>
+                                            <input type="text" id="idToken1" name="callback_0" value=""
+                                                data-validator="required" required="" data-validator-event="keyup"
+                                                class="form-control input-lg" placeholder="Nombre de usuario"
+                                                autofocus="" wfd-id="32">
+
+                                            <label wfd-id="23"></label>
+                                            <kpm-button
+                                                class="kpm_input-field-button kpm_gray-key-icon kpm_sign-in-button"
+                                                style="z-index: 3 !important;"><svg width="12" height="24"
+                                                    class="kpm_reset" viewBox="196 276 8 16" version="1.1"
+                                                    style="top: -35px !important; left: 303px !important; width: 12px !important; height: 24px !important;">
+
+                                                </svg></kpm-button>
+                                        </div>
+
+                                        <div class="form-group" wfd-id="19">
+                                            <label for="idToken2" class="aria-label sr-only separator" wfd-id="21">
+                                                <span>Contraseña</span>
+                                            </label>
+                                            <input type="password" id="idToken2" name="callback_1"
+                                                class="form-control input-lg" placeholder="Contraseña" value=""
+                                                data-validator="required" required="" data-validator-event="keyup"
+                                                wfd-id="31">
+
+                                            <label wfd-id="20"></label>
+                                            <kpm-button
+                                                class="kpm_input-field-button kpm_gray-key-icon kpm_sign-in-button"
+                                                style="z-index: 3 !important;"><svg width="12" height="24"
+                                                    class="kpm_reset" viewBox="196 276 8 16" version="1.1"
+                                                    style="top: -35px !important; left: 303px !important; width: 12px !important; height: 24px !important;">
+
+                                                </svg></kpm-button>
+                                        </div>
+                                        <div class="remember-forgot clearfix" wfd-id="16">
+                                            <div class="checkbox pull-left" wfd-id="17">
+                                                <label for="remember" wfd-id="18"><input type="checkbox"
+                                                        name="loginRemember" id="remember" wfd-id="30"> Recordar nombre
+                                                    de usuario</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" wfd-id="14">
+                                            <input id="loginButton_0" name="callback_2" role="button" index="0"
+                                                value="Ingresar" class="btn btn-lg btn-block btn-uppercase btn-primary"
+                                                wfd-id="29">
+
+                                            <label wfd-id="15"></label>
+                                        </div>
+
+                                        <nav class="text-center clearfix remember-forgot" role="navigation">
+                                            <ul wfd-id="13">
+
+                                            </ul>
+                                        </nav>
+
+
+
+
+                                        <div wfd-id="12">
+                                            <p align="center">
+                                                ¿Tienes problemas para acceder?<br>
+                                                Por favor envía un correo electrónico a: <a
+                                                    href="mailto:esi@iteso.mx">esi@iteso.mx</a>&nbsp;<br>
+                                            </p>
+                                            <p align="center"><a href="#" data-toggle="modal"
+                                                    data-target="#recuperacionId" class="custom-link">¿Deseas recuperar
+                                                    tu
+                                                    contraseña?</a></p>
+
+                                            <p align="center"><a href="https://datospersonales.iteso.mx/"
+                                                    target="_blank" class="custom-link">Aviso de
+                                                    privacidad</a>&nbsp;&nbsp;&nbsp;</p>
+                                            <p align="center"style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
+                                                No tienes cuenta!
+                                                <a href="#" data-dismiss="modal" data-toggle="modal"
+                                                    data-target="#registro">
+                                                    Registrate aquí
+                                                </a>
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </form>
                 </div>
 
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        <div class="form-group">
-                            <label for="">Correo</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
-                                </div>
-                                <input type="text" class="col-10 form-control" name="" id="correo"
-                                    aria-describedby="helpId" placeholder="correo registrado">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Contraseña</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-key"></i></span>
-                                </div>
-                                <input type="password" class="col-10 form-control" name="" id="password"
-                                    aria-describedby="helpId" placeholder="contraseña registrada">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="controls">
-                                <button type="button" class="btn btn-success" data-dismiss="modal"
-                                    id='btnLogin'>Login</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12 control">
-                                <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
-                                    No tienes cuenta!
-                                    <a href="#" style= 'color: blue' data-dismiss="modal" data-toggle="modal" data-target="#registro">
-                                        Registrate aquí
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
+
 
     <!-- Modal -->
     <div class="modal fade" id="registro" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
@@ -131,17 +182,17 @@
                     <form action="" id='register' name='register'>
                         <div class="row">
                             <div class="col-6">
-                                <input type="text" name="" id="" class="form-control" placeholder="Nombre o nombres"
+                                <input type="text" name="" class="form-control" placeholder="Nombre o nombres"
                                     aria-describedby="helpId" required>
                             </div>
                             <div class="col-6">
-                                <input type="text" name="" id="" class="form-control" placeholder="Apellidos"
+                                <input type="text" name="" class="form-control" placeholder="Apellidos"
                                     aria-describedby="helpId" required>
                             </div>
 
                         </div>
 
-                        <input type="email" name="" id="" class="form-control mt-3" placeholder="Tu correo"
+                        <input type="email" name="" class="form-control mt-3" placeholder="Tu correo"
                             aria-describedby="helpId" required>
 
                         <input type="password" name="" id="pass1" class="form-control mt-3" placeholder="Contraseña"
@@ -156,21 +207,20 @@
 
                             <div class="form-check">
                                 <label class="form-check-label ml-3">
-                                    <input type="radio" class="form-check-input sexoF" name="sexo" id="" value="M"
-                                        checked>
+                                    <input type="radio" class="form-check-input sexoF" name="sexo" value="M" checked>
                                     Mujer
                                 </label>
                             </div>
 
                             <div class="form-check">
                                 <label class="form-check-label ml-3">
-                                    <input type="radio" class="form-check-input sexoM" name="sexo" id="" value="H">
+                                    <input type="radio" class="form-check-input sexoM" name="sexo" value="H">
                                     Hombre
                                 </label>
                             </div>
                         </div>
 
-                        <input type="url" name="" id="" class="form-control mt-3" placeholder="Url de imagen de perfil"
+                        <input type="url" name="" class="form-control mt-3" placeholder="Url de imagen de perfil"
                             aria-describedby="helpId">
                         <button type="submit" class="btn btn-success mt-3" id='btnSubmit'
                             data-dismiss="modal">Registrarse</button>
@@ -227,6 +277,22 @@
         </div>
     </div>
 
+    <div id="popup" wfd-id="2">
+        <div id="popup-content" class="radious" wfd-id="3"></div>
+    </div>
+    <footer id="footer" class="footer text-muted">
+        <!-- Copyright 2015 ForgeRock AS.
+	License terms: https://forgerock.org/cddlv1-0/ -->
+        <div class="container" wfd-id="1">
+            <p>
+                <a href="mailto:"></a>
+                <br>
+                Copyright © 2010-2020.
+            </p>
+        </div>
+    </footer>
+
+    <div id="kpm_content_wrapper" class="notranslate kpm_LTR" dir="ltr" lang="es-419" wfd-id="0"></div>
 
     <script src="./inicio.js"></script>
 

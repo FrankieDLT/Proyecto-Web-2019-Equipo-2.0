@@ -30,7 +30,7 @@ function readCookie(name) {
 }
 
 let btnSubmit = document.getElementById('btnSubmit');
-    let btnLogin = document.getElementById('btnLogin');
+    let btnLogin = document.getElementById('loginButton_0');
     let registro = document.getElementById('registro');
     let form = registro.querySelector("form");
     let register = false;
@@ -118,13 +118,15 @@ let btnSubmit = document.getElementById('btnSubmit');
 
     //---------------------------------------------------------
     btnLogin.onclick = function (event) {
-        loginUser.correo = document.getElementById('correo').value;
-        loginUser.password = document.getElementById('password').value;
+        loginUser.correo = document.getElementById('idToken1').value;
+        console.log(loginUser.correo);
+        loginUser.password = document.getElementById('idToken2').value;
+        console.log(loginUser.password);
 
         if(loginUser.correo == 'admin' && loginUser.password == 'admin'){
             window.location.href = '../Administrador/homeAdmin.html'
         }else{
-            window.location.href = 'home.html'
+            window.location.href = '../Usuario/home.html'
         }
 
         /*loginAndRegisterHTTP(loginUser, 'https://users-dasw.herokuapp.com/api/login', function (cb1) {
