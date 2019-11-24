@@ -122,9 +122,9 @@ let btnSubmit = document.getElementById('btnSubmit');
         loginUser.password = document.getElementById('password').value;
 
         if(loginUser.correo == 'admin' && loginUser.password == 'admin'){
-            window.location.href = '../Administrador/productos.html'
+            window.location.href = '../Administrador/homeAdmin.html'
         }else{
-            window.location.href = 'Home.html'
+            window.location.href = 'home.html'
         }
 
         /*loginAndRegisterHTTP(loginUser, 'https://users-dasw.herokuapp.com/api/login', function (cb1) {

@@ -12,11 +12,46 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
         integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+
+    <style>
+        body {
+            background-color: rgb(214, 214, 214);
+            border: 1em;
+            width: 100%;
+            /*Ifra
+                    me para los tres cuadros*/
+            height: 500px;
+        }
+
+        img[id=Logo_iteso] {
+            width: 3em;
+            background-color: azure;
+        }
+
+        a {
+            color: white;
+            text-align: center;
+            vertical-align: middle;
+            font-size: large;
+            text-indent: 1.5em
+        }
+
+        form[id=navSearch] {
+            margin-left: 1200px;
+        }
+
+        nav.navbar {
+            background-color: #004270;
+        }
+
+        /************************************************************************************/
+    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <nav class="navbar navbar-expand navbar-dark">
         <div class="nav navbar-nav">
+            <a href=""><img src="../../Imagenes/Logo_ITESO_normal.jpg" id="Logo_iteso"></a>
             <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#registro">Registrarse</a>
             <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#modelId">Login</a>
             <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#recuperacionId">Recuperación de contraseña</a>
@@ -43,8 +78,7 @@
                             <label for="">Correo</label>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1"><i
-                                            class="fas fa-user    "></i></span>
+                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
                                 </div>
                                 <input type="text" class="col-10 form-control" name="" id="correo"
                                     aria-describedby="helpId" placeholder="correo registrado">
@@ -54,10 +88,9 @@
                             <label for="password">Contraseña</label>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1"><i
-                                            class="fas fa-key    "></i></span>
+                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-key"></i></span>
                                 </div>
-                                <input type="contraseña" class="col-10 form-control" name="" id="password"
+                                <input type="password" class="col-10 form-control" name="" id="password"
                                     aria-describedby="helpId" placeholder="contraseña registrada">
                             </div>
                         </div>
@@ -72,7 +105,7 @@
                             <div class="col-md-12 control">
                                 <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
                                     No tienes cuenta!
-                                    <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#registro">
+                                    <a href="#" style= 'color: blue' data-dismiss="modal" data-toggle="modal" data-target="#registro">
                                         Registrate aquí
                                     </a>
                                 </div>
@@ -148,7 +181,8 @@
         </div>
     </div>
 
-    <div class="modal fade" id="recuperacionId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal fade" id="recuperacionId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

@@ -33,19 +33,64 @@
             margin-right: 15%;
             background-color: whitesmoke;
         }
-        td[id=deudor]{
+
+        td[id=deudor] {
             background-color: #42B4E3;
             color: whitesmoke;
         }
-        tr[id=tr1]{
+
+        tr[id=tr1] {
             background-color: #004270;
             color: whitesmoke;
+        }
+
+        body {
+            background-color: rgb(214, 214, 214);
+            border: 1em;
+            width: 100%;
+            /*Ifra
+                    me para los tres cuadros*/
+            height: 500px;
+        }
+
+        img[id=Logo_iteso] {
+            width: 3em;
+            background-color: azure;
+        }
+
+        a {
+            color: white;
+            text-align: center;
+            vertical-align: middle;
+            font-size: large;
+            text-indent: 1.5em
+        }
+
+        a[id=exit] {
+            margin-left: 1100px;
+        }
+
+        nav.navbar {
+            background-color: #004270;
         }
     </style>
 </head>
 
 
 <body>
+    <nav class="navbar navbar-expand navbar-dark">
+        <div class="nav navbar-nav">
+            <a href=""><img src="../../Imagenes/Logo_ITESO_normal.jpg" id="Logo_iteso"></a>
+            <a class="nav-item nav-link" href="homeAdmin.html" data-target="home">Inventario</a>
+            <a class="nav-item nav-link" href="Deudores.html" data-target="FFra">Deudores</a>
+            <a class="nav-item nav-link" href="homeAdmin.html" data-target="home">Historial de Problemas</a>
+            <a class="nav-item nav-link" href="homeAdmin.html" data-target="home">Disponibilidad</a>
+            <a class="nav-item nav-link" id='exit' href='../Registro y login (Publico)/Inicio.html'
+                data-target="home">Cerrar Sesión</a>
+
+        </div>
+    </nav>
+
     <h1>No One will ever see me :3</h1>
     <div class="container" width="100%" id="CD">
         <table border="2" width="100%">

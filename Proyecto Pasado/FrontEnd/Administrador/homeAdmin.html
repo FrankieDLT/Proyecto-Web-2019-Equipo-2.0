@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
         integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-
     <style>
         body {
             background-color: rgb(142, 185, 199);
@@ -57,13 +56,29 @@
 
         /************************************************************************************/
 
+        img[id=Logo_iteso] {
+            width: 3em;
+            background-color: azure;
+        }
+
         a {
-            color: whitesmoke;
-            text-decoration: none;
+            color: white;
+            text-align: center;
+            vertical-align: middle;
+            font-size: large;
+            text-indent: 1.5em
+        }
+
+        a[id=exit] {
+            margin-left: 1200px;
+        }
+
+        nav.navbar {
+            background-color: #004270;
         }
 
 
-        img {
+        td img {
             width: 4em;
         }
 
@@ -109,20 +124,26 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+        integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 </head>
 
 <body>
-    <table border="0" width="100%" id="Main_Table">
-        <tr>
-            <td width="5%"><a href=""><img src="../../Imagenes/Logo_ITESO_normal.jpg" id="Logo_iteso"></a></td>
-            <td width="10%"><a href="home.html" target="home">Inicio</a></td>
-            <td width="10%"><a href="productos.html" target="home">Inventario</a></td>
-            <td width="10%"><a href="Deudores.html" target="FFra">Deudores</a></td>
-            <td width="10%">Historial de Problemas</td>
-            <td width="10%">Disponibilidad</td>
+    <nav class="navbar navbar-expand navbar-dark">
+        <div class="nav navbar-nav">
+            <a href=""><img src="../../Imagenes/Logo_ITESO_normal.jpg" id="Logo_iteso"></a>
+            <a class="nav-item nav-link" href="homeAdmin.html" data-target="home">Inventario</a>
+            <a class="nav-item nav-link" href="Deudores.html" data-target="FFra">Deudores</a>
+            <a class="nav-item nav-link" href="homeAdmin.html" data-target="home">Historial de Problemas</a>
+            <a class="nav-item nav-link" href="homeAdmin.html" data-target="home">Disponibilidad</a>
+            <a class="nav-item nav-link" id='exit' href='../Registro y login (Publico)/Inicio.html' data-target="home">Cerrar Sesión</a>
 
-        </tr>
-    </table>
+        </div>
+    </nav>
+
     <br /><br /><br />
 
     <div class="container" aria-hidden="true" width="100%">

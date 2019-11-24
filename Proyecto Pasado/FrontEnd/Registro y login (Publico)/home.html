@@ -62,9 +62,30 @@
 
         /************************************************************************************/
 
+        img[id=Logo_iteso] {
+            width: 3em;
+            background-color: azure;
+        }
+
         a {
-            color: whitesmoke;
-            text-decoration: none;
+            color: white;
+            text-align: center;
+            vertical-align: middle;
+            font-size: large;
+            text-indent: 1.5em
+        }
+
+        form[id=navSearch] {
+            margin-left: 200px;
+        }
+
+        a[id=exit] {
+            margin-left: 600px;
+        }
+
+
+        nav.navbar {
+            background-color: #004270;
         }
 
         .card-img-top {
@@ -90,18 +111,21 @@
 </head>
 
 <body>
-    <table border="0" width="100%" id="Main_Table">
-        <tr>
-            <td width="5%"><a href=""><img src="../../Imagenes/Logo_ITESO_normal.jpg" id="Logo_iteso"></a></td>
-            <td width="10%"><a href="home.html" target="home">Inicio</a></td>
-            <td width="10%"><a href="../Administrador/productos.html" target="home">Inventario</a></td>
-            <td width="10%">Transacciones</td>
-            <td width="10%"><a href="Deudores.html" target="FFra">Deudores</a></td>
-            <td width="10%">Historial de Problemas</td>
-            <td width="10%">Disponibilidad</td>
-            <td width="10%">Usuarios Bloqueados</td>
-        </tr>
-    </table>
+        <nav class="navbar navbar-expand navbar-dark">
+                <div class="nav navbar-nav">
+                    <a href=""><img src="../../Imagenes/Logo_ITESO_normal.jpg" id="Logo_iteso"></a>
+                    <a class="nav-item nav-link" href="../Administrador/homeAdmin.html" data-target="home">Inventario</a>
+                    <a class="nav-item nav-link" href="../Administrador/Deudores.html" data-target="FFra">Deudores</a>
+                    <a class="nav-item nav-link" href="../Administrador/homeAdmin.html" data-target="home">Historial de Problemas</a>
+                    <a class="nav-item nav-link" href="../Administrador/homeAdmin.html" data-target="home">Disponibilidad</a>
+                    <form class="form-inline" id = 'navSearch' action="/action_page.php">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                        <button class="btn btn-success" type="submit">Search</button>
+                    </form>
+                    <a class="nav-item nav-link" id='exit' href='../Registro y login (Publico)/Inicio.html' data-target="home">Cerrar Sesión</a>
+        
+                </div>
+        </nav>
 
    
     <div class="container elements" aria-hidden="true" width="100%">
