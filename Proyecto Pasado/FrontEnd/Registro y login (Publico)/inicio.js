@@ -122,7 +122,7 @@ let btnSubmit = document.getElementById('btnSubmit');
         loginUser.password = document.getElementById('password').value;
 
         if(loginUser.correo == 'admin' && loginUser.password == 'admin'){
-            window.location.href = './Administrador/productos.html'
+            window.location.href = '../Administrador/productos.html'
         }else{
             window.location.href = 'Home.html'
         }
