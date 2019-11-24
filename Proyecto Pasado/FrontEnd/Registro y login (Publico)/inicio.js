@@ -2,13 +2,13 @@ localStorage.userToken = '';
 localStorage.userDetalle = '';
 //Json que se manda con el registro
 let registerUser = {
-    nombre: "",
-    apellido: "",
-    correo: "",
+    nombre: "Luis D",
+    apellido: "Gallegos Godoy",
+    correo: "is709571@iteso.mx",
     url: "",
-    sexo: "",
-    fecha: "",
-    password: ""
+    sexo: "H",
+    fecha: "12-05-1998",
+    password: "1234"
 }
 
 //Json que se manda con el Login
@@ -104,6 +104,8 @@ let btnSubmit = document.getElementById('btnSubmit');
         registerUser.url = form[8].value;
         console.log(registerUser);
 
+        localStorage.userDetalle = JSON.stringify(registerUser);
+
         /*loginAndRegisterHTTP(registerUser, 'https://users-dasw.herokuapp.com/api/users', function (cb1) {
             alert('Usuario creado');
         }, function (cb2) {
@@ -122,6 +124,8 @@ let btnSubmit = document.getElementById('btnSubmit');
         console.log(loginUser.correo);
         loginUser.password = document.getElementById('idToken2').value;
         console.log(loginUser.password);
+
+        localStorage.userDetalle = JSON.stringify(registerUser);
 
         if(loginUser.correo == 'admin' && loginUser.password == 'admin'){
             window.location.href = '../Administrador/homeAdmin.html'
