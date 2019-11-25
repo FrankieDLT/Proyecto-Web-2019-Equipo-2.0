@@ -2,177 +2,242 @@
 <html lang="en">
 
 <head>
-  <title>Title</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Prestamos ITESO</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
-    integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    
 
     <link rel="icon" type="image/x-icon" href="https://sso.iteso.mx/sso/XUI/favicon.ico?v=13.0.1-SNAPSHOT">
     <link rel="shortcut icon" type="image/x-icon" href="https://sso.iteso.mx/sso/XUI/favicon.ico?v=13.0.1-SNAPSHOT">
 
-  <style>
-    .media {
-      border: 1px solid #d5dbdd;
-      padding: 5px 20px;
-      border-radius: 5px;
-      box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.04);
-      background: #fff;
-    }
-  </style>
+    <style>
+        body {
+            /* background-image: url('https://iteso.mx/image/journal/article?img_id=7699185&t=1494435594945'); */
+            background-image: url('https://iteso.mx/documents/11109/12605470/Campus++30.jpg/cafbc1b6-713b-460f-b22f-e3290ca0ed20?t=1533336672075');
+            background-repeat: no-repeat;
+            border: 1em;
+            width: 100%;
+            /*Ifra
+            me para los tres cuadros*/
+            height: 500px;
+        }
+
+        .media {
+            border: 1px solid #d5dbdd;
+            padding: 5px 20px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.04);
+            background: #fff;
+        }
+
+        img[id=Logo_iteso] {
+            width: 3em;
+            background-color: azure;
+        }
+
+        nav div a {
+            color: white;
+            text-align: center;
+            vertical-align: middle;
+            font-size: large;
+            text-indent: 1.5em
+        }
+
+        form[id=navSearch] {
+            margin-left: 50px;
+        }
+
+        a[id=exit] {
+            padding-left: 100px;
+        }
+
+        nav.navbar {
+            background-color: #004270;
+        }
+
+        a {
+            font-size: larger;
+            margin: 5px;
+
+        }
+
+        img[id=Logo_iteso] {
+            width: 3em;
+            background-color: azure;
+        }
+
+        div[id='nav'] {
+            align-content: center;
+        }
+
+        img {
+            width: 4em;
+        }
+
+        .card-img-top {
+            width: 200px;
+            margin-left: 20px;
+        }
+
+        /* Three image containers (use 25% for four, and 50% for two, etc) */
+        .row {
+            display: flex;
+        }
+
+
+        .column {
+            flex: 33.33%;
+            padding: 5px;
+        }
+
+        .elements {
+            padding-top: 90px;
+        }
+
+        .pagination {
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+        }
+    </style>
 
 </head>
 
 <body>
 
-  <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <div class="nav navbar-nav">
-      <a class="nav-item nav-link active" href="index.html">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="index.html">Registrarse</a>
-      <a class="nav-item nav-link" href="index.html">Login</a>
-      <a class="nav-item nav-link" href="#">Administración de usuarios</a>
-    </div>
-  </nav>
+    <nav class="navbar navbar-expand navbar-dark">
+        <div class="nav navbar-nav">
+            <img src="../../Imagenes/Logo_ITESO_normal.jpg" id="Logo_iteso">
+            <a class="nav-item nav-link" href="../Administrador/homeAdmin.html" data-target="home">Página Principal</a>
+            <a class="nav-item nav-link" id='exit' href='../Registro y login (Publico)/Inicio.html'
+                data-target="home">Cerrar Sesión</a>
 
-
-
-  <div class="container" id="chabacano2">
-
-    <div class="row mt-3">
-      <div class="col-6">
-        <div class="form-group">
-          <input type="text" name="" id="busqueda" class="form-control" placeholder="nombre de usuario a buscar"
-            aria-describedby="helpId">
-          <small id="helpId" class="text-muted">Buscar usuario</small>
         </div>
-      </div>
-      <div class="col-4">
-        <div class="btn btn-primary" id="btnBusqueda">Buscar</div>
-      </div>
-    </div>
-
-    <div class="row  mt-4" id="lista">
-
-    </div>
-
-    <nav class="row mt-3 " aria-label="Page navigation">
-      <ul class="pagination" id = 'paginacion'>
-        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-          <!-- <li class="page-item"><a class="page-link" href="#" value='1'>1</a></li>
-          <li class="page-item"><a class="page-link" href="#" value='2'>2</a></li>
-          <li class="page-item"><a class="page-link" href="#" value='3'>3</a></li>    -->
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-      </ul>
     </nav>
 
-  </div>
 
-  <div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Editar usuario</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+
+    <div class="container" id="chabacano2">
+
+        <div class="row  mt-4" id="lista">
+
         </div>
-        <div class="modal-body">
-          <form action="" id='editForm' name='editForm'>
-            <div class="row">
-              <div class="col-6">
-                <input type="text" name="" id="" class="form-control" placeholder="Nombre o nombres"
-                  aria-describedby="helpId" required>
-              </div>
-              <div class="col-6">
-                <input type="text" name="" id="" class="form-control" placeholder="Apellidos" aria-describedby="helpId"
-                  required>
-              </div>
 
-            </div>
+        
 
-            <input type="email" name="" id="" class="form-control mt-3" placeholder="Tu correo"
-              aria-describedby="helpId" required>
-
-            <input type="password" name="" id="pass1" class="form-control mt-3" placeholder="Contraseña"
-              aria-describedby="helpId" required>
-
-            <input type="password" name="" id="pass2" class="form-control mt-3" placeholder="Confirmar contraseña"
-              aria-describedby="helpId" required>
-
-            <input type="date" class="form-control mt-3" value="2000-01-01" name="" id="">
-
-            <div class="radioB mt-3 border">
-
-              <div class="form-check">
-                <label class="form-check-label ml-3">
-                  <input type="radio" class="form-check-input sexoF" name="sexo" id="" value="M">
-                  Mujer
-                </label>
-              </div>
-
-              <div class="form-check">
-                <label class="form-check-label ml-3">
-                  <input type="radio" class="form-check-input sexoM" name="sexo" id="" value="H">
-                  Hombre
-                </label>
-              </div>
-            </div>
-            <input type="url" name="" id="" class="form-control mt-3" placeholder="Url de imagen de perfil"
-              aria-describedby="helpId">
-            <button type="submit" class="btn btn-success mt-3" id='btnSave' data-dismiss="modal">Guardar</button>
-            <button type="button" class="btn btn-secondary mt-3" data-dismiss="modal">Cerrar</button>
-          </form>
-        </div>
-      </div>
     </div>
-  </div>
 
-  <div class="modal fade" id="erase" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">¿Quieres eliminar el usuario?</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+    <div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar usuario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="" id='editForm' name='editForm'>
+                        <div class="row">
+                            <div class="col-6">
+                                <input type="text" name="" id="" class="form-control" placeholder="Nombre o nombres"
+                                    aria-describedby="helpId" required>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" name="" id="" class="form-control" placeholder="Apellidos"
+                                    aria-describedby="helpId" required>
+                            </div>
+
+                        </div>
+
+                        <input type="email" name="" id="" class="form-control mt-3" placeholder="Tu correo"
+                            aria-describedby="helpId" required>
+
+                        <input type="password" name="" id="pass1" class="form-control mt-3" placeholder="Contraseña"
+                            aria-describedby="helpId" required>
+
+                        <input type="password" name="" id="pass2" class="form-control mt-3"
+                            placeholder="Confirmar contraseña" aria-describedby="helpId" required>
+
+                        <input type="date" class="form-control mt-3" value="2000-01-01" name="" id="">
+
+                        <div class="radioB mt-3 border">
+
+                            <div class="form-check">
+                                <label class="form-check-label ml-3">
+                                    <input type="radio" class="form-check-input sexoF" name="sexo" id="" value="M">
+                                    Mujer
+                                </label>
+                            </div>
+
+                            <div class="form-check">
+                                <label class="form-check-label ml-3">
+                                    <input type="radio" class="form-check-input sexoM" name="sexo" id="" value="H">
+                                    Hombre
+                                </label>
+                            </div>
+                        </div>
+                        <input type="url" name="" id="" class="form-control mt-3" placeholder="Url de imagen de perfil"
+                            aria-describedby="helpId">
+                        <button type="submit" class="btn btn-success mt-3" id='btnSave'
+                            data-dismiss="modal">Guardar</button>
+                        <button type="button" class="btn btn-secondary mt-3" data-dismiss="modal">Cerrar</button>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-          <form action="" id='eraseForm' name='eraseForm'>
-            <div class="row">
-              <div class="col-11">
-                <input type="text" name="" id="" class="form-control"
-                  placeholder="Escriba la palabra SI en letras mayusculas" aria-describedby="helpId" required>
-              </div>
-              <div class="row"></div>
-              <div class="mt-3 col-2"></div>
-              <button type="submit" class="btn btn-success mt-3 col-3" id='btnErase'
-                data-dismiss="modal">Eliminar</button>
-              <div class="mt-3 col-1"></div>
-              <button type="button" class="btn btn-secondary mt-3 col-3" data-dismiss="modal">Cancelar</button>
-          </form>
-        </div>
-      </div>
     </div>
-  </div>
 
-  <!-- Optional JavaScript -->
-  <script src="./users.js"></script>
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-  </script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-  </script>
+    <div class="modal fade" id="erase" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">¿Quieres eliminar el usuario?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="" id='eraseForm' name='eraseForm'>
+                        <div class="row">
+                            <div class="col-11">
+                                <input type="text" name="" id="" class="form-control"
+                                    placeholder="Escriba la palabra SI en letras mayusculas" aria-describedby="helpId"
+                                    required>
+                            </div>
+                            <div class="row"></div>
+                            <div class="mt-3 col-2"></div>
+                            <button type="submit" class="btn btn-success mt-3 col-3" id='btnErase'
+                                data-dismiss="modal">Eliminar</button>
+                            <div class="mt-3 col-1"></div>
+                            <button type="button" class="btn btn-secondary mt-3 col-3"
+                                data-dismiss="modal">Cancelar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <script src="./userInfoYDetalle.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+        integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 </body>
 
 </html>
