@@ -2,62 +2,86 @@
 //No id
 //let url = "https://api.myjson.com/bins/dqo4m"
 
-//With id 
-let url = "https://api.myjson.com/bins/1cwzea"
+//With id
+//let url = "https://api.myjson.com/bins/1cwzea"
+
+//12 obj
+let url = "https://api.myjson.com/bins/1d05le";
 
 var cart = {
     items: []
 };
 
+
 //limpiar localStorage
 //localStorage.setItem('cart', JSON.stringify(cart));
 
-if(localStorage.cart) {
+if (localStorage.cart) {
     cart = JSON.parse(localStorage.cart);
 }
 
 let cbOk_1 = (data) => {
-    console.log("Callback_OK")
+    console.log("Callback_OK");
     productos = data;
-    console.log(productos);
+
+    console.log("productos", productos);
     productListToHTML(productos);
     console.log(productos[0].cantidad)
+};
+
+function httpRequest(address, reqType, asyncProc) {
+    var req = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+    if (asyncProc) {
+        req.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                asyncProc(this);
+            }
+        };
+    } else {
+        req.timeout = 4000;  // Reduce default 2mn-like timeout to 4 s if synchronous
+    }
+    req.open(reqType, address, !(!asyncProc));
+    req.send();
+    return req;
 }
 
-function loadJSON(url, cbOk = callback_ok,cbErr) {
+
+function loadJSON(url, cbOk = callback_ok, cbErr) {
+
     // 1. Crear XMLHttpRequest object
     let xhr = new XMLHttpRequest();
-    
+
     // 2. Configurar: PUT actualizar archivo
     xhr.open('GET', url);
-    
+
     // 4. Enviar solicitud
     xhr.send();
-    
+
     // 5. Una vez recibida la respuesta del servidor
     xhr.onload = function () {
-    
-    if (xhr.status != 200) { // analizar el estatus de la respuesta HTTP
-    // Ocurrió un error
-    alert(xhr.status + ': ' + xhr.statusText); // e.g. 404: Not Found
-    cbErr(xhr.status + ': ' + xhr.statusText);
 
-    // ejecutar algo si error
-    } else {
-    let datos = JSON.parse(xhr.response); //esta es la línea que hay que probar
-    
-    // Ejecutar algo si todo está correcto
-    console.log("Exito"); // Significa que fue exitoso
-    cbOk(datos);
-    cbOk_1(datos);
-    }
+        if (xhr.status != 200) { // analizar el estatus de la respuesta HTTP
+            // Ocurrió un error
+            alert(xhr.status + ': ' + xhr.statusText); // e.g. 404: Not Found
+            cbErr(xhr.status + ': ' + xhr.statusText);
+
+            // ejecutar algo si error
+        } else {
+            let datos = JSON.parse(xhr.response); //esta es la línea que hay que probar
+
+            // Ejecutar algo si todo está correcto
+            console.log("Exito"); // Significa que fue exitoso
+            cbOk(datos);
+            cbOk_1(datos);
+        }
     };
 }
 
 let productos = [];
 
-function initData(){
-    loadJSON(url, 
+function initData() {
+
+    loadJSON(url,
         cbOk => {
             productos = cbOk;
             console.log(productos);
@@ -66,10 +90,11 @@ function initData(){
 
         });
 }
+
 initData();
 
-function productToHTML(productos){
-    let sResultado =`<div class="column">
+function productToHTML(productos) {
+    let sResultado = `<div class="column">
     <div class="card" style="width: 15rem;">
         <img src="${productos.imagen}" class="card-img-top" alt="...">
         <div class="card-body">
@@ -81,24 +106,29 @@ function productToHTML(productos){
             <a href="#" class="btn btn-primary" onclick="agregarCarrito(${productos.id})">Agregar al carrito</a>
         </div>
     </div>
-</div>`; 
+</div>`;
     return sResultado;
 }
 
 
-function productListToHTML (productos){
-    let productsList = 
-    productos.map( producto => {
-         return productToHTML(producto)
-         } )
-     console.table(productsList);
-     let html = productsList.join("");
-     listaProductos.innerHTML += "" + html;
- }
+function productListToHTML(productos) {
+    let productsList =
+        productos.map(producto => {
+            return productToHTML(producto)
+        })
+    console.table(productsList);
+    let html = productsList.join("");
+
+    listaProductos.innerHTML += "" + html;
+}
+
+//listaProductos = listaProductos.slice(0,5)
 
 
 function agregarCarrito(id) {
-    let index = cart.items.filter(function (item) { return item.id === id }).length;
+    let index = cart.items.filter(function (item) {
+        return item.id === id
+    }).length;
     if (index === 0) {
         let producto = {
             imagen: productos[id].imagen,
@@ -108,16 +138,16 @@ function agregarCarrito(id) {
             cantidad: 1,
             stock: productos[id].cantidad
         }
-        cart.items.push(producto); 
+        cart.items.push(producto);
         localStorage.setItem('cart', JSON.stringify(cart));
         alert("Tu producto se ha añadido al carrito!");
-   
-    }else {
+
+    } else {
         alert("Este producto ya esta en tu carrito!");
 
     }
 
-    
+
 }
 
 /*
