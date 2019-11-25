@@ -3,7 +3,7 @@
 //let url = "https://api.myjson.com/bins/dqo4m"
 
 //With id 
-//let url = "https://api.myjson.com/bins/1cwzea"
+let url = "https://api.myjson.com/bins/1cwzea"
 
 //12 obj 
 //let url = "https://api.myjson.com/bins/1d05le"
