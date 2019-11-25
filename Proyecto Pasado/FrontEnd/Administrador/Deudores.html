@@ -48,11 +48,7 @@
                   color: whitesmoke;
                 }
             
-                div[id=padd] {
-                  width: 100%;
-                  font-size: 3.5em;
-                  opacity: 0.0001;
-                }
+                
             
                 body {
                   /* background-image: url('https://iteso.mx/image/journal/article?img_id=7699185&t=1494435594945'); */
@@ -61,22 +57,14 @@
                   background-size: 100%;
                 }
             
-                button[id=regis] {
-                  background-color: #004270;
-                  margin-left: 15%;
-                  margin-top: 2.5%;
-                }
+                
             
                 button[id=dele] {
                   background-color: #004270;
                   margin-top: 2.5%;
+                  margin-left: 21.55%;
                 }
             
-                button[id=edici] {
-                  background-color: #004270;
-                  margin-right: 15%;
-                  margin-top: 2.5%;
-                }
             
                 form[id=navSearch] {
                   margin-left: 200px;
@@ -89,6 +77,8 @@
                 nav.navbar {
                   background-color: #004270;
                 }
+
+
             
               </style>
 </head>
@@ -106,8 +96,45 @@
 
         </div>
     </nav>
-    <hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+
+
+ <!-- Button trigger modal Buscar-->
+ <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#delete" id="dele">
+    Liberar Equipo
+  </button>
+
+<!-- Modal Buscar-->
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Quién Liberará Su Equipo?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="">
+
+            <input type="text" name="" id="namel" class="form-control" placeholder="Email" aria-describedby="helpId"
+              required>
+
+            <button type="button" class="btn btn-secondary mt-3" data-toggle="modal" data-target="#yesno" id="elimbutt">
+              Liberar Equipo
+            </button>
+
+            <button type="button" class="btn btn-secondary mt-3" data-dismiss="modal">Close</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Fin del Modal Buscar-->
+
+
+
     <div class="container" width="100%" id="CD">
+
         <table border="2" width="100%">
             <tr>
                 <td colspan="5" align="center" id="deudor">Deudor</td>
@@ -119,41 +146,11 @@
                 <td width="20%">Email</td>
                 <td width="20%">Equipo Prestado</td>
             </tr>
-            <tr>
-                <td width="10%" align="center"><img src="lynda-carter-1.jpg"></td>
-                <td width="20%">Linda</td>
-                <td width="20%">Carter</td>
-                <td width="25%">WW_Diana@gmail.com</td>
-                <td width="25%">Cable Auxiliar</td>
-            </tr>
-            <tr>
-                <td width="10%" align="center"><img src="Saul.PNG"></td>
-                <td width="20%">Saul</td>
-                <td width="20%">Hudson </td>
-                <td width="25%">GnRGuitar@hotmail.com</td>
-                <td width="25%">Bocinas</td>
-            </tr>
-            <tr>
-                <td width="20%" align="center"><img src="Hugh.PNG"></td>
-                <td width="20%">James</td>
-                <td width="20%">Howlett</td>
-                <td width="20%">XMCanadalover@gmail.com</td>
-                <td width="20%">Proyector Portable</td>
-            </tr>
-            <tr>
-                <td width="20%" align="center"><img src="Lin.PNG"></td>
-                <td width="20%">Usnavi</td>
-                <td width="20%">Hamilton</td>
-                <td width="20%">HawaianDude16@gmail.com</td>
-                <td width="20%">Grabadora</td>
-            </tr>
-            <tr>
-                <td width="20%" align="center"><img src="Nolhan.PNG"></td>
-                <td width="20%">Nathan</td>
-                <td width="20%">North</td>
-                <td width="20%">N_North@yahoo.com</td>
-                <td width="20%">Adaptador HDMI</td>
-            </tr>
+
+        </table>
+
+        <table border ="2" width ="100%" id="tabdeb">
+
         </table>
 
 
@@ -183,8 +180,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
-    <script src="almacenamiento.js"></script>
-    <script src="users.js"></script>
+    <script src="deuds.js"></script>
 
 </body>
 
