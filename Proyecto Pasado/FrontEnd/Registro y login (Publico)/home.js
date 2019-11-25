@@ -85,20 +85,6 @@ function productToHTML(productos){
     return sResultado;
 }
 
-/*
-function productListToHTML (productos){
-    let cartList;
-    if (cart.items.length > 0) {
-    cartList = cart.items.map( producto => {
-         return productToHTML(producto)
-         } )
-    }
-     console.table(productsList);
-     let html = cartList.join("");
-     carrito-tabla.innerHTML += "" + html;
- }
-
-*/
 
 function productListToHTML (productos){
     let productsList = 
@@ -119,7 +105,8 @@ function agregarCarrito(id) {
             descripcion: productos[id].descripcion,
             categoria: productos[id].categoria,
             id: id,
-            cantidad: 1
+            cantidad: 1,
+            stock: productos[id].cantidad
         }
         cart.items.push(producto); 
         localStorage.setItem('cart', JSON.stringify(cart));
