@@ -2,71 +2,118 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Catálogo de Materiales</title>
-     <!-- Bootstrap CSS -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Catálogo de Materiales</title>
+  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
     integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
- 
-    <style>
-        img {
-            width: 4em;
+
+  <style>
+
+  form[id=navSearch] {
+      margin-left: 200px;
+    }
+
+    a[id=exit] {
+      padding-left: 100px;
+    }
+
+    nav.navbar {
+      background-color: #004270;
+    }
+
+    a {
+      font-size: larger;
+      margin: 5px;
+      
+    }
+
+    img[id=Logo_iteso] {
+            width: 3em;
+            background-color: azure;
         }
-        table {
-            width: 70%;
-            margin-left: 15%;
-            margin-right: 15%;
-            background-color: whitesmoke;
-        }
-        td[id=deudor] {
-            background-color: #42B4E3;
-            color: whitesmoke;
-        }
-        tr[id=tr1] {
-            background-color: #004270;
-            color: whitesmoke;
-        }
-        div[id=padd]{
-            width: 100%;
-            font-size: 3.5em;
-            opacity: 0.0001;
-        }
-        body{
-            /* background-image: url('https://iteso.mx/image/journal/article?img_id=7699185&t=1494435594945'); */
-            background-image: url('https://iteso.mx/documents/11109/12605470/Campus++30.jpg/cafbc1b6-713b-460f-b22f-e3290ca0ed20?t=1533336672075');
-            background-repeat: no-repeat;
-            background-size: 100%;
-        }
-        button[id=regis]{
-            background-color: #004270;
-            margin-left: 15%;
-            margin-top: 2.5%;
-        }
-        button[id=dele]{
-            background-color: #004270;
-            margin-top: 2.5%;
-        }
-        button[id=edici]{
-            background-color: #004270;
-            margin-right: 15%;
-            margin-top: 2.5%;
-        }
-        
-        
-    </style>
+
+    div[id = 'nav']{
+      align-content: center;
+    }
+
+    img {
+      width: 4em;
+    }
+
+    table {
+      width: 70%;
+      margin-left: 15%;
+      margin-right: 15%;
+      background-color: whitesmoke;
+    }
+
+    td[id=deudor] {
+      background-color: #42B4E3;
+      color: whitesmoke;
+    }
+
+    tr[id=tr1] {
+      background-color: #004270;
+      color: whitesmoke;
+    }
+
+    div[id=padd] {
+      width: 100%;
+      font-size: 3.5em;
+      opacity: 0.0001;
+    }
+
+    body {
+      /* background-image: url('https://iteso.mx/image/journal/article?img_id=7699185&t=1494435594945'); */
+      background-image: url('https://iteso.mx/documents/11109/12605470/Campus++30.jpg/cafbc1b6-713b-460f-b22f-e3290ca0ed20?t=1533336672075');
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+
+    button[id=regis] {
+      background-color: #004270;
+      margin-left: 15%;
+      margin-top: 2.5%;
+    }
+
+    button[id=dele] {
+      background-color: #004270;
+      margin-top: 2.5%;
+    }
+
+    button[id=edici] {
+      background-color: #004270;
+      margin-right: 15%;
+      margin-top: 2.5%;
+    }
+
+  </style>
 </head>
 
 <body>
-    <div id="padd" >Padding</div>
 
-    
+  <nav class="navbar navbar-expand navbar-dark">
+        <div class="nav navbar-nav" id = 'nav'>
+            <img src="../../Imagenes/Logo_ITESO_normal.jpg" id="Logo_iteso">
+            <a class="nav-item nav-link" href="homeAdmin.html" data-target="home">Inventario</a>
+            <a class="nav-item nav-link" href="Deudores.html" data-target="FFra">Deudores</a>
+            <a class="nav-item nav-link" href="homeAdmin.html" data-target="home">Disponibilidad</a>
+            <a class="nav-item nav-link" id='exit' href='../Registro y login (Publico)/Inicio.html' data-target="home">Cerrar Sesión</a>
+
+        </div>
+    </nav>
+
+  <div id="padd">Padding</div>
 
 
-    <!-- Button trigger modal Registrar-->
+
+
+  <!-- Button trigger modal Registrar-->
   <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#registro" id="regis">
     Registrar Equipo
   </button>
@@ -76,11 +123,11 @@
     Eliminar Equipo
   </button>
 
-   <!-- Button trigger modal Editar-->
-   <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#edicion" id="edici">
+  <!-- Button trigger modal Editar-->
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#edicion" id="edici">
     Editar Equipo
   </button>
-  
+
 
   <!-- Modal Registrar-->
   <div class="modal fade" id="registro" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
@@ -94,27 +141,31 @@
         </div>
         <div class="modal-body">
           <form action="">
-          
-              <input type="text" name="" id="nam" class="form-control" placeholder="Nombre" aria-describedby="helpId" required>
-             
-              <input type="text" name="" id="cond" class="form-control mt-3" placeholder="Condición: <Excelente> <Muy Bueno> <Bueno> <Dañado>" aria-describedby="helpId" required>
- 
-              <input type="number" name="" id="cantd" class="form-control mt-3" placeholder="Cantidad Disponible" aria-describedby="helpId" required >
 
-              <input type="url" name="" id="imm" class="form-control mt-3" placeholder="Url de imagen del equipo" aria-describedby="helpId" required>
+            <input type="text" name="" id="nam" class="form-control" placeholder="Nombre" aria-describedby="helpId"
+              required>
+
+            <input type="text" name="" id="cond" class="form-control mt-3"
+              placeholder="Condición: <Excelente> <Muy Bueno> <Bueno> <Dañado>" aria-describedby="helpId" required>
+
+            <input type="number" name="" id="cantd" class="form-control mt-3" placeholder="Cantidad Disponible"
+              aria-describedby="helpId" required>
+
+            <input type="url" name="" id="imm" class="form-control mt-3" placeholder="Url de imagen del equipo"
+              aria-describedby="helpId" required>
 
 
             <button type="submit" class="btn btn-success mt-3" id="Registrar">Registrar</button>
-             <button type="button" class="btn btn-secondary mt-3" data-dismiss="modal">Close</button>
-          
-            </form> 
+            <button type="button" class="btn btn-secondary mt-3" data-dismiss="modal">Close</button>
+
+          </form>
 
 
         </div>
-        
+
       </div>
     </div>
-  </div> 
+  </div>
   <!--Fin del Modal Registrar-->
 
   <!-- Modal Eliminar-->
@@ -129,19 +180,20 @@
         </div>
         <div class="modal-body">
           <form action="">
-          
-             <input type="text" name="" id="namel" class="form-control" placeholder="Nombre" aria-describedby="helpId" required>
 
-             <button type="button" class="btn btn-secondary mt-3" data-toggle="modal" data-target="#yesno" id="elimbutt">
+            <input type="text" name="" id="namel" class="form-control" placeholder="Nombre" aria-describedby="helpId"
+              required>
+
+            <button type="button" class="btn btn-secondary mt-3" data-toggle="modal" data-target="#yesno" id="elimbutt">
               Eliminar Equipo
             </button>
 
-             <button type="button" class="btn btn-secondary mt-3" data-dismiss="modal">Close</button>
-            </form> 
+            <button type="button" class="btn btn-secondary mt-3" data-dismiss="modal">Close</button>
+          </form>
         </div>
       </div>
     </div>
-  </div> 
+  </div>
   <!--Fin del Modal Eliminar-->
 
   <!-- Modal Confirmar-->
@@ -156,87 +208,93 @@
         </div>
         <div class="modal-body">
           <form action="">
-             <button type="submit" class="btn btn-success mt-3" id="sielib">Sí</button>
-             <button type="button" class="btn btn-secondary mt-3" data-dismiss="modal">No</button>
-            </form> 
+            <button type="submit" class="btn btn-success mt-3" id="sielib">Sí</button>
+            <button type="button" class="btn btn-secondary mt-3" data-dismiss="modal">No</button>
+          </form>
         </div>
       </div>
     </div>
-  </div> 
+  </div>
   <!--Fin del Modal Confirmar-->
 
 
-<!-- Modal Editar-->
-<div class="modal fade" id="edicion" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Editar Equipo</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form action="">
-
+  <!-- Modal Editar-->
+  <div class="modal fade" id="edicion" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
         <div class="modal-header">
-          <input type="text" name="" id="oldnam" class="form-control" placeholder="Nombre del equipo a editar" aria-describedby="helpId" required>
+          <h5 class="modal-title">Editar Equipo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-          
+        <div class="modal-body">
+          <form action="">
 
-            <input type="text" name="" id="newnam" class="form-control" placeholder="Nombre" aria-describedby="helpId" required>
-           
-            <input type="text" name="" id="newcond" class="form-control mt-3" placeholder="Condición: <Excelente> <Muy Bueno> <Bueno> <Dañado>" aria-describedby="helpId" required>
-
-            <input type="number" name="" id="newcantd" class="form-control mt-3" placeholder="Cantidad Disponible" aria-describedby="helpId" required >
-
-            <input type="url" name="" id="newimm" class="form-control mt-3" placeholder="Url de imagen del equipo" aria-describedby="helpId" required>
+            <div class="modal-header">
+              <input type="text" name="" id="oldnam" class="form-control" placeholder="Nombre del equipo a editar"
+                aria-describedby="helpId" required>
+            </div>
 
 
-          <button type="submit" class="btn btn-success mt-3" id="editabutto">Editar</button>
-           <button type="button" class="btn btn-secondary mt-3" data-dismiss="modal">Close</button>
-        
-          </form> 
+            <input type="text" name="" id="newnam" class="form-control" placeholder="Nombre" aria-describedby="helpId"
+              required>
 
+            <input type="text" name="" id="newcond" class="form-control mt-3"
+              placeholder="Condición: <Excelente> <Muy Bueno> <Bueno> <Dañado>" aria-describedby="helpId" required>
+
+            <input type="number" name="" id="newcantd" class="form-control mt-3" placeholder="Cantidad Disponible"
+              aria-describedby="helpId" required>
+
+            <input type="url" name="" id="newimm" class="form-control mt-3" placeholder="Url de imagen del equipo"
+              aria-describedby="helpId" required>
+
+
+            <button type="submit" class="btn btn-success mt-3" id="editabutto">Editar</button>
+            <button type="button" class="btn btn-secondary mt-3" data-dismiss="modal">Close</button>
+
+          </form>
+
+
+        </div>
 
       </div>
-      
     </div>
   </div>
-</div> 
-<!--Fin del Modal Editar-->
+  <!--Fin del Modal Editar-->
 
 
 
 
-  <table border="2" width="100%" >
-      <tr>
-          <td colspan="5" align="center" id="deudor">Equipo</td>
-      </tr>
-      <tr id="tr1" align="center">
-        
-          <td width="20%">Id</td>
-          <td width="20%">Imagen</td>
-          <td width="20%">Nombre</td>
-          <td width="20%">Cantidad Disponible</td>
-          <td width="20%">Condición</td>
-      </tr>
-     
+  <table border="2" width="100%">
+    <tr>
+      <td colspan="5" align="center" id="deudor">Equipo</td>
+    </tr>
+    <tr id="tr1" align="center">
+
+      <td width="20%">Id</td>
+      <td width="20%">Imagen</td>
+      <td width="20%">Nombre</td>
+      <td width="20%">Cantidad Disponible</td>
+      <td width="20%">Condición</td>
+    </tr>
+
   </table>
 
   <table border="2" width="100%" id="tablecat">
 
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-</script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-</script>
-<script src="/catalogo.js"></script>
+    <script src="/FrontEnd/Administrador/catalogo.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
 </body>
 
 </html>

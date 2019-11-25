@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
         integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 
+
+
     <style>
         body {
             background-color: rgb(214, 214, 214);
@@ -32,7 +34,6 @@
         table[id=Main_Table] {
             border-collapse: collapse;
             position: fixed;
-            z-index:
         }
 
         table[id=Main_Table] td {
@@ -45,8 +46,6 @@
             text-align: center;
             background-color: whitesmoke;
         }
-
-
 
         label {
             color: rgba(0, 0, 0, 0.5);
@@ -76,16 +75,34 @@
         }
 
         form[id=navSearch] {
-            margin-left: 200px;
+            margin-left: 50px;
         }
 
         a[id=exit] {
-            margin-left: 600px;
+            padding-left: 100px;
         }
-
 
         nav.navbar {
             background-color: #004270;
+        }
+
+        a {
+            font-size: larger;
+            margin: 5px;
+
+        }
+
+        img[id=Logo_iteso] {
+            width: 3em;
+            background-color: azure;
+        }
+
+        div[id='nav'] {
+            align-content: center;
+        }
+
+        img {
+            width: 4em;
         }
 
         .card-img-top {
@@ -104,43 +121,45 @@
             padding: 5px;
         }
 
-        .elements{
+        .elements {
             padding-top: 90px;
         }
     </style>
+
+
 </head>
 
 <body>
-        <nav class="navbar navbar-expand navbar-dark">
-                <div class="nav navbar-nav">
-                    <a href=""><img src="../../Imagenes/Logo_ITESO_normal.jpg" id="Logo_iteso"></a>
-                    <a class="nav-item nav-link" href="../Administrador/homeAdmin.html" data-target="home">Inventario</a>
-                    <a class="nav-item nav-link" href="../Administrador/Deudores.html" data-target="FFra">Deudores</a>
-                    <a class="nav-item nav-link" href="../Administrador/homeAdmin.html" data-target="home">Historial de Problemas</a>
-                    <a class="nav-item nav-link" href="../Administrador/homeAdmin.html" data-target="home">Disponibilidad</a>
-                    <form class="form-inline" id = 'navSearch' action="/action_page.php">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                        <button class="btn btn-success" type="submit">Search</button>
-                    </form>
-                    <a class="nav-item nav-link" id='exit' href='../Registro y login (Publico)/Inicio.html' data-target="home">Cerrar Sesión</a>
-        
-                </div>
-        </nav>
+    <nav class="navbar navbar-expand navbar-dark">
+        <div class="nav navbar-nav">
+            <img src="../../Imagenes/Logo_ITESO_normal.jpg" id="Logo_iteso">
+            <a class="nav-item nav-link" href="../Administrador/homeAdmin.html" data-target="home">Disponibilidad</a>
+            <a class="nav-item nav-link" href="../Administrador/Deudores.html" data-target="FFra">Configuración</a>
+            <a class="nav-item nav-link" href="../Administrador/homeAdmin.html" data-target="home">Disponibilidad</a>
+            <form class="form-inline" id='navSearch' action="/action_page.php">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-success" type="submit">Search</button>
+            </form>
+            <a class="nav-item nav-link" id='exit' href='../Registro y login (Publico)/Inicio.html'
+                data-target="home">Cerrar Sesión</a>
 
-   
+        </div>
+    </nav>
+
+
     <div class="container elements" aria-hidden="true" width="100%">
         <div>
             <h3><b>Sistema de préstamos</b></h3>
         </div>
 
         <div class="row" id="listaProductos">
-          
-    
-            </div>
-    
+
 
         </div>
-    
+
+
+    </div>
+
     </div>
 
 
