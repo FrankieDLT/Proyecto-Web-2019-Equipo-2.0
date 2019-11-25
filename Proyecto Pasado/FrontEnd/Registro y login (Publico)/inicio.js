@@ -159,7 +159,8 @@ function readCookie(name) {
 
     btnRecover.onclick = function (event) {
         let correoRecover = document.getElementById('recuperacion').value;
+        let passAutoGen = 'contra';
     
-        window.open('mailto:test@example.com?subject=subject&body=body');
+        window.open('mailto:' + correoRecover +'?subject=Password&body=Auto Generated Password: ' + passAutoGen);
 
     }
