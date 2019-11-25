@@ -217,8 +217,8 @@ if (document.getElementById('chabacano2') != null) {
     }
 
     lista.innerHTML = `<div class="media col-8 mt-2" id="modelo">
-                    <div class="media-left align-self-center mr-3">
-                        <img class="rounded-circle" style="width: inherit;" src="${userDetalle.url}">
+                    <div class="media-left mr-3">
+                        <img class="rounded-circle" id="fotoUser" style="width: inherit;" src="${userDetalle.url}">
                     </div>
                     <div class="media-body">
                         <h4>${userDetalle.nombre}</h4>
@@ -227,6 +227,9 @@ if (document.getElementById('chabacano2') != null) {
                         <p >Fecha de nacimiento: ${userDetalle.fecha} </p>
                         <p >Sexo: ${sex} </p>
                         <p >Contraseña: ${userDetalle.password} </p>
+                        <p >Prestamos:</p>
+                        <p >Prestamos:Bocina Bose (112463)/ Regresar antes: 27-11-2019.</p>
+                        <p >Prestamos:Adapatador VGA a HDMI (112452)/ Regresar antes: 25-11-2019.</p>
 
                     </div>
                     <div class="media-right align-self-center">   
