@@ -5,245 +5,238 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Inventario</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!-- Temas-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
+    <title>Catálogo de Materiales</title>
+     <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+    integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+ 
     <style>
-        body {
-            background-color: rgb(142, 185, 199);
-            border: 5em;
-            width: 100%;
-            height: 500px;
-        }
-
-        img[id=Logo_iteso] {
-            width: 5em;
-        }
-
-        table[id=Main_Table] {
-            border-collapse: collapse;
-            position: auto;
-            margin: 0 auto
-        }
-
-        table[id=Main_Table] td {
-            text-align: center;
-            background-color: #004270;
-            color: whitesmoke;
-        }
-
-        table[id=Main_Table] td:first-child {
-            text-align: center;
-            background-color: whitesmoke;
-        }
-
-
-        label {
-            color: rgba(0, 0, 0, 0.5);
-            /*Color "semitrasparente" para el MC*/
-        }
-
-        h3 {
-            font-style: oblique;
-            color: darkblue;
-            font-size: 3rem;
-
-        }
-
-        /************************************************************************************/
-
-        img[id=Logo_iteso] {
-            width: 3em;
-            background-color: azure;
-        }
-
-        a {
-            color: white;
-            text-align: center;
-            vertical-align: middle;
-            font-size: large;
-            text-indent: 1.5em
-        }
-
-        a[id=exit] {
-            margin-left: 1200px;
-        }
-
-        nav.navbar {
-            background-color: #004270;
-        }
-
-
-        td img {
+        img {
             width: 4em;
         }
-
         table {
             width: 70%;
-            margin-left: 20%;
+            margin-left: 15%;
             margin-right: 15%;
             background-color: whitesmoke;
-            margin: 0 auto;
         }
-
-        td[id=productos] {
+        td[id=deudor] {
             background-color: #42B4E3;
             color: whitesmoke;
-            margin: 0 auto;
         }
-
         tr[id=tr1] {
             background-color: #004270;
             color: whitesmoke;
-            text-align: center;
-
         }
-
-        .add_product {
-            background-color: rgb(12, 216, 242);
-            align-items: flex-end;
+        div[id=padd]{
+            width: 100%;
+            font-size: 3.5em;
+            opacity: 0.0001;
         }
-
-        tr[id=info] {
-
-            text-align: center;
-
+        body{
+            /* background-image: url('https://iteso.mx/image/journal/article?img_id=7699185&t=1494435594945'); */
+            background-image: url('https://iteso.mx/documents/11109/12605470/Campus++30.jpg/cafbc1b6-713b-460f-b22f-e3290ca0ed20?t=1533336672075');
+            background-repeat: no-repeat;
+            background-size: 100%;
         }
+        button[id=regis]{
+            background-color: #004270;
+            margin-left: 15%;
+            margin-top: 2.5%;
+        }
+        button[id=dele]{
+            background-color: #004270;
+            margin-top: 2.5%;
+        }
+        button[id=edici]{
+            background-color: #004270;
+            margin-right: 15%;
+            margin-top: 2.5%;
+        }
+        
+        
     </style>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
-        integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand navbar-dark">
-        <div class="nav navbar-nav">
-            <a href=""><img src="../../Imagenes/Logo_ITESO_normal.jpg" id="Logo_iteso"></a>
-            <a class="nav-item nav-link" href="homeAdmin.html" data-target="home">Inventario</a>
-            <a class="nav-item nav-link" href="Deudores.html" data-target="FFra">Deudores</a>
-            <a class="nav-item nav-link" href="homeAdmin.html" data-target="home">Historial de Problemas</a>
-            <a class="nav-item nav-link" href="homeAdmin.html" data-target="home">Disponibilidad</a>
-            <a class="nav-item nav-link" id='exit' href='../Registro y login (Publico)/Inicio.html' data-target="home">Cerrar Sesión</a>
+    <div id="padd" >Padding</div>
+
+    
+
+
+    <!-- Button trigger modal Registrar-->
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#registro" id="regis">
+    Registrar Equipo
+  </button>
+
+  <!-- Button trigger modal Eliminar-->
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#delete" id="dele">
+    Eliminar Equipo
+  </button>
+
+   <!-- Button trigger modal Editar-->
+   <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#edicion" id="edici">
+    Editar Equipo
+  </button>
+  
+
+  <!-- Modal Registrar-->
+  <div class="modal fade" id="registro" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Registrar Equipo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="">
+          
+              <input type="text" name="" id="nam" class="form-control" placeholder="Nombre" aria-describedby="helpId" required>
+             
+              <input type="text" name="" id="cond" class="form-control mt-3" placeholder="Condición: <Excelente> <Muy Bueno> <Bueno> <Dañado>" aria-describedby="helpId" required>
+ 
+              <input type="number" name="" id="cantd" class="form-control mt-3" placeholder="Cantidad Disponible" aria-describedby="helpId" required >
+
+              <input type="url" name="" id="imm" class="form-control mt-3" placeholder="Url de imagen del equipo" aria-describedby="helpId" required>
+
+
+            <button type="submit" class="btn btn-success mt-3" id="Registrar">Registrar</button>
+             <button type="button" class="btn btn-secondary mt-3" data-dismiss="modal">Close</button>
+          
+            </form> 
+
 
         </div>
-    </nav>
-
-    <br /><br /><br />
-
-    <div class="container" aria-hidden="true" width="100%">
-        <table class="add_product" border="0" width="100%">
-            <tr>
-                <td colspan="7" text-align="right" id="productos"><button type="button" class="btn btn-default"><a
-                            href="Agregar_productos.html">Agregar
-                            Producto</a></button></td>
-            </tr>
-        </table>
-        <table border="2" width="100%">
-
-            <tr>
-                <td colspan="7" align="center" id="productos">Productos</td>
-            </tr>
-            <tr id="tr1">
-                <td width="10%">#</td>
-                <td width="20%">Imagen</td>
-                <td width="20%">Descripcion</td>
-                <td width="20%">Categoria</td>
-                <td width="20%">Stock</td>
-                <td width="20%">Agregado</td>
-                <td width="20%">Acciones</td>
-
-            </tr>
-            <tr id="info">
-                <td width="10%">1</td>
-                <td width="10%" align="center"><img src="../../Imagenes/cableaux.jpg"></td>
-                <td width="20%">Cable Auxiliar</td>
-                <td width="20%">Cables</td>
-                <td width="25%">100</td>
-                <td width="25%">16/06/2010</td>
-                <td width="25%" class="text-center">
-                    <div class="btn-group">
-                        <a href="editar_producto.html" class="btn btn-info btn-xs" title="Editar" data-toggle="tooltip">
-                            <span class="glyphicon glyphicon-edit"></span>
-                        </a>
-                        <a href="" class="btn btn-danger btn-xs" title="Eliminar" data-toggle="tooltip">
-                            <span class="glyphicon glyphicon-trash"></span>
-                        </a>
-                    </div>
-                </td>
-
-            </tr>
-            <tr id="info">
-                <td width="10%">2</td>
-                <td width="10%" align="center"><img src="../../Imagenes/bocinas.jpg"></td>
-                <td width="20%">Bocinas</td>
-                <td width="20%">Audio </td>
-                <td width="25%">50</td>
-                <td width="25%">12/04/2008</td>
-                <td width="25%" class="text-center">
-                    <div class="btn-group">
-                        <a href="editar_producto.html" class="btn btn-info btn-xs" title="Editar" data-toggle="tooltip">
-                            <span class="glyphicon glyphicon-edit"></span>
-                        </a>
-                        <a href="" class="btn btn-danger btn-xs" title="Eliminar" data-toggle="tooltip">
-                            <span class="glyphicon glyphicon-trash"></span>
-                        </a>
-                    </div>
-                </td>
-            </tr>
-            <tr id="info">
-                <td width="10%">3</td>
-                <td width="20%" align="center"><img src="../../Imagenes/proyector.jpg"></td>
-                <td width="20%">Proyector Portable</td>
-                <td width="20%">Proyector</td>
-                <td width="20%">50</td>
-                <td width="20%">05/12/2012</td>
-                <td width="25%" class="text-center">
-                    <div class="btn-group">
-                        <a href="editar_producto.html" class="btn btn-info btn-xs" title="Editar">
-                            <span class="glyphicon glyphicon-edit"></span>
-                        </a>
-                        <a href="" class="btn btn-danger btn-xs" title="Eliminar" data-toggle="tooltip">
-                            <span class="glyphicon glyphicon-trash"></span>
-                        </a>
-                    </div>
-                </td>
-            </tr>
-
-        </table>
-
+        
+      </div>
     </div>
+  </div> 
+  <!--Fin del Modal Registrar-->
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Libreria java scritp de bootstrap -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
-    </script>
+  <!-- Modal Eliminar-->
+  <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">¿Cuál Equipo Se Eliminará?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="">
+          
+             <input type="text" name="" id="namel" class="form-control" placeholder="Nombre" aria-describedby="helpId" required>
 
+             <button type="button" class="btn btn-secondary mt-3" data-toggle="modal" data-target="#yesno" id="elimbutt">
+              Eliminar Equipo
+            </button>
+
+             <button type="button" class="btn btn-secondary mt-3" data-dismiss="modal">Close</button>
+            </form> 
+        </div>
+      </div>
+    </div>
+  </div> 
+  <!--Fin del Modal Eliminar-->
+
+  <!-- Modal Confirmar-->
+  <div class="modal fade" id="yesno" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">¿Seguro que desea eliminar este equipo?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="">
+             <button type="submit" class="btn btn-success mt-3" id="sielib">Sí</button>
+             <button type="button" class="btn btn-secondary mt-3" data-dismiss="modal">No</button>
+            </form> 
+        </div>
+      </div>
+    </div>
+  </div> 
+  <!--Fin del Modal Confirmar-->
+
+
+<!-- Modal Editar-->
+<div class="modal fade" id="edicion" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Editar Equipo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="">
+
+        <div class="modal-header">
+          <input type="text" name="" id="oldnam" class="form-control" placeholder="Nombre del equipo a editar" aria-describedby="helpId" required>
+        </div>
+          
+
+            <input type="text" name="" id="newnam" class="form-control" placeholder="Nombre" aria-describedby="helpId" required>
+           
+            <input type="text" name="" id="newcond" class="form-control mt-3" placeholder="Condición: <Excelente> <Muy Bueno> <Bueno> <Dañado>" aria-describedby="helpId" required>
+
+            <input type="number" name="" id="newcantd" class="form-control mt-3" placeholder="Cantidad Disponible" aria-describedby="helpId" required >
+
+            <input type="url" name="" id="newimm" class="form-control mt-3" placeholder="Url de imagen del equipo" aria-describedby="helpId" required>
+
+
+          <button type="submit" class="btn btn-success mt-3" id="editabutto">Editar</button>
+           <button type="button" class="btn btn-secondary mt-3" data-dismiss="modal">Close</button>
+        
+          </form> 
+
+
+      </div>
+      
+    </div>
+  </div>
+</div> 
+<!--Fin del Modal Editar-->
+
+
+
+
+  <table border="2" width="100%" >
+      <tr>
+          <td colspan="5" align="center" id="deudor">Equipo</td>
+      </tr>
+      <tr id="tr1" align="center">
+        
+          <td width="20%">Id</td>
+          <td width="20%">Imagen</td>
+          <td width="20%">Nombre</td>
+          <td width="20%">Cantidad Disponible</td>
+          <td width="20%">Condición</td>
+      </tr>
+     
+  </table>
+
+  <table border="2" width="100%" id="tablecat">
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script>
+<script src="/catalogo.js"></script>
 </body>
 
 </html>

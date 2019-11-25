@@ -29,8 +29,9 @@ function readCookie(name) {
 
 }
 
-let btnSubmit = document.getElementById('btnSubmit');
+    let btnSubmit = document.getElementById('btnSubmit');
     let btnLogin = document.getElementById('loginButton_0');
+    let btnRecover = document.getElementById('btnRecover');
     let registro = document.getElementById('registro');
     let form = registro.querySelector("form");
     let register = false;
@@ -154,4 +155,11 @@ let btnSubmit = document.getElementById('btnSubmit');
         }, function (cb2) {
             alert('Nombre de usuario o contraseña incorrecta');
         });*/
+    }
+
+    btnRecover.onclick = function (event) {
+        let correoRecover = document.getElementById('recuperacion').value;
+    
+        window.open('mailto:test@example.com?subject=subject&body=body');
+
     }
