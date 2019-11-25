@@ -2,10 +2,10 @@ localStorage.userToken = '';
 localStorage.userDetalle = '';
 //Json que se manda con el registro
 let registerUser = {
-    nombre: "Luis D",
+    nombre: "Luis David",
     apellido: "Gallegos Godoy",
     correo: "is709571@iteso.mx",
-    url: "",
+    url: "https://randomuser.me/api/portraits/men/8.jpg",
     sexo: "H",
     fecha: "12-05-1998",
     password: "1234"
@@ -130,8 +130,12 @@ function readCookie(name) {
 
         if(loginUser.correo == 'admin' && loginUser.password == 'admin'){
             window.location.href = '../Administrador/homeAdmin.html'
-        }else{
+        }else if(loginUser.correo == 'is709571'){
             window.location.href = '../Usuario/home.html'
+        }else if(loginUser.correo == 'oscaroceguera'){
+            alert('El usuario esta bloqueado, para mayor información pasar a la oficina de prestamos')
+        }else{
+            alert('El usuario no existe');
         }
 
         /*loginAndRegisterHTTP(loginUser, 'https://users-dasw.herokuapp.com/api/login', function (cb1) {
@@ -159,7 +163,8 @@ function readCookie(name) {
 
     btnRecover.onclick = function (event) {
         let correoRecover = document.getElementById('recuperacion').value;
+        let passAutoGen = 'contra';
     
-        window.open('mailto:test@example.com?subject=subject&body=body');
+        window.open('mailto:' + correoRecover +'?subject=Password&body=Auto Generated Password: ' + passAutoGen);
 
     }

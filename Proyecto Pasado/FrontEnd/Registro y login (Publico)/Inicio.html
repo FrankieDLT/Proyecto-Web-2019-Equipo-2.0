@@ -144,7 +144,8 @@
                                             <p align="center"><a href="https://datospersonales.iteso.mx/"
                                                     target="_blank" class="custom-link">Aviso de
                                                     privacidad</a>&nbsp;&nbsp;&nbsp;</p>
-                                            <p align="center"style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
+                                            <p align="center"
+                                                style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
                                                 No tienes cuenta!
                                                 <a href="#" data-dismiss="modal" data-toggle="modal"
                                                     data-target="#registro">
@@ -240,36 +241,39 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="container-fluid">
-                        <div class="form-group">
-                            <label for="">Escribe tu correo registrado</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon3"><i
-                                            class="fas fa-user    "></i></span>
-                                </div>
-                                <input type="text" class="col-10 form-control" name="" id="recuperacion"
-                                    aria-describedby="helpId" placeholder="correo registrado">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="controls">
-                                <button type="button" class="btn btn-primary btn-success" data-dismiss="modal" id='btnRecover'>Enviar
-                                    petición</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12 control">
-                                <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
-                                    No tienes cuenta!
-                                    <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#registro">
-                                        Registrate aquí
-                                    </a>
+                    <form action="" id='recoverForm' name='recoverForm'>
+                        <div class="container-fluid">
+                            <div class="form-group">
+                                <label for="">Escribe tu correo registrado</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon3"><i
+                                                class="fas fa-user    "></i></span>
+                                    </div>
+                                    <input type="text" class="col-10 form-control" name="" id="recuperacion"
+                                        aria-describedby="helpId" placeholder="correo registrado">
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <div class="controls">
+                                    <button type="button" class="btn btn-primary btn-success" data-dismiss="modal"
+                                        id='btnRecover'>Enviar
+                                        petición</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12 control">
+                                    <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
+                                        No tienes cuenta!
+                                        <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#registro">
+                                            Registrate aquí
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
