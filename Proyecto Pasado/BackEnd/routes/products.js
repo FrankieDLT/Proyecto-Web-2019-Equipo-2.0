@@ -1,19 +1,19 @@
 const express = require('express');
 const router = express.Router();
-const fs = require('fs');
+//const fs = require('fs');
+const Products = require('../db/products')
 
 router.route('/')
     .get((req, res) => {
-        fs.readFile('./data/products.json', (err, data) => {
-            if(err) {
-                res.statusCode = 500;
-                res.end();
-            }
-            else {
+        Products.find()
+            .then(products => {
                 res.statusCode = 200;
-                res.send(JSON.parse(data));
-            }
-        });
+                res.send(products);
+            })
+            .catch(reason => {
+                res.statusCode = 500;
+                res.end;
+            })
     });
 
 module.exports = router;

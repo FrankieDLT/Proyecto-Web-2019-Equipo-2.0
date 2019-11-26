@@ -1,7 +1,7 @@
 {
-    "dbuser":"",
-    "dbpsw":"",
-    "dbcluster": "",
-    "dbname": ""
+    "dbuser":"ITESO",
+    "dbpsw":"ITES@123",
+    "dbcluster": "StompCluster",
+    "dbname": "PrestamosITESO"
 }
 
