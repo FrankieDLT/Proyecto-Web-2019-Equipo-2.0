@@ -1,19 +1,19 @@
 const express = require('express');
 const router = express.Router();
-const fs = require('fs');
+//const fs = require('fs');
+const Users = require('../db/users')
 
 router.route('/')
     .get((req, res) => {
-        fs.readFile('./data/users.json', (err, data) => {
-            if(err) {
-                res.statusCode = 500;
-                res.end();
-            }
-            else {
+        Users.find()
+            .then(users => {
                 res.statusCode = 200;
-                res.send(JSON.parse(data));
-            }
-        });
+                res.send(users);
+            })
+            .catch(reason => {
+                res.statusCode = 500;
+                res.end;
+            })
     })
     .post(async function (req, res) {
         let newUser = req.body;
@@ -25,8 +25,8 @@ router.route('/')
         }
         else {
             // Validar si existe un usuario con el mismo correo o nombres y apellidos
-            let sameEmailUser = JSON.parse(fs.readFileSync('./data/users.json')).filter(u => u.correo == newUser.correo);
-            let sameNameUser = JSON.parse(fs.readFileSync('./data/users.json')).filter(u => u.nombre == newUser.nombre && u.apellido == newUser.apellido);
+            let sameEmailUser = await Users.find({corro: newUser.corro});
+            let sameNameUser = await Users.find({nombre: newUser.nombre, apellido: newUser.apellido});
 
             if(sameEmailUser.length > 0) {
                 res.statusCode = 400;
@@ -37,19 +37,16 @@ router.route('/')
                 res.send('Ya existe un usuario con el mismo nombre');
             }
             else {
-                let currentArray = JSON.parse(fs.readFileSync('./data/users.json'));
-                newUser.id = currentArray.length + 1;
-                currentArray.push(newUser);
-                fs.writeFile('./data/users.json', JSON.stringify(currentArray), (err) => {
-                    if(err) {
-                        res.statusCode = 500;
-                        res.send(err);
-                    }
-                    else {
-                        res.statusCode = 201;
-                        res.send(newUser);
-                    }
-                });
+                let userDocument = Users(newUser);
+                userDocument.save()
+                .then(user => {
+                    res.statusCode = 201;
+                    res.send(user);
+                })
+                .catch(reason => {
+                    res.statusCode = 500;
+                    res.end();
+                })
             }
         }
     });

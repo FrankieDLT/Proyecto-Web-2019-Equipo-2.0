@@ -15,6 +15,6 @@ let productsSchema = mongoose.Schema({
     }
 });
 
-let Products = mongoose.model('prodcuts', productsSchema);
+let Products = mongoose.model('products', productsSchema);
 
-module.exports = User;
+module.exports = Products;
