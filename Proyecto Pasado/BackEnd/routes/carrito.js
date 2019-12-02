@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
 //const fs = require('fs');
-const Products = require('../db/products')
+const Carrito = require('../db/carrito')
 
 router.route('/')
     .get((req, res) => {
         let userId = req.userId;
-        Products.find()
-            .then(products => {
+        Carrito.find()
+            .then(carrito => {
                 res.statusCode = 200;
-                res.send(products);
+                res.send(carrito);
             })
             .catch(reason => {
                 res.statusCode = 500;

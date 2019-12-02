@@ -29,3 +29,8 @@ Content-Type: application/json
 
 GET http://localhost:3000/api/products
 x-auth-user: QFJlp7q1lz-5ddcc8e52bad2f06a8ded8b9
+
+###
+
+POST http://localhost:3000/api/products
+x-auth-user: tBVcKNXKDL-5ddd3856133ddd58fcc2748e
