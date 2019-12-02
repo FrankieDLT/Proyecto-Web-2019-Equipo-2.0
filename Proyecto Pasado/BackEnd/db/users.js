@@ -28,6 +28,10 @@ let userSchema = mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    carrito: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'carrito'
     }
 });
 

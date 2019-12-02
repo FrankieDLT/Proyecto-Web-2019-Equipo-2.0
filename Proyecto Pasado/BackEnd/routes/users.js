@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 //const fs = require('fs');
-const Users = require('../db/users')
+const Users = require('../db/users');
+const Carrito = require('../db/carrito');
 
 router.route('/')
     .get((req, res) => {
@@ -25,28 +26,28 @@ router.route('/')
         }
         else {
             // Validar si existe un usuario con el mismo correo o nombres y apellidos
-            let sameEmailUser = await Users.find({corro: newUser.corro});
+            let sameEmailUser = await Users.find({correo: newUser.correo});
             let sameNameUser = await Users.find({nombre: newUser.nombre, apellido: newUser.apellido});
 
             if(sameEmailUser.length > 0) {
                 res.statusCode = 400;
                 res.send('Ya existe un usuario con el mismo correo');
             }
-            else if(sameNameUser.length > 0) {
-                res.statusCode = 400;
-                res.send('Ya existe un usuario con el mismo nombre');
-            }
             else {
-                let userDocument = Users(newUser);
-                userDocument.save()
-                .then(user => {
+                try {
+                    let userDocument = Users(newUser);
+                    let carrito = new Carrito({usuario: userDocument.id});
+                    userDocument.carrito = carrito.id;
+
+                    await carrito.save();
+                    await userDocument.save();
+
                     res.statusCode = 201;
-                    res.send(user);
-                })
-                .catch(reason => {
+                    res.send(userDocument);
+                } catch (e) {
                     res.statusCode = 500;
                     res.end();
-                })
+                }
             }
         }
     });

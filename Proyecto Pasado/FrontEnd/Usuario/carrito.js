@@ -3,6 +3,7 @@ var cart = {
 };
 
 
+
 //limpiar localStorage
  //localStorage.setItem('cart', JSON.stringify(cart));
 
@@ -27,6 +28,8 @@ function productToHTML(productos, pos){
 
 function productListToHTML (productos){
     let cartList;
+    // Hacer get al carrito, mandar el usuario
+    // map al carrito en vez de al local
     if (cart.items.length > 0) {
     cartList = cart.items.map( (producto, pos) => {
         console.log(producto.stock);

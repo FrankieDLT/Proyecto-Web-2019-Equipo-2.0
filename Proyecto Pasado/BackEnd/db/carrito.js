@@ -1,30 +1,19 @@
-const mongoose = require('./mongodb-connect')
+const mongoose = require('./mongodb-connect');
 
 let carritoSchema = mongoose.Schema({
-    imagen: {
-        type: String,
-        required: true
+    usuario: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'users',
+      required: true
     },
-    descripcion: {
-        type: String,
-        required: true
-    },
-    categoria: {
-        type: String,
-        required: true
-    },
-    stock: {
-        type: Number,
-        required: true
-    },
-    cantidad: {
-        type: Number,
-        required: true
-    },
-    id: {
-        type: Number,
-        required: true
-    }
+    items: [{
+        imagen: String,
+        descripcion: String,
+        categoria: String,
+        stock: String,
+        cantidad: Number,
+        id: Number
+    }]
 });
 
 let Carrito = mongoose.model('carrito', carritoSchema);
