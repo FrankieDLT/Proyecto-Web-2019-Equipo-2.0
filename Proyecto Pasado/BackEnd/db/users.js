@@ -32,6 +32,13 @@ let userSchema = mongoose.Schema({
     carrito: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'carrito'
+    },
+    admin: {
+        type: Boolean,
+        required: true
+    },
+    block: {
+        type: Boolean
     }
 });
 

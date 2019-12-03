@@ -2,13 +2,13 @@ localStorage.userToken = '';
 localStorage.userDetalle = '';
 //Json que se manda con el registro
 let registerUser = {
-    nombre: "Luis David",
-    apellido: "Gallegos Godoy",
-    correo: "is709571@iteso.mx",
-    url: "https://randomuser.me/api/portraits/men/8.jpg",
-    sexo: "H",
-    fecha: "12-05-1998",
-    password: "1234"
+    nombre: "",
+    apellido: "",
+    correo: "",
+    url: "",
+    sexo: "",
+    fecha: "",
+    password: ""
 }
 
 //Json que se manda con el Login
@@ -23,11 +23,37 @@ function readCookie(name) {
 
 }
 
-function readCookie(name) {
+///////////////////////////HTTP////////////////////////////
 
-    return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + name.replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
+//Esta funcion manda correo y contraseña, verifica si el usuario existe o la contraseña es corecta.
+function loginAndRegisterHTTP(datos, url, cbOk, cbErr) {
+    // 1. Crear XMLHttpRequest object
+    let xhr = new XMLHttpRequest();
+    // 2. Configurar:  PUT actualizar archivo
+    xhr.open('POST', url);
+    // 3. indicar tipo de datos JSON
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    // 4. Enviar solicitud al servidor
+    xhr.send([JSON.stringify(datos)]);
+    // 5. Una vez recibida la respuesta del servidor
+    xhr.onload = function () {
+        console.log(xhr.status);
+        if (xhr.status != 200 && xhr.status != 201) { // analizar el estatus de la respuesta HTTP
+            // Ocurrió un error
+            cbErr(xhr.status + ': ' + xhr.statusText);
+        } else {
+            if (xhr.status != 201) {
+                let datos = JSON.parse(xhr.responseText);
+                console.log(datos); // Significa que fue exitoso
+                cbOk(datos);
+            }
 
+        }
+    };
 }
+
+
+//-------------------------------------------------------------------------------------
 
     let btnSubmit = document.getElementById('btnSubmit');
     let btnLogin = document.getElementById('loginButton_0');
@@ -107,11 +133,11 @@ function readCookie(name) {
 
         localStorage.userDetalle = JSON.stringify(registerUser);
 
-        /*loginAndRegisterHTTP(registerUser, 'https://users-dasw.herokuapp.com/api/users', function (cb1) {
+        loginAndRegisterHTTP(registerUser, 'http://localhost:3000/api/users', function (cb1) {
             alert('Usuario creado');
         }, function (cb2) {
             alert('El usuario ya existe');
-        });*/
+        });
 
         for (let i = 0; i < 8; i++) {
             if (i != 5 || i != 6) form[i].value = null;
@@ -138,7 +164,7 @@ function readCookie(name) {
             alert('El usuario no existe');
         }
 
-        /*loginAndRegisterHTTP(loginUser, 'https://users-dasw.herokuapp.com/api/login', function (cb1) {
+        loginAndRegisterHTTP(loginUser, 'https://users-dasw.herokuapp.com/api/login', function (cb1) {
 
             let hoy = (new Date());
             hoy.setDate(hoy.getDate());
@@ -158,7 +184,7 @@ function readCookie(name) {
 
         }, function (cb2) {
             alert('Nombre de usuario o contraseña incorrecta');
-        });*/
+        });
     }
 
     btnRecover.onclick = function (event) {
