@@ -47,6 +47,28 @@ app.post('/api/login', function (req, res) {
     
 });
 
+app.post('/api/users/info', function (req, res) {
+    // Programar aquí lógica de token
+    User.find({correo: req.body.correo, password: req.body.password})
+        .then(async users => {
+            if(users.length > 0) {
+                let user = users[0];
+
+                res.statusCode = 200;
+                res.send(JSON.stringify(user));
+            }
+            else {
+                res.statusCode = 400;
+                res.end();
+            }
+        })
+        .catch(reason => {
+            res.statusCode = 500;
+            res.end();
+        });
+    
+});
+
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 })

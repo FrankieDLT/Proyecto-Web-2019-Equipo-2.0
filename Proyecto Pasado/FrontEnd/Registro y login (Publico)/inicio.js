@@ -8,7 +8,9 @@ let registerUser = {
     url: "",
     sexo: "",
     fecha: "",
-    password: ""
+    password: "",
+    admin: "false",
+    block: "false"
 }
 
 //Json que se manda con el Login

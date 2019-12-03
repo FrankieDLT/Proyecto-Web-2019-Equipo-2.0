@@ -17,7 +17,7 @@ router.route('/')
             });
     })
     .post((req, res) => {
-        if(req.esAdmin) {        
+        if(req.admin) {        
             res.statusCode = 200;
             res.end();
         }

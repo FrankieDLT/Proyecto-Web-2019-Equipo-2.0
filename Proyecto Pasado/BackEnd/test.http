@@ -2,9 +2,9 @@ POST http://localhost:3000/api/users
 Content-Type: application/json
 
 {
-    "nombre":"asdf",
-    "apellido":"asdf",
-    "correo":"tasdf@tasdf.com",
+    "nombre":"s",
+    "apellido":"s",
+    "correo":"s@s.com",
     "url": "https://randomuser.me/api/portraits/men/8.jpg",
     "sexo":"H",
     "fecha":"1994-03-19",
@@ -23,6 +23,15 @@ Content-Type: application/json
 
 {
     "correo":"tasdf@tasdf.com",
+    "password":"123456"
+}
+
+###
+POST http://localhost:3000/api/users/info
+Content-Type: application/json
+
+{
+    "correo":"s@s.com",
     "password":"123456"
 }
 
