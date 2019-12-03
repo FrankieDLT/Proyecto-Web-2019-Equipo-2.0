@@ -34,3 +34,16 @@ x-auth-user: yRBKvy49eV-5de6deff9694c431845c908e
 
 POST http://localhost:3000/api/products
 x-auth-user: yRBKvy49eV-5de6deff9694c431845c908e
+
+###
+POST http://localhost:3000/api/carrito
+Content-Type: application/json
+{
+  "items": {
+    "id": 3,
+    "imagen": "https://www.steren.com.mx/media/catalog/product/cache/8a4fdc7d203276e60b54a94f4f1e185b/m/g/mg-260_x1.jpg",
+    "descripcion": "Megafono",
+    "categoria": "Audio",
+    "cantidad": 3
+  }
+}
