@@ -18,12 +18,12 @@ router.route('/')
     })
     .post(async (req, res) => {
         try {
-            //         imagen: String,
-            //         descripcion: String,
-            //         categoria: String,
-            //         stock: String,
-            //         cantidad: Number,
-            //         idProducto: Number
+            //imagen: String,
+            //descripcion: String,
+            //categoria: String,
+            //stock: String,
+            //cantidad: Number,
+            //idProducto: Number
             let producto = req.body;
 
             let userId = req.userId;
