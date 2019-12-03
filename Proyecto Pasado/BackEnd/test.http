@@ -21,16 +21,16 @@ POST http://localhost:3000/api/login
 Content-Type: application/json
 
 {
-    "correo":"t@t.com",
+    "correo":"tasdf@tasdf.com",
     "password":"123456"
 }
 
 ###
 
 GET http://localhost:3000/api/products
-x-auth-user: QFJlp7q1lz-5ddcc8e52bad2f06a8ded8b9
+x-auth-user: yRBKvy49eV-5de6deff9694c431845c908e
 
 ###
 
 POST http://localhost:3000/api/products
-x-auth-user: tBVcKNXKDL-5ddd3856133ddd58fcc2748e
+x-auth-user: yRBKvy49eV-5de6deff9694c431845c908e

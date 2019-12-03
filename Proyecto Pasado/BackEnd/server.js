@@ -6,6 +6,7 @@ const usersRouter = require('./routes/users');
 const productsRouter = require('./routes/products');
 const carritoRouter = require('./routes/carrito');
 const Token = require('./db/token');
+const User = require('./db/users')
 
 
 app.use(express.json());
