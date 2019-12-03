@@ -16,6 +16,7 @@ router.route('/')
                 res.end;
             })
     })
+    
     .post(async function (req, res) {
         let newUser = req.body;
 
@@ -31,6 +32,7 @@ router.route('/')
 
             if(sameEmailUser.length > 0) {
                 res.statusCode = 400;
+                
                 res.send('Ya existe un usuario con el mismo correo');
             }
             else {
