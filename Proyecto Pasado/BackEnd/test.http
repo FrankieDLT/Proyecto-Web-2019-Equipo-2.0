@@ -2,14 +2,14 @@ POST http://localhost:3000/api/users
 Content-Type: application/json
 
 {
-    "nombre":"s",
-    "apellido":"s",
-    "correo":"s@s.com",
+    "nombre":"Luis",
+    "apellido":"David",
+    "correo":"admin@iteso.mx",
     "url": "https://randomuser.me/api/portraits/men/8.jpg",
     "sexo":"H",
-    "fecha":"1994-03-19",
+    "fecha":"1997-05-12",
     "password":"123456",
-    "admin":"false"
+    "admin":"true"
 }
 
 ###

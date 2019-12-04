@@ -57,142 +57,158 @@ function loginAndRegisterHTTP(datos, url, cbOk, cbErr) {
 
 //-------------------------------------------------------------------------------------
 
-    let btnSubmit = document.getElementById('btnSubmit');
-    let btnLogin = document.getElementById('loginButton_0');
-    let btnRecover = document.getElementById('btnRecover');
-    let registro = document.getElementById('registro');
-    let form = registro.querySelector("form");
-    let register = false;
+let btnSubmit = document.getElementById('btnSubmit');
+let btnLogin = document.getElementById('loginButton_0');
+let btnRecover = document.getElementById('btnRecover');
+let registro = document.getElementById('registro');
+let form = registro.querySelector("form");
+let register = false;
 
-    enableBtnConsult();
-    enableBtnRegister();
+enableBtnConsult();
+enableBtnRegister();
 
 
-    //---------------------------------------------------------
-    function enableBtnConsult() {
+//---------------------------------------------------------
+function enableBtnConsult() {
 
-        console.log(readCookie("token"))
-        // Se lee la cookie
-        if (readCookie("token") != null) {
+    console.log(readCookie("token"))
+    // Se lee la cookie
+    if (readCookie("token") != null) {
 
-        } else {
+    } else {
 
-        }
     }
+}
 
-    //---------------------------------------------------------
-    function enableBtnRegister() {
-        form.querySelector('button').disabled = 'true';
+//---------------------------------------------------------
+function enableBtnRegister() {
+    form.querySelector('button').disabled = 'true';
 
-        form.addEventListener("change", function (e) {
+    form.addEventListener("change", function (e) {
 
-            let invalids = registro.querySelectorAll(':invalid');
+        let invalids = registro.querySelectorAll(':invalid');
 
-            for (let i = 0; i < 8; i++) {
-                if (i == 4 && form[3].value != '' && form[4].value != '') {
-                    if (form[3].value == form[4].value) {
-                        form[4].style.border = "";
+        for (let i = 0; i < 8; i++) {
+            if (i == 4 && form[3].value != '' && form[4].value != '') {
+                if (form[3].value == form[4].value) {
+                    form[4].style.border = "";
+                    register = true;
+                } else {
+                    alert('Las contraseñas no coinciden')
+                    form[4].style.border = "thin dotted red";
+                    register = false;
+                }
+            }else if (i == 2 && form[2].value != '' && form[2].value != '') {
+                let str = form[2].value;
+                    if (str.includes("@iteso.mx")) {
+                        form[2].style.border = "";
                         register = true;
                     } else {
-                        alert('Las contraseñas no coinciden')
-                        form[4].style.border = "thin dotted red";
+                        alert('El correo debe ser parte del dominio @iteso.mx')
+                        form[2].style.border = "thin dotted red";
+                        form[2].value = "";
                         register = false;
                     }
 
-                } else {
-                    if (form[i].checkValidity()) {
-                        form[i].style.border = "";
-                    } else {
-                        form[i].style.border = "thin dotted red";
-                    }
-                }
-
-            }
-            //loginAndRegisterHTTP
-            console.log(invalids.length);
-
-            if (invalids.length == 0 && register == true) {
-                form.querySelector('button').disabled = false;
-
             } else {
-                form.querySelector('button').disabled = 'true';
+                if (form[i].checkValidity()) {
+                    form[i].style.border = "";
+                } else {
+                    form[i].style.border = "thin dotted red";
+                }
             }
 
-        });
-    }
+        }
+        //loginAndRegisterHTTP
+        console.log(invalids.length);
 
-    //---------------------------------------------------------
-    btnSubmit.onclick = function (event) {
-        event.preventDefault();
-        registerUser.nombre = form[0].value;
-        registerUser.apellido = form[1].value;
-        registerUser.correo = form[2].value;
-        registerUser.password = form[4].value;
-        registerUser.fecha = form[5].value;
-        registerUser.sexo = document.register.sexo.value;
-        registerUser.url = form[8].value;
-        console.log(registerUser);
+        if (invalids.length == 0 && register == true) {
+            form.querySelector('button').disabled = false;
 
-        localStorage.userDetalle = JSON.stringify(registerUser);
-
-        loginAndRegisterHTTP(registerUser, 'http://localhost:3000/api/users', function (cb1) {
-            alert('Usuario creado');
-        }, function (cb2) {
-            alert('El usuario ya existe');
-        });
-
-        for (let i = 0; i < 8; i++) {
-            if (i != 5 || i != 6) form[i].value = null;
+        } else {
             form.querySelector('button').disabled = 'true';
         }
+
+    });
+}
+
+//---------------------------------------------------------
+btnSubmit.onclick = function (event) {
+    event.preventDefault();
+    registerUser.nombre = form[0].value;
+    registerUser.apellido = form[1].value;
+    registerUser.correo = form[2].value;
+    registerUser.password = form[4].value;
+    registerUser.fecha = form[5].value;
+    registerUser.sexo = document.register.sexo.value;
+    registerUser.url = form[8].value;
+    console.log(registerUser);
+
+    localStorage.userDetalle = JSON.stringify(registerUser);
+
+    loginAndRegisterHTTP(registerUser, 'http://localhost:3000/api/users', function (cb1) {
+        alert('Usuario creado');
+    }, function (cb2) {
+        alert('El usuario ya existe');
+    });
+
+    for (let i = 0; i < 8; i++) {
+        if (i != 5 || i != 6) form[i].value = null;
+        form.querySelector('button').disabled = 'true';
     }
+}
 
-    //---------------------------------------------------------
-    btnLogin.onclick = function (event) {
-        loginUser.correo = document.getElementById('idToken1').value;
-        console.log(loginUser.correo);
-        loginUser.password = document.getElementById('idToken2').value;
-        console.log(loginUser.password);
+//---------------------------------------------------------
+btnLogin.onclick = function (event) {
+    loginUser.correo = document.getElementById('idToken1').value;
+    loginUser.correo = loginUser.correo + '@iteso.mx'
+    console.log(loginUser.correo);
+    loginUser.password = document.getElementById('idToken2').value;
+    console.log(loginUser.password);
 
-        localStorage.userDetalle = JSON.stringify(registerUser);
+    localStorage.userDetalle = JSON.stringify(registerUser);
 
-        if(loginUser.correo == 'admin' && loginUser.password == 'admin'){
-            window.location.href = '../Administrador/homeAdmin.html'
-        }else if(loginUser.correo == 'is709571'){
-            window.location.href = '../Usuario/home.html'
-        }else if(loginUser.correo == 'oscaroceguera'){
-            alert('El usuario esta bloqueado, para mayor información pasar a la oficina de prestamos')
-        }else{
-            alert('El usuario no existe');
-        }
+    loginAndRegisterHTTP(loginUser, 'http://localhost:3000/api/login', function (cb1) {
 
-        loginAndRegisterHTTP(loginUser, 'https://users-dasw.herokuapp.com/api/login', function (cb1) {
+        let hoy = (new Date());
+        hoy.setDate(hoy.getDate());
+        hoy.setMonth(hoy.getMonth());
+        hoy.setFullYear(hoy.getFullYear());
+        hoy.setHours(hoy.getHours());
+        hoy.setMinutes(hoy.getMinutes() + 100);
+        let expiresDate = new Date(hoy);
 
-            let hoy = (new Date());
-            hoy.setDate(hoy.getDate());
-            hoy.setMonth(hoy.getMonth());
-            hoy.setFullYear(hoy.getFullYear());
-            hoy.setHours(hoy.getHours());
-            hoy.setMinutes(hoy.getMinutes() + 10);
-            let expiresDate = new Date(hoy);
+        console.log(expiresDate);
 
-            console.log(expiresDate);
+        // Creamos una cookie
+        document.cookie = "token=" + encodeURIComponent(JSON.stringify(cb1)) + "; expires=" + expiresDate.toUTCString();
 
-            // Creamos una cookie
-            document.cookie = "token=" + encodeURIComponent(JSON.stringify(cb1)) + "; expires=" + expiresDate.toUTCString();
+        localStorage.userToken = JSON.stringify(cb1);
 
-            localStorage.userToken = JSON.stringify(cb1);
-            window.location.href = 'consulta.html'
+        loginAndRegisterHTTP(loginUser, 'http://localhost:3000/api/users/info', function (cb1) {
+
+            if (cb1.admin == true) {
+                window.location.href = '../Administrador/homeAdmin.html'
+            } else if (cb1.block == true) {
+                alert('El usuario esta bloqueado, para mayor información pasar a la oficina de prestamos')
+            } else {
+                window.location.href = '../Usuario/home.html'
+            }
 
         }, function (cb2) {
             alert('Nombre de usuario o contraseña incorrecta');
         });
-    }
 
-    btnRecover.onclick = function (event) {
-        let correoRecover = document.getElementById('recuperacion').value;
-        let passAutoGen = 'contra';
-    
-        window.open('mailto:' + correoRecover +'?subject=Password&body=Auto Generated Password: ' + passAutoGen);
+    }, function (cb2) {
+        alert('Nombre de usuario o contraseña incorrecta');
+    });
 
-    }
+}
+
+btnRecover.onclick = function (event) {
+    let correoRecover = document.getElementById('recuperacion').value;
+    let passAutoGen = 'contra';
+
+    window.open('mailto:' + correoRecover + '?subject=Password&body=Auto Generated Password: ' + passAutoGen);
+
+}
