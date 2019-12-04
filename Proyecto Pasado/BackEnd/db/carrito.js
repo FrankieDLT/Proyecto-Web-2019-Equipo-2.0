@@ -7,12 +7,12 @@ let carritoSchema = mongoose.Schema({
       required: true
     },
     items: [{
+        id: Number,
         imagen: String,
         descripcion: String,
         categoria: String,
         stock: String,
-        cantidad: Number,
-        id: Number
+        cantidad: Number
     }]
 });
 

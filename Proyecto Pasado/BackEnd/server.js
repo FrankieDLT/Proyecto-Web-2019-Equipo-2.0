@@ -19,7 +19,6 @@ app.use('/api/carrito', carritoRouter);
 app.use('/api/carrito', authMiddleware);
 
 
-
 app.post('/api/login', function (req, res) {
     // Programar aquí lógica de token
     User.find({correo: req.body.correo, password: req.body.password})
