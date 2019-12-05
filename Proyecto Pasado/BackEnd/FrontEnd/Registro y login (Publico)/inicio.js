@@ -188,11 +188,11 @@ btnLogin.onclick = function (event) {
         loginAndRegisterHTTP(loginUser, 'http://localhost:3000/api/users/info', function (cb1) {
 
             if (cb1.admin == true) {
-                window.location.href = '../Administrador/homeAdmin.html'
+                window.location.href = '../admin'
             } else if (cb1.block == true) {
                 alert('El usuario esta bloqueado, para mayor información pasar a la oficina de prestamos')
             } else {
-                window.location.href = '../Usuario/home.html'
+                window.location.href = '../home'
             }
 
         }, function (cb2) {
