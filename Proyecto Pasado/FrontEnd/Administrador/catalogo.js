@@ -1,7 +1,7 @@
 let table = document.getElementById('tablecat');
 let uid = 732019;
 let Usuarios = [];
-
+let dburl = 'http://localhost:3000/api/products';
 
 let us1 = {
   "id": uid,
@@ -36,6 +36,26 @@ let us3 = {
 };
 
 Usuarios.push(us3);
+
+//*********************************************************************************
+
+makeRequest('GET', dburl, 'YGqfOcZ9Me-5de6deff9694c431845c908e', Usuarios,
+response =>{//cbok
+
+    Usuarios = response;
+    console.log('SUCCESS');
+    //userListToHTML(Usuarios);
+    console.log("Usuarios registrados correctamente");
+
+},reason => {//cberr
+
+    console.log(reason);
+
+});
+
+
+/********************* */
+
 userListToHTML(Usuarios);
 
 
@@ -167,7 +187,7 @@ function addUser(u_n, u_i, u_ca, u_co) {
   function checkEm(user) {
     return user.nombre === u_n;
   }
-
+  //CHECK del arreglo ya que está cargado con la información del backend
   console.log(Usuarios.find(checkEm) === undefined);
 
   if (!(Usuarios.find(checkEm) === undefined)) {
@@ -175,8 +195,31 @@ function addUser(u_n, u_i, u_ca, u_co) {
     Nuser = {};
     uid -= 5;
   } else {
+
+
+
+//Post en el backend
+    makeRequest('POST',dburl,null,Usuarios,
+    response =>{//cbok
+
+      response = Usuarios;
+      console.log('SUCCESS');
+      //userListToHTML(Usuarios);
+      console.log("Usuarios registrados correctamente");
+  
+      },reason => {//cberr
+      
+          console.log(reason);
+      
+      });
+
+/*Inutil después del backend
     Usuarios.push(Nuser);
-    userListToHTML(Usuarios);
+    userListToHTML(Usuarios);*/
+
+
+
+
   }
 
 
@@ -272,3 +315,26 @@ editabutto.onclick = function () { //Editar Equipos
 
   }
 };
+
+
+
+//BackEnd*************************************
+function makeRequest(sMethod, sURL, headers, body, cbOk, cbErr) {
+  let xhr = new XMLHttpRequest();
+  xhr.open(sMethod, sURL);
+  if(headers!=null) {
+      xhr.setRequestHeader('x-auth-user', headers);
+  }
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.send(JSON.stringify(body));
+  xhr.onload = () => {
+      if(xhr.status != 200) {
+          cbErr(xhr.status, xhr.statusText);
+      }
+      else {
+          console.log(JSON.parse(xhr.responseText)); // Significa que fue exitoso
+          cbOk(JSON.parse(xhr.responseText));
+      }
+  };
+}
+
