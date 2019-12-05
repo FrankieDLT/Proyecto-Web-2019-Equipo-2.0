@@ -6,7 +6,9 @@ const usersRouter = require('./routes/users');
 const productsRouter = require('./routes/products');
 const carritoRouter = require('./routes/carrito');
 const Token = require('./db/token');
-const User = require('./db/users')
+const User = require('./db/users');
+const cors = require('cors');
+app.use(cors());
 
 app.use(express.static(__dirname + '/FrontEnd/Registro y login (Publico)/'));
 app.use('/admin', express.static(__dirname + '/FrontEnd/Administrador/'));

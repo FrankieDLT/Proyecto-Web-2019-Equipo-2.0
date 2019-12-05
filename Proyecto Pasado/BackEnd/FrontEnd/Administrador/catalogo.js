@@ -35,9 +35,10 @@ let us3 = {
 Usuarios.push(us3);
 userListToHTML(Usuarios);
 //*********************************************************************************
+console.log(JSON.parse(localStorage.userToken).token)
+GETHTTP(Usuarios, 'http://localhost:3000/api/products',JSON.parse(localStorage.userToken).token, function (cb1) {
 
-GETHTTP(Usuarios, 'http://localhost:3000/api/products', function (cb1) {
-
+            console.log(Usuarios)
             Usuarios = cb1;
             console.log(Usuarios)
             
@@ -308,13 +309,14 @@ function makeRequest(sMethod, sURL, headers, body, cbOk, cbErr) {
 
 
 
-function GETHTTP(datos, url, cbOk, cbErr) {
+function GETHTTP(datos, url,token, cbOk, cbErr) {
   // 1. Crear XMLHttpRequest object
   let xhr = new XMLHttpRequest();
   // 2. Configurar:  PUT actualizar archivo
   xhr.open('GET', url);
   // 3. indicar tipo de datos JSON
   xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.setRequestHeader('x-auth-user', token);
   // 4. Enviar solicitud al servidor
   xhr.send([JSON.stringify(datos)]);
   // 5. Una vez recibida la respuesta del servidor
