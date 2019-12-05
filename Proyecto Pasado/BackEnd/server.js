@@ -12,6 +12,7 @@ app.use(express.static(__dirname + '/FrontEnd/Registro y login (Publico)/'));
 app.use('/admin', express.static(__dirname + '/FrontEnd/Administrador/'));
 app.use('/admin/deudores', express.static(__dirname + '/FrontEnd/Administrador/Deudores.html'));
 app.use('/home', express.static(__dirname + '/FrontEnd/Usuario/'));
+app.use('/home/carrito', express.static(__dirname + '/FrontEnd/Usuario/carrito.html'));
 
 app.use(function (req, res, next) {
 
