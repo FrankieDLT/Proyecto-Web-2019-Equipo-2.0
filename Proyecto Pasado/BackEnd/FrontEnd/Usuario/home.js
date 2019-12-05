@@ -41,7 +41,6 @@ function httpRequest(address, reqType, asyncProc) {
     return req;
 }
 
-
 /*$.ajax({
     url: url2,
     type: 'GET',
