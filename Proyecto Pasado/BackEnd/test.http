@@ -22,7 +22,7 @@ POST http://localhost:3000/api/login
 Content-Type: application/json
 
 {
-    "correo":"tasdf@tasdf.com",
+    "correo":"admin@iteso.mx",
     "password":"123456"
 }
 
@@ -38,7 +38,20 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3000/api/products
-x-auth-user: hIGn7uEuPb-5de6deff9694c431845c908e
+x-auth-user: Vz7ofruUIL-5de9889e2c0d0f3aca4f21ae
+
+###
+
+POST http://localhost:3000/api/products
+Content-Type: application/json
+x-auth-user: Vz7ofruUIL-5de9889e2c0d0f3aca4f21ae
+
+{
+    "imagen":"https://i.blogs.es/d2a441/xboxonex/450_1000.jpg",
+    "descripcion":"Consola de videojuegos",
+    "categoria":"Consola",
+    "stock":2
+}
 
 ###
 
@@ -48,6 +61,8 @@ x-auth-user: hIGn7uEuPb-5de6deff9694c431845c908e
 ###
 POST http://localhost:3000/api/carrito
 Content-Type: application/json
+x-auth-user: Vz7ofruUIL-5de9889e2c0d0f3aca4f21ae
+
 {
   "items": {
     "id": 3,

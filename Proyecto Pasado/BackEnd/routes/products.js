@@ -5,7 +5,6 @@ const Products = require('../db/products')
 
 router.route('/')
     .get((req, res) => {
-        let userId = req.userId;
         Products.find()
             .then(products => {
                 res.statusCode = 200;
@@ -17,9 +16,9 @@ router.route('/')
             });
     })
     .post((req, res) => {
-        if(req.admin) {        
+        if(req.body) {        
             res.statusCode = 200;
-            res.end();
+            res.send(req.body);
         }
         else {
             res.statusCode = 401;
