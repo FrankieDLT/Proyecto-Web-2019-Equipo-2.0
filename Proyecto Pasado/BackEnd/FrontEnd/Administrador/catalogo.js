@@ -7,7 +7,6 @@ let us1 = {
   "id": uid,
   "image": 'https://www.steren.com.mx/media/catalog/product/cache/b69086f136192bea7a4d681a8eaf533d/image/20506a711/bocinas-vintage-multimedia-para-pc-laptop-de-70wpmpo.jpg',
   "nombre": 'Bocinas',
-  "condicion": 'Excelente',
   "cantidad": '3'
 };
 
@@ -19,7 +18,6 @@ let us2 = {
   "id": uid,
   "image": 'https://www.radioshack.com.mx/medias/81228-1200ftw?context=cmFkaW9zaGFja3xyb290fDE4OTAxNHxpbWFnZS9naWZ8aGQ0L2g3MC84ODYwNTcwOTEwNzUwLmdpZnw0MGZlMjA1MGJkMjM3ZmE1OTdmODczYTBhNGY0ODdkMjk1NmI4MTM5MGE1NzdkZWQ4MGMzMzg1YzI5ODNiYjE5',
   "nombre": 'Cable Auxiliar',
-  "condicion": 'Bueno',
   "cantidad": '5'
 };
 
@@ -31,38 +29,31 @@ let us3 = {
   "id": uid,
   "image": 'https://images-na.ssl-images-amazon.com/images/I/51GEClpO2kL._SX466_.jpg',
   "nombre": 'Adaptador HDMI',
-  "condicion": 'Muy Bueno',
   "cantidad": '2'
 };
 
 Usuarios.push(us3);
-
+userListToHTML(Usuarios);
 //*********************************************************************************
 
-makeRequest('GET', dburl, 'YGqfOcZ9Me-5de6deff9694c431845c908e', Usuarios,
-response =>{//cbok
+GETHTTP(Usuarios, 'http://localhost:3000/api/products', function (cb1) {
 
-    Usuarios = response;
-    console.log('SUCCESS');
-    //userListToHTML(Usuarios);
-    console.log("Usuarios registrados correctamente");
+            Usuarios = cb1;
+            console.log(Usuarios)
+            
+            userListToHTML(Usuarios);
 
-},reason => {//cberr
-
-    console.log(reason);
-
-});
-
+        }, function (cb2) {
+            alert('ERROR');
+        });
 
 /********************* */
 
-userListToHTML(Usuarios);
 
 
 let Modal = document.getElementById('registro');
 let valid = Modal.querySelectorAll(':invalid'); //Se define con su valor inical
 let Nombre = document.getElementById('nam');
-let Condicion = document.getElementById('cond');
 let Cantidad = document.getElementById('cantd');
 let Imagen = document.getElementById('imm');
 
@@ -99,7 +90,6 @@ let modaedit = document.getElementById('edicion');
 
 let oldnam = document.getElementById('oldnam');
 let newnam = document.getElementById('newnam');
-let newcond = document.getElementById('newcond');
 let newcantd = document.getElementById('newcantd');
 let newimm = document.getElementById('newimm');
 
@@ -130,11 +120,10 @@ function userToHTML(user) {
   */
   let sResultado = `<table border ="1" width ="100%">
       <tr>
-          <td width="20%">${user.id}</td>
-          <td width="20%" align="center"><img src="${user.image}"></td>  
-          <td width="20%">${user.nombre}</td>       
-          <td width="20%">${user.cantidad}</td>
-          <td width="20%">${user.condicion}</td>
+          <td width="25%">${user.id}</td>
+          <td width="25%" align="center"><img src="${user.image}"></td>  
+          <td width="25%">${user.nombre}</td>       
+          <td width="25%">${user.cantidad}</td>
         </tr>
     </table>`;
 
@@ -150,12 +139,11 @@ function userListToHTML(lisUs) {
 } //FIN De userListToHTML******************************************************
 
 
-function addUser(u_n, u_i, u_ca, u_co) {
+function addUser(u_n, u_i, u_ca) {
   /*Notes:
    ${user.image}
    ${user.nombre}
    ${user.cantidad}
-   ${user.condicion}
    */
   uid += 5; //Se incrementa el User id que es numerico para que no se repitan
 
@@ -165,15 +153,6 @@ function addUser(u_n, u_i, u_ca, u_co) {
   Nuser.image = u_i;
   Nuser.nombre = u_n;
 
-  if (u_co.trim().toLowerCase() === 'excelente' || 
-      u_co.trim().toLowerCase() === 'muy bueno' ||
-      u_co.trim().toLowerCase() === 'bueno' ||
-      u_co.trim().toLowerCase() === 'dañado' ) {
-          Nuser.condicion = u_co;
-          }else{
-          Nuser.condicion = 'Dañado';
-          alert('CONDICION DEBE SER COMO SE MUESTRA EN EL TEXTO');
-          }
 
   let finaca = 0;
   if (u_ca > -1) {
@@ -231,11 +210,10 @@ bttnRegistrar.onclick = function () {
   let obj = {
     nombre: Nombre.value,
     image: Imagen.value,
-    condicion: Condicion.value,
     cantidad: Cantidad.value
   }
 
-  addUser(obj.nombre.trim(), obj.image.trim(), obj.cantidad.trim(), obj.condicion.trim());
+  addUser(obj.nombre.trim(), obj.image.trim(), obj.cantidad.trim());
 
 };
 
@@ -289,16 +267,6 @@ editabutto.onclick = function () { //Editar Equipos
       
       Usuarios[ind].image = newimm.value.trim();
 
-      if (newcond.value.trim().toLowerCase() === 'excelente' || 
-          newcond.value.trim().toLowerCase() === 'muy bueno' ||
-          newcond.value.trim().toLowerCase() === 'bueno' ||
-          newcond.value.trim().toLowerCase() === 'dañado' ) {
-
-        Usuarios[ind].condicion = newcond.value.trim();
-      } else {
-        Usuarios[ind].condicion = 'Dañado';
-        alert('CONDICION DEBE SER COMO SE MUESTRA EN EL TEXTO');
-      }
 
 
       let finaca = 0;
@@ -334,6 +302,34 @@ function makeRequest(sMethod, sURL, headers, body, cbOk, cbErr) {
       else {
           console.log(JSON.parse(xhr.responseText)); // Significa que fue exitoso
           cbOk(JSON.parse(xhr.responseText));
+      }
+  };
+}
+
+
+
+function GETHTTP(datos, url, cbOk, cbErr) {
+  // 1. Crear XMLHttpRequest object
+  let xhr = new XMLHttpRequest();
+  // 2. Configurar:  PUT actualizar archivo
+  xhr.open('GET', url);
+  // 3. indicar tipo de datos JSON
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  // 4. Enviar solicitud al servidor
+  xhr.send([JSON.stringify(datos)]);
+  // 5. Una vez recibida la respuesta del servidor
+  xhr.onload = function () {
+      console.log(xhr.status);
+      if (xhr.status != 200 && xhr.status != 201) { // analizar el estatus de la respuesta HTTP
+          // Ocurrió un error
+          cbErr(xhr.status + ': ' + xhr.statusText);
+      } else {
+          if (xhr.status != 201) {
+              let datos = JSON.parse(xhr.responseText);
+              console.log(datos); // Significa que fue exitoso
+              cbOk(datos);
+          }
+
       }
   };
 }
