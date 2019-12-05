@@ -1,12 +1,8 @@
 "use strict"
-//No id
-//let url = "https://api.myjson.com/bins/dqo4m"
-
-//With id
-//let url = "https://api.myjson.com/bins/1cwzea"
-
 //12 obj
 let url = "https://api.myjson.com/bins/1d05le";
+
+let url2 = 'http://localhost:3000/api/products'
 
 var cart = {
     items: []
@@ -45,6 +41,24 @@ function httpRequest(address, reqType, asyncProc) {
     return req;
 }
 
+$.ajax({
+    url: url2,
+    type: 'GET',
+    //accepts: "application/json",
+    //beforeSend: function(xhr){xhr.setRequestHeader('x-auth-user', 'hIGn7uEuPb-5de6deff9694c431845c908e');},
+    headers: {
+        'Access-Control-Allow-Origin': '*',
+        'x-auth-user':'hIGn7uEuPb-5de6deff9694c431845c908e',
+    },
+    dataType:JSON,
+    success: function(result){ 
+        console.log("resultado:",result)
+    },
+    error: function(error) {
+        console.log(`Error ${"error ", error}`)
+    }
+})
+
 
 function loadJSON(url, cbOk = callback_ok, cbErr) {
 
@@ -53,6 +67,8 @@ function loadJSON(url, cbOk = callback_ok, cbErr) {
 
     // 2. Configurar: PUT actualizar archivo
     xhr.open('GET', url);
+    //xhr.setRequestHeader("Content-Type", "application/json"); 
+    //xhr.setRequestHeader("x-auth-user", 'hIGn7uEuPb-5de6deff9694c431845c908e');
 
     // 4. Enviar solicitud
     xhr.send();
