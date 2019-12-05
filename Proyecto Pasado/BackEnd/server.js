@@ -8,6 +8,9 @@ const carritoRouter = require('./routes/carrito');
 const Token = require('./db/token');
 const User = require('./db/users')
 
+app.use(express.static(__dirname + '/FrontEnd/Registro y login (Publico)/'));
+app.use('/admin', express.static(__dirname + '/FrontEnd/Administrador/'));
+app.use('/home', express.static(__dirname + '/FrontEnd/Usuario/'));
 
 app.use(function (req, res, next) {
 
