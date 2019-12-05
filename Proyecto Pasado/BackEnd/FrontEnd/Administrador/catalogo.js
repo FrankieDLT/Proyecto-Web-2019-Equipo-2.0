@@ -38,7 +38,7 @@ userListToHTML(Usuarios);
 console.log(JSON.parse(localStorage.userToken).token)
 GETHTTP(Usuarios, 'http://localhost:3000/api/products',JSON.parse(localStorage.userToken).token, function (cb1) {
 
-            console.log(Usuarios)
+            
             Usuarios = cb1;
             console.log(Usuarios)
             
@@ -49,7 +49,6 @@ GETHTTP(Usuarios, 'http://localhost:3000/api/products',JSON.parse(localStorage.u
         });
 
 /********************* */
-
 
 
 let Modal = document.getElementById('registro');
@@ -114,17 +113,16 @@ modaedit.addEventListener("change", function (event) {
 
 function userToHTML(user) {
   /*Notes:
-  ${user.image}
-  ${user.nombre}
-  ${user.cantidad}
-  ${user.condicion}
+  ${user.image} -> ${user.imagen}
+  ${user.nombre} -> ${user.descripcion}
+  ${user.cantidad} -> ${user.stock}
   */
   let sResultado = `<table border ="1" width ="100%">
       <tr>
-          <td width="25%">${user.id}</td>
-          <td width="25%" align="center"><img src="${user.image}"></td>  
-          <td width="25%">${user.nombre}</td>       
-          <td width="25%">${user.cantidad}</td>
+          <td width="10%" align="center">${user.id}</td>
+          <td width="30%" align="center"><img src="${user.imagen}"></td>  
+          <td width="30%" align="center">${user.descripcion}</td>       
+          <td width="30%" align="center">${user.stock}</td>
         </tr>
     </table>`;
 

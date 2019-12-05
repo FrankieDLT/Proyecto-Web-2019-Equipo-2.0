@@ -64,19 +64,36 @@ deus.push(deu5);
 
 userListToHTML(deus);
 
+//*******************************************************************/
+
+console.log(JSON.parse(localStorage.userToken).token)
+GETHTTP(deus, 'http://localhost:3000/api/users',JSON.parse(localStorage.userToken).token, function (cb1) {
+
+            
+            deus = cb1;
+            console.log(deus)
+            
+            userListToHTML(deus);
+
+        }, function (cb2) {
+            alert('ERROR');
+        });
+
+//*******************************************************************/
+
 function userToHTML(user) {
     /*Notes:
-    ${user.image}
+    ${user.url}
     ${user.nombre}
-    ${user.cantidad}
+    ${user.correo}
     ${user.condicion}
     */
     let sResultado = //<table border ="2" width ="100%">
     `<tr>
-        <td width="20%" align="center"><img src="${user.Imagen}"></td>
-        <td width="20%">${user.Nombre}</td>
-        <td width="20%">${user.Apellidos}</td>
-        <td width="20%">${user.Email}</td>
+        <td width="20%" align="center"><img src="${user.url}"></td>
+        <td width="20%">${user.nombre}</td>
+        <td width="20%">${user.apellido}</td>
+        <td width="20%">${user.correo}</td>
         <td width="20%">${user.Equipo_Prestado}</td>
     </tr>`;
     //</tr>  </table>
@@ -118,3 +135,30 @@ function userToHTML(user) {
         butbus.disabled = true;
     }
   });
+
+  function GETHTTP(datos, url,token, cbOk, cbErr) {
+    // 1. Crear XMLHttpRequest object
+    let xhr = new XMLHttpRequest();
+    // 2. Configurar:  PUT actualizar archivo
+    xhr.open('GET', url);
+    // 3. indicar tipo de datos JSON
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader('x-auth-user', token);
+    // 4. Enviar solicitud al servidor
+    xhr.send([JSON.stringify(datos)]);
+    // 5. Una vez recibida la respuesta del servidor
+    xhr.onload = function () {
+        console.log(xhr.status);
+        if (xhr.status != 200 && xhr.status != 201) { // analizar el estatus de la respuesta HTTP
+            // Ocurrió un error
+            cbErr(xhr.status + ': ' + xhr.statusText);
+        } else {
+            if (xhr.status != 201) {
+                let datos = JSON.parse(xhr.responseText);
+                console.log(datos); // Significa que fue exitoso
+                cbOk(datos);
+            }
+  
+        }
+    };
+  }
