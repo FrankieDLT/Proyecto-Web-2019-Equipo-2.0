@@ -41,7 +41,7 @@ function httpRequest(address, reqType, asyncProc) {
     return req;
 }
 
-$.ajax({
+/*$.ajax({
     url: url2,
     type: 'GET',
     //accepts: "application/json",
@@ -57,7 +57,7 @@ $.ajax({
     error: function(error) {
         console.log(`Error ${"error ", error}`)
     }
-})
+})*/
 
 
 function loadJSON(url, cbOk = callback_ok, cbErr) {
@@ -68,7 +68,7 @@ function loadJSON(url, cbOk = callback_ok, cbErr) {
     // 2. Configurar: PUT actualizar archivo
     xhr.open('GET', url);
     //xhr.setRequestHeader("Content-Type", "application/json"); 
-    //xhr.setRequestHeader("x-auth-user", 'hIGn7uEuPb-5de6deff9694c431845c908e');
+    xhr.setRequestHeader("x-auth-user", JSON.parse(localStorage.userToken).token);
 
     // 4. Enviar solicitud
     xhr.send();
@@ -97,7 +97,7 @@ let productos = [];
 
 function initData() {
 
-    loadJSON(url,
+    loadJSON(url2,
         cbOk => {
             productos = cbOk;
             console.log(productos);
