@@ -14,14 +14,6 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3000/api/products
-
-###
-
-
-GET http://localhost:3000/api/users
-
-###
 
 POST http://localhost:3000/api/login
 Content-Type: application/json
@@ -36,8 +28,7 @@ POST http://localhost:3000/api/users/info
 Content-Type: application/json
 
 {
-    "correo":"admin@iteso.mx",
-    "password":"123456"
+    "correo":"admin@iteso.mx"
 }
 
 ###
@@ -48,16 +39,6 @@ Content-Type: application/json
 {
     "usuario":"5de9889e2c0d0f3aca4f21ae"
 }
-
-###
-POST http://localhost:3000/api/productos/info
-Content-Type: application/json
-x-auth-user: vcbv17LPeq-5de9947e3d113a3e9443d46c
-
-{
-    "_id":"5de96d6612e6133d1ebea4aa"
-}
-
 
 ###
 
@@ -78,6 +59,15 @@ x-auth-user: YnIENCQykW-5de9889e2c0d0f3aca4f21ae
 }
 
 ###
+POST http://localhost:3000/api/productos/info
+Content-Type: application/json
+x-auth-user: vcbv17LPeq-5de9947e3d113a3e9443d46c
+
+{
+    "_id":"5de96d6612e6133d1ebea4aa"
+}
+###
+
 PUT http://localhost:3000/api/products
 Content-Type: application/json
 x-auth-user: eDjbIqIHXLC-5de9889e2c0d0f3aca4f21a
@@ -111,16 +101,76 @@ Content-Type: application/json
 
 { 
   "usuario": "5de9947e3d113a3e9443d46c",
-  "items": [{
+  "items": {
     "imagen": "https://www.steren.com.mx/media/catalog/product/cache/8a4fdc7d203276e60b54a94f4f1e185b/m/g/mg-260_x1.jpg",
     "descripcion": "Megafono",
     "categoria": "Audio",
     "stock": 3
-  },
-  {
-    "imagen": "https://www.steren.com.mx/media/catalog/product/cache/8a4fdc7d203276e60b54a94f4f1e185b/m/g/mg-260_x1.jpg",
-    "descripcion": "Megafono",
-    "categoria": "Audio",
-    "stock": 3
-  }]
+  }
 }
+
+###
+
+GET http://localhost:3000/api/pedidos
+x-auth-user: ZCI9JhR1wu-5de9889e2c0d0f3aca4f21ae
+###
+
+POST http://localhost:3000/api/pedidos
+Content-Type: application/json
+x-auth-user: ZCI9JhR1wu-5de9889e2c0d0f3aca4f21ae
+
+{ 
+    "correo": "admin@iteso.mx",
+    "fecha": "2019-12-5",
+    "fechaEntrega": "2019-12-10",
+    "status": "No entregado",
+    "items": {
+        "imagen": "https://www.steren.com.mx/media/catalog/product/cache/8a4fdc7d203276e60b54a94f4f1e185b/m/g/mg-260_x1.jpg",
+        "descripcion": "Megafono",
+        "categoria": "Audio",
+        "stock": 3
+    }
+}
+
+###
+POST http://localhost:3000/api/pedidos/info
+Content-Type: application/json
+x-auth-user: ZCI9JhR1wu-5de9889e2c0d0f3aca4f21ae
+
+{
+    "correo":"admin@iteso.mx"
+}
+
+###
+
+PUT http://localhost:3000/api/pedidos
+Content-Type: application/json
+x-auth-user: ZCI9JhR1wu-5de9889e2c0d0f3aca4f21ae
+
+{ 
+    "_id": "5de9f79aca37844c38c2cb00",
+    "correo": "admin@iteso.mx",
+    "fecha": "2019-12-5",
+    "fechaEntrega": "2019-12-6",
+    "status": "Entregado a usuario",
+    "items": {
+        "imagen": "https://www.steren.com.mx/media/catalog/product/cache/8a4fdc7d203276e60b54a94f4f1e185b/m/g/mg-260_x1.jpg",
+        "descripcion": "Megafono",
+        "categoria": "Audio",
+        "stock": 3
+    }
+}
+
+###
+
+DELETE  http://localhost:3000/api/pedidos
+Content-Type: application/json
+x-auth-user: ZCI9JhR1wu-5de9889e2c0d0f3aca4f21ae
+
+{ 
+  "_id": "5de9f72dca37844c38c2caff"
+}
+
+###
+
+

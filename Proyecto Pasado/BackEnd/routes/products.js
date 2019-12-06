@@ -15,7 +15,7 @@ router.route('/')
                 res.end();
             });
     })
-    .post(async function(req, res){
+    .post(async function (req, res) {
         console.log(req.body);
         if (req.body) {
             let userDocument = Products(req.body);
@@ -28,11 +28,13 @@ router.route('/')
             res.end();
         }
     })
-    .put(async function(req, res){
+    .put(async function (req, res) {
         console.log(req.body);
-        
+
         if (req.body) {
-            let produ = await Products.findOne({_id: req.body._id});
+            let produ = await Products.findOne({
+                _id: req.body._id
+            });
 
             produ.imagen = req.body.imagen;
             produ.categoria = req.body.categoria;
@@ -43,24 +45,30 @@ router.route('/')
 
             res.statusCode = 200;
             res.send(req.body);
-            
+
         } else {
             res.statusCode = 401;
             res.end();
         }
     })
-    
-    .delete(async function(req, res){
+
+    .delete(async function (req, res) {
         console.log(req.body);
-        
+
         if (req.body) {
             let produ = await Products.findOneAndDelete({_id: req.body._id});
-            
-            await produ.save();
 
-            res.statusCode = 200;
-            res.send(req.body);
-            
+            if (produ) {
+                await produ.save();
+
+                res.statusCode = 200;
+                res.send(req.body);
+            } else {
+                res.statusCode = 401;
+                res.end();
+            }
+
+
         } else {
             res.statusCode = 401;
             res.end();

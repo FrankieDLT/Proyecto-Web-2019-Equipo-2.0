@@ -5,10 +5,12 @@ const app = express();
 const usersRouter = require('./routes/users');
 const productsRouter = require('./routes/products');
 const carritoRouter = require('./routes/carrito');
+const pedidosRouter = require('./routes/pedidos');
 const Token = require('./db/token');
 const User = require('./db/users');
 const Carrito = require('./db/carrito');
 const Productos = require('./db/products');
+const Pedidos = require('./db/pedidos');
 const cors = require('cors');
 app.use(cors());
 
@@ -29,6 +31,9 @@ app.use('/api/users', usersRouter);
 
 app.use('/api/products', authMiddleware);
 app.use('/api/products', productsRouter);
+
+app.use('/api/pedidos', authMiddleware);
+app.use('/api/pedidos', pedidosRouter);
 
 app.use('/api/carrito', carritoRouter);
 //app.use('/api/carrito', authMiddleware);
@@ -64,7 +69,7 @@ app.post('/api/login', function (req, res) {
 
 app.post('/api/users/info', function (req, res) {
     // Programar aquí lógica de token
-    User.find({correo: req.body.correo, password: req.body.password})
+    User.find({correo: req.body.correo})
         .then(async users => {
             if(users.length > 0) {
                 let user = users[0];
@@ -74,6 +79,29 @@ app.post('/api/users/info', function (req, res) {
             }
             else {
                 res.statusCode = 400;
+                res.end();
+            }
+        })
+        .catch(reason => {
+            res.statusCode = 500;
+            res.end();
+        });
+    
+});
+
+app.post('/api/pedidos/info', function (req, res) {
+    // Programar aquí lógica de token
+    Pedidos.find({correo: req.body.correo})
+        .then(async pedidos => {
+            if(pedidos.length > 0) {
+                let user = pedidos[0];
+
+                res.statusCode = 200;
+                res.send(JSON.stringify(pedidos));
+            }
+            else {
+                res.statusCode = 400;
+                res.send("No tiene pedidos");
                 res.end();
             }
         })
@@ -140,7 +168,7 @@ async function authMiddleware(req, res, next) {
         if(token) {
             req.userId = token.userId;
             let user = await User.findById(token.userId);
-            req.esAdmin = user.esAdmin;
+            req.admin = user.admin;
             next();
         }
         else {
