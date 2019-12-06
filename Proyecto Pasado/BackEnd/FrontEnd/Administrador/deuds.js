@@ -121,6 +121,10 @@ function userToHTML(user) {
     } else {
     //Inutilizado por backend:    deus.splice(ind, 1);
     deus[ind].block = false;
+    deus[ind].nombre = 'Juanito'
+    deus[ind].apellido = 'Jhones'
+    //deus[ind].nombre = 'Paco'
+    //deus[ind].apellido = 'De La Mar'
     PUTHTTP(deus[ind], 'http://localhost:3000/api/users',JSON.parse(localStorage.userToken).token,function (cb1) {
       
         userListToHTML(deus);
