@@ -253,11 +253,11 @@ sielibttn.onclick = function () { //Eliminar Equipos
 
 };
 
-editabutto.onclick = function () { //Editar Equipos
+editabutto.onclick = function () { //Editar Equipos*****************************
   event.preventDefault();
 
-  let ind = Usuarios.findIndex(obj => obj.nombre == oldnam.value.trim());
-  let ind2 = Usuarios.findIndex(obj => obj.nombre == newnam.value.trim());
+  let ind = Usuarios.findIndex(obj => obj.descripcion == oldnam.value.trim());
+  let ind2 = Usuarios.findIndex(obj => obj.descripcion == newnam.value.trim());
 
     console.log("break");
   console.log(Usuarios[ind]);
@@ -278,28 +278,33 @@ editabutto.onclick = function () { //Editar Equipos
     
     if (ind2 != -1 && equ) {
       alert("Este nombre de equipo ya está en uso, el nombre: " + newnam.value.trim());
-      Usuarios[ind].nombre = oldnam.value.trim();
+      Usuarios[ind].descripcion = oldnam.value.trim();
       
     } else {
-      Usuarios[ind].nombre = newnam.value.trim();}
+      Usuarios[ind].descripcion = newnam.value.trim();}
 
     
       
-      Usuarios[ind].image = newimm.value.trim();
+      Usuarios[ind].imagen = newimm.value.trim();
 
 
 
       let finaca = 0;
       if (newcantd.value > -1) {
 
-        Usuarios[ind].cantidad = newcantd.value;
+        Usuarios[ind].stock = newcantd.value;
       } else {
-        Usuarios[ind].cantidad = finaca;
+        Usuarios[ind].stock = finaca;
         alert('CANTIDAD INVALIDA');
       }
 
+
+      //FUNCION DE PUT
+
+
+      
       userListToHTML(Usuarios);
-    
+      //FUNCION DE PUT
 
   }
 };
