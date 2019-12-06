@@ -8,6 +8,7 @@ const carritoRouter = require('./routes/carrito');
 const Token = require('./db/token');
 const User = require('./db/users');
 const Carrito = require('./db/carrito');
+const Productos = require('./db/products');
 const cors = require('cors');
 app.use(cors());
 
@@ -92,6 +93,26 @@ app.post('/api/carrito/info', function (req, res) {
 
                 res.statusCode = 200;
                 res.send(JSON.stringify(items2));
+            
+          
+        })
+        .catch(reason => {
+            res.statusCode = 500;
+            res.end();
+        });
+    
+});
+
+app.post('/api/productos/info', function (req, res) {
+    console.log ("LLegue a producto info")
+    // Programar aquí lógica de token
+    Productos.find({_id: req.body._id})
+        .then(async pro => {
+           
+                let pro2 = pro;
+
+                res.statusCode = 200;
+                res.send(JSON.stringify(pro2));
             
           
         })

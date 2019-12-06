@@ -8,6 +8,10 @@ var cart = {
     items: []
 };
 
+let idProducto = {
+    _id: ""
+}
+
 
 //limpiar localStorage
 //localStorage.setItem('cart', JSON.stringify(cart));
@@ -22,7 +26,7 @@ let cbOk_1 = (data) => {
 
     console.log("productos", productos);
     productListToHTML(productos);
-    console.log(productos[0].cantidad)
+    console.log(productos[0].cantidad);
 };
 
 function httpRequest(address, reqType, asyncProc) {
@@ -96,6 +100,7 @@ function initData() {
 initData();
 
 function productToHTML(productos) {
+    console.log(productos._id);
     let sResultado = `<div class="column">
     <div class="card" style="width: 15rem;">
         <img src="${productos.imagen}" class="card-img-top" alt="...">
@@ -105,7 +110,7 @@ function productToHTML(productos) {
                 <p class="card-text">Stock: ${productos.stock}</p>
                 <p class="card-text">Disponible: Ahora</p>
 
-            <a href="#" class="btn btn-primary" onclick="agregarCarrito(${productos.id})">Agregar al carrito</a>
+            <a href="#" class="btn btn-primary" onclick="agregarCarrito('${productos._id}')">Agregar al carrito</a>
         </div>
     </div>
 </div>`;
@@ -128,37 +133,76 @@ function productListToHTML(productos) {
 
 
 function agregarCarrito(id) {
-    let index = cart.items.filter(function (item) {
-        return item.id === id
+   
+    /*let index = cart.items.filter(function (item) {
+        console.log("llegue carrito: " + id + " " + item.id);
+        return item._id === id
     }).length;
-    if (index === 0) {
-        let producto = {
-            imagen: productos[id].imagen,
-            descripcion: productos[id].descripcion,
-            categoria: productos[id].categoria,
-            id: id,
-            cantidad: 1,
-            stock: productos[id].stock
-        }
-        cart.items.push(producto);
-        localStorage.setItem('cart', JSON.stringify(cart));
-        alert("Tu producto se ha añadido al carrito!");
+*/
 
-    } else {
-        alert("Este producto ya esta en tu carrito!");
+idProducto._id = id;
 
+productosInfoHTTP(idProducto, 'http://localhost:3000/api/productos/info', JSON.parse(localStorage.userToken).token, function (cb1) {
+    let productosI = cb1[0];
+    console.log(productosI.imagen);
+    let producto = {
+        imagen: productosI.imagen,
+        descripcion: productosI.descripcion,
+        categoria: productosI.categoria,
+        cantidad: 1,
+        stock: productosI.stock
     }
+
+    console.log(producto);
+    cart.items.push(producto);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert("Tu producto se ha añadido al carrito!");
+
+    }, function (cb2) {
+        alert('tum maama ');
+    });
+    //if (index === 0) {
+        
+
+    //} else {
+       // alert("Este producto ya esta en tu carrito!");
+
+    //}
 
 
 }
 
-/*
-let tdId = document.createElement('td');
-let tdDescripcion = document.createElement('td');
-let tdImagen = document.createElement('td');
-let tdCategoria = document.createElement('td');
-let tdCantidad = document.createElement('td');
+///////////////////////////HTTP////////////////////////////
 
-let newRow = document.createElement('tr');
+//Esta funcion manda correo y contraseña, verifica si el usuario existe o la contraseña es corecta.
+function productosInfoHTTP(datos, url, token, cbOk, cbErr) {
+    // 1. Crear XMLHttpRequest object
+    let xhr = new XMLHttpRequest();
+    // 2. Configurar:  PUT actualizar archivo
+    xhr.open('POST', url);
+    // 3. indicar tipo de datos JSON
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    console.log( " chinga tu madre ", JSON.parse(localStorage.userToken).token);
+    xhr.setRequestHeader('x-auth-user', token);
+    
+    // 4. Enviar solicitud al servidor
+    xhr.send(JSON.stringify(datos));
+    // 5. Una vez recibida la respuesta del servidor
+    xhr.onload = function () {
+        console.log(xhr.status);
+        if (xhr.status != 200 && xhr.status != 201) { // analizar el estatus de la respuesta HTTP
+            // Ocurrió un error
+            cbErr(xhr.status + ': ' + xhr.statusText);
+        } else {
+        
+                let datos = JSON.parse(xhr.responseText);
+                console.log(datos); // Significa que fue exitoso
+                cbOk(datos);
+           
 
-*/
+        }
+    };
+}
+
+
+//-------------------------------------------------------------------------------------
