@@ -2,6 +2,10 @@ var cart = {
     items: []
 };
 
+let productoList = {
+    items: []
+}
+
  url = 'http://localhost:5000/api/carrito'
 //limpiar localStorage
  //localStorage.setItem('cart', JSON.stringify(cart));

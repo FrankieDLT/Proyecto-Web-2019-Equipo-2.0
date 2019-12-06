@@ -111,10 +111,16 @@ Content-Type: application/json
 
 { 
   "usuario": "5de9947e3d113a3e9443d46c",
-  "items": {
+  "items": [{
     "imagen": "https://www.steren.com.mx/media/catalog/product/cache/8a4fdc7d203276e60b54a94f4f1e185b/m/g/mg-260_x1.jpg",
     "descripcion": "Megafono",
     "categoria": "Audio",
     "stock": 3
-  }
+  },
+  {
+    "imagen": "https://www.steren.com.mx/media/catalog/product/cache/8a4fdc7d203276e60b54a94f4f1e185b/m/g/mg-260_x1.jpg",
+    "descripcion": "Megafono",
+    "categoria": "Audio",
+    "stock": 3
+  }]
 }
