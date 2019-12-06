@@ -144,7 +144,6 @@ btnSubmit.onclick = function (event) {
     registerUser.url = form[8].value;
     console.log(registerUser);
 
-    localStorage.userDetalle = JSON.stringify(registerUser);
 
     loginAndRegisterHTTP(registerUser, 'http://localhost:3000/api/users', function (cb1) {
         alert('Usuario creado');
@@ -202,6 +201,8 @@ btnLogin.onclick = function (event) {
     }, function (cb2) {
         alert('Nombre de usuario o contraseña incorrecta');
     });
+
+    localStorage.userDetalle = JSON.stringify(loginUser);
 
 }
 
