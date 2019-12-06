@@ -69,7 +69,7 @@ router.route('/')
             usu.block = req.body.block ;
             usu.carrito = req.body.carrito ;
 
-            await produ.save();
+            await usu.save();
 
             res.statusCode = 200;
             res.send(req.body);
