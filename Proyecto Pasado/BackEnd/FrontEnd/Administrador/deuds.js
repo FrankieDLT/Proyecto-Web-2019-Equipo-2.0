@@ -94,7 +94,7 @@ function userToHTML(user) {
         <td width="20%">${user.nombre}</td>
         <td width="20%">${user.apellido}</td>
         <td width="20%">${user.correo}</td>
-        <td width="20%" align="center"><button><a href="">√</a></button></td>
+        <td width="20%" align="center"><button><a href="../admin/detallePedidos">√</a></button></td>
     </tr>`;
     //</tr>  </table>
   
@@ -109,8 +109,8 @@ function userToHTML(user) {
   
   } //FIN De userListToHTML******************************************************
   
-  
-  butbus.onclick = function () { //Liberar Equipos
+  //Liberar Equipos*****************************************************************
+  butbus.onclick = function () { 
     event.preventDefault();
   
     let ind = deus.findIndex(obj => obj.Email === Namel.value.trim());
@@ -125,6 +125,7 @@ function userToHTML(user) {
     }
   
   };
+  //FIN de liberar equipos******************************************************
 
   butbus.disabled = true;
 
@@ -159,6 +160,31 @@ function userToHTML(user) {
                 cbOk(datos);
             }
   
+        }
+    };
+  }
+
+  function PUTHTTP(datos, url,token, cbOk, cbErr) {
+    // 1. Crear XMLHttpRequest object
+    let xhr = new XMLHttpRequest();
+    // 2. Configurar:  PUT actualizar archivo
+    xhr.open('PUT', url);
+    // 3. indicar tipo de datos JSON
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader('x-auth-user', token);
+    // 4. Enviar solicitud al servidor
+    xhr.send([JSON.stringify(datos)]);
+    // 5. Una vez recibida la respuesta del servidor
+    xhr.onload = function () {
+        console.log(xhr.status);
+        if (xhr.status != 200 && xhr.status != 201) { // analizar el estatus de la respuesta HTTP
+            // Ocurrió un error
+            console.log(xhr.status + ': ' + xhr.statusText);
+            cbErr(xhr.status + ': ' + xhr.statusText);
+        } else {   
+                let datos = JSON.parse(xhr.responseText);
+                console.log(datos); // Significa que fue exitoso
+                cbOk(datos);
         }
     };
   }

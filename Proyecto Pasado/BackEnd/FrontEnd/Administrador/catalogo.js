@@ -311,12 +311,12 @@ editabutto.onclick = function () {
 
       PUTHTTP(Usuarios[ind], 'http://localhost:3000/api/products',JSON.parse(localStorage.userToken).token,function (cb1) {
     
-        alert('SUCCESS');
+        
       
         userListToHTML(Usuarios);
       
       }, function (cb2) {
-        alert('ERROR');
+        alert(cb2);
         console.log(JSON.parse(localStorage.userToken).token);
       
       });
