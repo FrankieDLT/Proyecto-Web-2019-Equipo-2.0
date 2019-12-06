@@ -15,12 +15,15 @@ router.route('/')
                 res.end();
             });
     })
-    .post((req, res) => {
-        if(req.body) {        
+    .post(async function(req, res){
+        console.log(req.body);
+        if (req.body) {
+            let userDocument = Products(req.body);
+            await userDocument.save();
+
             res.statusCode = 200;
-            res.send(req.body);
-        }
-        else {
+            res.send(userDocument);
+        } else {
             res.statusCode = 401;
             res.end();
         }

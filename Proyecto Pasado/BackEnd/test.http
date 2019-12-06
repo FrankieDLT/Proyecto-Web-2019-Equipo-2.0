@@ -44,11 +44,11 @@ x-auth-user: Vz7ofruUIL-5de9889e2c0d0f3aca4f21ae
 
 POST http://localhost:3000/api/products
 Content-Type: application/json
-x-auth-user: Vz7ofruUIL-5de9889e2c0d0f3aca4f21ae
+x-auth-user: Apz8hmMyDb-5de9889e2c0d0f3aca4f21ae
 
 {
     "imagen":"https://i.blogs.es/d2a441/xboxonex/450_1000.jpg",
-    "descripcion":"Consola de videojuegos",
+    "descripcion":"Consola Xbox",
     "categoria":"Consola",
     "stock":2
 }
