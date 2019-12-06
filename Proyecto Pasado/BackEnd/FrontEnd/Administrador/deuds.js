@@ -113,15 +113,24 @@ function userToHTML(user) {
   butbus.onclick = function () { 
     event.preventDefault();
   
-    let ind = deus.findIndex(obj => obj.Email === Namel.value.trim());
+    let ind = deus.findIndex(obj => obj.correo === Namel.value.trim());
     console.log(deus[ind]);
   
     if (ind == -1) {
       alert('Sin Para Equipo Liberar');
     } else {
-        deus.splice(ind, 1);
-      userListToHTML(deus);
-  
+    //Inutilizado por backend:    deus.splice(ind, 1);
+    deus[ind].block = false;
+    PUTHTTP(deus[ind], 'http://localhost:3000/api/users',JSON.parse(localStorage.userToken).token,function (cb1) {
+    
+        userListToHTML(deus);
+      
+      }, function (cb2) {
+        alert(cb2);
+        //console.log(JSON.parse(localStorage.userToken).token);
+      
+      });
+
     }
   
   };
