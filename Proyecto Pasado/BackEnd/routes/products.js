@@ -27,6 +27,27 @@ router.route('/')
             res.statusCode = 401;
             res.end();
         }
+    })
+    .put(async function(req, res){
+        console.log(req.body);
+        
+        if (req.body) {
+            let produ = await Products.findOne({_id: req.body._id});
+
+            produ.imagen = req.body.imagen;
+            produ.categoria = req.body.categoria;
+            produ.descripcion = req.body.descripcion;
+            produ.stock = req.body.stock;
+
+            await produ.save();
+
+            res.statusCode = 200;
+            res.send(req.body);
+            
+        } else {
+            res.statusCode = 401;
+            res.end();
+        }
     });
 
 module.exports = router;
