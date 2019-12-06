@@ -50,6 +50,34 @@ router.route('/')
                 }
             }
         }
+    })
+    
+    .put(async function(req, res){
+        console.log(req.body);
+        
+        if (req.body) {
+            let usu = await Users.findOne({_id: req.body._id});
+
+            usu.nombre = req.body.nombre;
+            usu.apellido = req.body.apellido;
+            usu.correo = req.body.correo;
+            usu.url = req.body.url;
+            usu.sexo = req.body.sexo ;
+            usu.fecha = req.body.fecha ;
+            usu.password = req.body.password ;
+            usu.admin = req.body.admin ;
+            usu.block = req.body.block ;
+            usu.carrito = req.body.carrito ;
+
+            await produ.save();
+
+            res.statusCode = 200;
+            res.send(req.body);
+            
+        } else {
+            res.statusCode = 401;
+            res.end();
+        }
     });
 
 module.exports = router;
