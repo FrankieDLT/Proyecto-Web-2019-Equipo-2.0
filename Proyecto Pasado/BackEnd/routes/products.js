@@ -48,6 +48,23 @@ router.route('/')
             res.statusCode = 401;
             res.end();
         }
+    })
+    
+    .delete(async function(req, res){
+        console.log(req.body);
+        
+        if (req.body) {
+            let produ = await Products.findOneAndDelete({_id: req.body._id});
+            
+            await produ.save();
+
+            res.statusCode = 200;
+            res.send(req.body);
+            
+        } else {
+            res.statusCode = 401;
+            res.end();
+        }
     });
 
 module.exports = router;

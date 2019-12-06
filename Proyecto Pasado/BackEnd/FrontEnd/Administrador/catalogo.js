@@ -226,7 +226,7 @@ bttnRegistrar.onclick = function () {
 sielibttn.onclick = function () { //Eliminar Equipos
   event.preventDefault();
 
-  let ind = Usuarios.findIndex(obj => obj.descripcion == Namel.value);
+  let ind = Usuarios.findIndex(obj => obj._id == Namel.value);
   console.log(Usuarios[ind]);
 
   if (ind == -1) {
@@ -238,7 +238,7 @@ sielibttn.onclick = function () { //Eliminar Equipos
 
 
 
-    DELETEHTTP(Usuarios[ind], 'http://localhost:3000/api/products',JSON.parse(localStorage.userToken).token, function (cb1) {
+    DELETEHTTP(Usuarios[ind]._id, 'http://localhost:3000/api/products',JSON.parse(localStorage.userToken).token, function (cb1) {
       alert('Eliminación Completada Sin Errores');
       console.log('Eliminación Completada Sin Errores');
       
@@ -250,7 +250,7 @@ sielibttn.onclick = function () { //Eliminar Equipos
 
 
 
-    userListToHTML(Usuarios);
+    //userListToHTML(Usuarios);
     //DELETE DE EQUIPO****************************************************************************
 
   }
@@ -441,6 +441,7 @@ function DELETEHTTP(datos, url,token, cbOk, cbErr) {
   xhr.setRequestHeader('x-auth-user', token);
   // 4. Enviar solicitud al servidor
   xhr.send([JSON.stringify(datos)]);
+  console.log(datos);
   // 5. Una vez recibida la respuesta del servidor
   xhr.onload = function () {
       console.log(xhr.status);
