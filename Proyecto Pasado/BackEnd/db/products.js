@@ -1,10 +1,6 @@
 const mongoose = require('./mongodb-connect')
 
 let productsSchema = mongoose.Schema({
-    id: {
-        type: Number,
-        required: true
-    },
     imagen: {
         type: String,
         required: true
@@ -23,6 +19,6 @@ let productsSchema = mongoose.Schema({
     } 
 });
 
-//let Products = 
+let Products = mongoose.model('products', productsSchema);
 
-module.exports = mongoose.model('Product', productsSchema);;
+module.exports = Products;

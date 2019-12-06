@@ -34,11 +34,10 @@ let us3 = {
 
 Usuarios.push(us3);
 userListToHTML(Usuarios);
+//MONGO. UPDATE
 //*********************************************************************************
 console.log(JSON.parse(localStorage.userToken).token)
 GETHTTP(Usuarios, 'http://localhost:3000/api/products',JSON.parse(localStorage.userToken).token, function (cb1) {
-
-            
             Usuarios = cb1;
             console.log(Usuarios)
             
@@ -48,12 +47,16 @@ GETHTTP(Usuarios, 'http://localhost:3000/api/products',JSON.parse(localStorage.u
             alert('ERROR');
         });
 
+
+
+
 /********************* */
 
 
 let Modal = document.getElementById('registro');
 let valid = Modal.querySelectorAll(':invalid'); //Se define con su valor inical
 let Nombre = document.getElementById('nam');
+let Categoria = document.getElementById('cond');
 let Cantidad = document.getElementById('cantd');
 let Imagen = document.getElementById('imm');
 
@@ -90,6 +93,7 @@ let modaedit = document.getElementById('edicion');
 
 let oldnam = document.getElementById('oldnam');
 let newnam = document.getElementById('newnam');
+let newategoria = document.getElementById('newcond');
 let newcantd = document.getElementById('newcantd');
 let newimm = document.getElementById('newimm');
 
@@ -115,14 +119,16 @@ function userToHTML(user) {
   /*Notes:
   ${user.image} -> ${user.imagen}
   ${user.nombre} -> ${user.descripcion}
+  ${user.categoria}
   ${user.cantidad} -> ${user.stock}
   */
   let sResultado = `<table border ="1" width ="100%">
       <tr>
-          <td width="10%" align="center">${user.id}</td>
-          <td width="30%" align="center"><img src="${user.imagen}"></td>  
-          <td width="30%" align="center">${user.descripcion}</td>       
-          <td width="30%" align="center">${user.stock}</td>
+          <td width="25%" align="center">${user._id}</td>
+          <td width="25%" align="center"><img src="${user.imagen}"></td>  
+          <td width="25%" align="center">${user.descripcion}</td>   
+          <td width="15%"align="center">${user.categoria}</td>    
+          <td width="10%" align="center">${user.stock}</td>
         </tr>
     </table>`;
 
@@ -138,7 +144,7 @@ function userListToHTML(lisUs) {
 } //FIN De userListToHTML******************************************************
 
 
-function addUser(u_n, u_i, u_ca) {
+function addUser(u_n, u_i, u_ca,u_cat) {
   /*Notes:
    ${user.image}
    ${user.nombre}
@@ -148,22 +154,22 @@ function addUser(u_n, u_i, u_ca) {
 
   let Nuser = {};
 
-  Nuser.id = uid;
-  Nuser.image = u_i;
-  Nuser.nombre = u_n;
+  Nuser.imagen = u_i;
+  Nuser.descripcion = u_n;
+  Nuser.categoria = u_cat;
 
 
   let finaca = 0;
   if (u_ca > -1) {
-    Nuser.cantidad = u_ca;
+    Nuser.stock = u_ca;
   } else {
-    Nuser.cantidad = finaca;
+    Nuser.stock = finaca;
     alert('CANTIDAD INVALIDA');
   }
 
 
   function checkEm(user) {
-    return user.nombre === u_n;
+    return user.descripcion === u_n;
   }
   //CHECK del arreglo ya que está cargado con la información del backend
   console.log(Usuarios.find(checkEm) === undefined);
@@ -171,29 +177,29 @@ function addUser(u_n, u_i, u_ca) {
   if (!(Usuarios.find(checkEm) === undefined)) {
     alert("Trató de registrarse equipo ya en uso, el equipo: " + u_n);
     Nuser = {};
-    uid -= 5;
   } else {
 
 
 
 //Post en el backend
-    makeRequest('POST',dburl,null,Usuarios,
-    response =>{//cbok
+POSTHTTP(Nuser, 'http://localhost:3000/api/products',JSON.parse(localStorage.userToken).token,function (cb1) {
+    
+  alert('SUCCESS');
 
-      response = Usuarios;
-      console.log('SUCCESS');
-      //userListToHTML(Usuarios);
-      console.log("Usuarios registrados correctamente");
-  
-      },reason => {//cberr
-      
-          console.log(reason);
-      
-      });
+  userListToHTML(Usuarios);
+
+}, function (cb2) {
+  alert('ERROR');
+  console.log(JSON.parse(localStorage.userToken).token);
+
+});
+//Post en el backend
+
 
 /*Inutil después del backend
-    Usuarios.push(Nuser);
-    userListToHTML(Usuarios);*/
+    Usuarios.push(Nuser);*/
+
+    userListToHTML(Usuarios);
 
 
 
@@ -209,34 +215,54 @@ bttnRegistrar.onclick = function () {
   let obj = {
     nombre: Nombre.value,
     image: Imagen.value,
-    cantidad: Cantidad.value
+    cantidad: Cantidad.value,
+    categoria: Categoria.value
   }
 
-  addUser(obj.nombre.trim(), obj.image.trim(), obj.cantidad.trim());
+  addUser(obj.nombre.trim(), obj.image.trim(), obj.cantidad.trim(),obj.categoria.trim());
 
 };
 
 sielibttn.onclick = function () { //Eliminar Equipos
   event.preventDefault();
 
-  let ind = Usuarios.findIndex(obj => obj.nombre == Namel.value);
+  let ind = Usuarios.findIndex(obj => obj.descripcion == Namel.value);
   console.log(Usuarios[ind]);
 
   if (ind == -1) {
     alert('Equipo no Registrado');
   } else {
-    Usuarios.splice(ind, 1);
+
+    //DELETE DE EQUIPO USANDO Usuarios[ind]*******************************************************
+    //INUTILIZADO POR BACKEND:  Usuarios.splice(ind, 1);
+
+
+
+    DELETEHTTP(Usuarios[ind], 'http://localhost:3000/api/products',JSON.parse(localStorage.userToken).token, function (cb1) {
+      alert('Eliminación Completada Sin Errores');
+      console.log('Eliminación Completada Sin Errores');
+      
+      userListToHTML(Usuarios);
+
+  }, function (cb2) {
+      alert(cb2);
+  });
+
+
+
     userListToHTML(Usuarios);
+    //DELETE DE EQUIPO****************************************************************************
 
   }
 
 };
 
-editabutto.onclick = function () { //Editar Equipos
+//Editar Equipos**********************************************************************************
+editabutto.onclick = function () { 
   event.preventDefault();
 
-  let ind = Usuarios.findIndex(obj => obj.nombre == oldnam.value.trim());
-  let ind2 = Usuarios.findIndex(obj => obj.nombre == newnam.value.trim());
+  let ind = Usuarios.findIndex(obj => obj.descripcion == oldnam.value.trim());
+  let ind2 = Usuarios.findIndex(obj => obj.descripcion == newnam.value.trim());
 
     console.log("break");
   console.log(Usuarios[ind]);
@@ -257,28 +283,47 @@ editabutto.onclick = function () { //Editar Equipos
     
     if (ind2 != -1 && equ) {
       alert("Este nombre de equipo ya está en uso, el nombre: " + newnam.value.trim());
-      Usuarios[ind].nombre = oldnam.value.trim();
+      Usuarios[ind].descripcion = oldnam.value.trim();
       
     } else {
-      Usuarios[ind].nombre = newnam.value.trim();}
+      Usuarios[ind].descripcion = newnam.value.trim();}
 
     
       
-      Usuarios[ind].image = newimm.value.trim();
+      Usuarios[ind].imagen = newimm.value.trim();
+
+      Usuarios[ind].categoria = newategoria.value.trim();
 
 
 
       let finaca = 0;
       if (newcantd.value > -1) {
 
-        Usuarios[ind].cantidad = newcantd.value;
+        Usuarios[ind].stock = newcantd.value;
       } else {
-        Usuarios[ind].cantidad = finaca;
+        Usuarios[ind].stock = finaca;
         alert('CANTIDAD INVALIDA');
       }
 
-      userListToHTML(Usuarios);
+
+      //FUNCION DE PUT CON Usuarios[ind]
+
+
+      PUTHTTP(Usuarios[ind], 'http://localhost:3000/api/products',JSON.parse(localStorage.userToken).token,function (cb1) {
     
+        alert('SUCCESS');
+      
+        userListToHTML(Usuarios);
+      
+      }, function (cb2) {
+        alert('ERROR');
+        console.log(JSON.parse(localStorage.userToken).token);
+      
+      });
+
+
+      userListToHTML(Usuarios);
+      //FUNCION DE PUT
 
   }
 };
@@ -316,7 +361,7 @@ function GETHTTP(datos, url,token, cbOk, cbErr) {
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.setRequestHeader('x-auth-user', token);
   // 4. Enviar solicitud al servidor
-  xhr.send([JSON.stringify(datos)]);
+  xhr.send();
   // 5. Una vez recibida la respuesta del servidor
   xhr.onload = function () {
       console.log(xhr.status);
@@ -334,3 +379,79 @@ function GETHTTP(datos, url,token, cbOk, cbErr) {
   };
 }
 
+function POSTHTTP(datos, url,token, cbOk, cbErr) {
+  // 1. Crear XMLHttpRequest object
+  let xhr = new XMLHttpRequest();
+  // 2. Configurar:  PUT actualizar archivo
+  xhr.open('POST', url);
+  // 3. indicar tipo de datos JSON
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.setRequestHeader('x-auth-user', token);
+  // 4. Enviar solicitud al servidor
+  xhr.send([JSON.stringify(datos)]);
+  // 5. Una vez recibida la respuesta del servidor
+  xhr.onload = function () {
+      console.log(xhr.status);
+      if (xhr.status != 200 && xhr.status != 201) { // analizar el estatus de la respuesta HTTP
+          // Ocurrió un error
+          console.log(xhr.status + ': ' + xhr.statusText);
+          cbErr(xhr.status + ': ' + xhr.statusText);
+      } else {   
+              let datos = JSON.parse(xhr.responseText);
+              console.log(datos); // Significa que fue exitoso
+              cbOk(datos);
+      }
+  };
+}
+
+function PUTHTTP(datos, url,token, cbOk, cbErr) {
+  // 1. Crear XMLHttpRequest object
+  let xhr = new XMLHttpRequest();
+  // 2. Configurar:  PUT actualizar archivo
+  xhr.open('PUT', url);
+  // 3. indicar tipo de datos JSON
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.setRequestHeader('x-auth-user', token);
+  // 4. Enviar solicitud al servidor
+  xhr.send([JSON.stringify(datos)]);
+  // 5. Una vez recibida la respuesta del servidor
+  xhr.onload = function () {
+      console.log(xhr.status);
+      if (xhr.status != 200 && xhr.status != 201) { // analizar el estatus de la respuesta HTTP
+          // Ocurrió un error
+          console.log(xhr.status + ': ' + xhr.statusText);
+          cbErr(xhr.status + ': ' + xhr.statusText);
+      } else {   
+              let datos = JSON.parse(xhr.responseText);
+              console.log(datos); // Significa que fue exitoso
+              cbOk(datos);
+      }
+  };
+}
+
+
+
+function DELETEHTTP(datos, url,token, cbOk, cbErr) {
+  // 1. Crear XMLHttpRequest object
+  let xhr = new XMLHttpRequest();
+  // 2. Configurar:  PUT actualizar archivo
+  xhr.open('DELETE', url);
+  // 3. indicar tipo de datos JSON
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.setRequestHeader('x-auth-user', token);
+  // 4. Enviar solicitud al servidor
+  xhr.send([JSON.stringify(datos)]);
+  // 5. Una vez recibida la respuesta del servidor
+  xhr.onload = function () {
+      console.log(xhr.status);
+      if (xhr.status != 200 && xhr.status != 201) { // analizar el estatus de la respuesta HTTP
+          // Ocurrió un error
+          console.log(xhr.status + ': ' + xhr.statusText);
+          cbErr(xhr.status + ': ' + xhr.statusText);
+      } else {   
+              let datos = JSON.parse(xhr.responseText);
+              console.log(datos); // Significa que fue exitoso
+              cbOk(datos);
+      }
+  };
+}
