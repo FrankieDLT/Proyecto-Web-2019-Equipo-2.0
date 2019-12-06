@@ -12,7 +12,7 @@ app.use(cors());
 
 app.use(express.static(__dirname + '/FrontEnd/Registro y login (Publico)/'));
 app.use('/admin', express.static(__dirname + '/FrontEnd/Administrador/'));
-app.use('/admin/deudores', express.static(__dirname + '/FrontEnd/Administrador/Deudores.html'));
+app.use('/admin/pedidos', express.static(__dirname + '/FrontEnd/Administrador/Deudores.html'));
 app.use('/home', express.static(__dirname + '/FrontEnd/Usuario/'));
 app.use('/home/carrito', express.static(__dirname + '/FrontEnd/Usuario/carrito.html'));
 

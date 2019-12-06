@@ -6,14 +6,10 @@ let carritoSchema = mongoose.Schema({
       ref: 'users',
       required: true
     },
-    items: [{
-        id: Number,
-        imagen: String,
-        descripcion: String,
-        categoria: String,
-        stock: String,
-        cantidad: Number
-    }]
+    items: {
+      type: Array,
+      require: true
+    }
 });
 
 let Carrito = mongoose.model('carrito', carritoSchema);

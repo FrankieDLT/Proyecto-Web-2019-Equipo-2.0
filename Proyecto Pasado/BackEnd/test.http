@@ -59,16 +59,15 @@ GET http://localhost:5000/api/carrito
 x-auth-user: VwZTTKZBMe-5de6deff9694c431845c908e
 
 ###
-POST http://localhost:3000/api/carrito
+PUT http://localhost:3000/api/carrito
 Content-Type: application/json
-x-auth-user: Vz7ofruUIL-5de9889e2c0d0f3aca4f21ae
 
-{
+{ 
+  "usuario": "5de9947e3d113a3e9443d46c",
   "items": {
-    "id": 3,
     "imagen": "https://www.steren.com.mx/media/catalog/product/cache/8a4fdc7d203276e60b54a94f4f1e185b/m/g/mg-260_x1.jpg",
     "descripcion": "Megafono",
     "categoria": "Audio",
-    "cantidad": 3
+    "stock": 3
   }
 }

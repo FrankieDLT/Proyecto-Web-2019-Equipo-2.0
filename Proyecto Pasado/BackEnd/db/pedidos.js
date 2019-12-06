@@ -1,24 +1,18 @@
 const mongoose = require('./mongodb-connect');
 
 let pedidosSchema = mongoose.Schema({
-    fecha: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'users',
-      required: true
-    },
-    fecha: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'users',
-        required: true
-      },
-    status: [{
-        id: Number,
-        imagen: String,
-        descripcion: String,
-        categoria: String,
-        stock: String,
-        cantidad: Number
-    }]
+  fecha: {
+    type: Date,
+    required: true
+  },
+  status: {
+    type: string,
+    required: true
+  },
+  items: {
+    type: Array,
+    require: true
+  }
 });
 
 let Pedidos = mongoose.model('pedidos', pedidosSchema);
