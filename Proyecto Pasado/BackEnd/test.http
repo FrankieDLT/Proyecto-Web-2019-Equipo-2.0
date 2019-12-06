@@ -92,6 +92,16 @@ x-auth-user: eDjbIqIHXLC-5de9889e2c0d0f3aca4f21a
 
 ###
 
+DELETE  http://localhost:3000/api/products
+Content-Type: application/json
+x-auth-user: eDjbIqIHXLC-5de9889e2c0d0f3aca4f21a
+
+{ 
+  "_id": "5de9a3a37e94625120bbfb75"
+}
+
+###
+
 GET http://localhost:5000/api/carrito
 x-auth-user: VwZTTKZBMe-5de6deff9694c431845c908e
 
