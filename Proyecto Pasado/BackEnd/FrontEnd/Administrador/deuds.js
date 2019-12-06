@@ -94,7 +94,7 @@ function userToHTML(user) {
         <td width="20%">${user.nombre}</td>
         <td width="20%">${user.apellido}</td>
         <td width="20%">${user.correo}</td>
-        <td width="20%">${user.Equipo_Prestado}</td>
+        <td width="20%" align="center"><button><a href="">√</a></button></td>
     </tr>`;
     //</tr>  </table>
   

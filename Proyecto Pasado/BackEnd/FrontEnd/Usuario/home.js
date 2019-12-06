@@ -2,7 +2,7 @@
 //12 obj
 let url = "https://api.myjson.com/bins/1d05le";
 
-let url2 = 'http://localhost:3000/api/products'
+let url2 = "http://localhost:3000/api/products"
 
 var cart = {
     items: []
@@ -48,14 +48,14 @@ function httpRequest(address, reqType, asyncProc) {
     //beforeSend: function(xhr){xhr.setRequestHeader('x-auth-user', 'hIGn7uEuPb-5de6deff9694c431845c908e');},
     headers: {
         'Access-Control-Allow-Origin': '*',
-        'x-auth-user':'hIGn7uEuPb-5de6deff9694c431845c908e',
+        'x-auth-user':JSON.parse(localStorage.userToken),
     },
     dataType:JSON,
     success: function(result){ 
         console.log("resultado:",result)
     },
     error: function(error) {
-        console.log(`Error ${"error ", error}`)
+        console.log("error ", error)
     }
 })*/
 
@@ -67,9 +67,14 @@ function loadJSON(url, cbOk = callback_ok, cbErr) {
 
     // 2. Configurar: PUT actualizar archivo
     xhr.open('GET', url);
+    console.log(url);
+    let cualquierMamada = JSON.parse(localStorage.userToken);
+    console.log(cualquierMamada.token);
+    console.log(localStorage.userToken);
     //xhr.setRequestHeader("Content-Type", "application/json"); 
-    xhr.setRequestHeader("x-auth-user", JSON.parse(localStorage.userToken).token);
+    xhr.setRequestHeader("x-auth-user", cualquierMamada.token);
 
+    console.log('Por llamar');
     // 4. Enviar solicitud
     xhr.send();
 
@@ -116,7 +121,7 @@ function productToHTML(productos) {
         <div class="card-body">
                 <h5 class="card-title">${productos.descripcion}</h5>
                 <p class="card-text">Categoria: ${productos.categoria}</p>
-                <p class="card-text">Stock: ${productos.cantidad}</p>
+                <p class="card-text">Stock: ${productos.stock}</p>
                 <p class="card-text">Disponible: Ahora</p>
 
             <a href="#" class="btn btn-primary" onclick="agregarCarrito(${productos.id})">Agregar al carrito</a>
@@ -152,7 +157,7 @@ function agregarCarrito(id) {
             categoria: productos[id].categoria,
             id: id,
             cantidad: 1,
-            stock: productos[id].cantidad
+            stock: productos[id].stock
         }
         cart.items.push(producto);
         localStorage.setItem('cart', JSON.stringify(cart));

@@ -55,8 +55,8 @@ x-auth-user: Vz7ofruUIL-5de9889e2c0d0f3aca4f21ae
 
 ###
 
-GET http://localhost:3000/api/carrito
-x-auth-user: hIGn7uEuPb-5de6deff9694c431845c908e
+GET http://localhost:5000/api/carrito
+x-auth-user: VwZTTKZBMe-5de6deff9694c431845c908e
 
 ###
 POST http://localhost:3000/api/carrito

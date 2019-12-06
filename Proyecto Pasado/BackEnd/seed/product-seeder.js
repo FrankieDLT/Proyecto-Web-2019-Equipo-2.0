@@ -39,6 +39,55 @@ var products = [
         descripcion:"Bocinas",
         categoria:"Audio",
         stock:8
+    }),
+    new Product ({
+        id:5,
+      imagen:"https://www.steren.com.mx/media/catalog/product/cache/8a4fdc7d203276e60b54a94f4f1e185b/d/r/dron-500_x1_2.jpg",
+      descripcion:"Dron",
+      categoria:"Aereo",
+      stock:6
+    }),
+    new Product ({
+        id:6,
+        imagen:"https://www.steren.com.mx/media/catalog/product/cache/8a4fdc7d203276e60b54a94f4f1e185b/m/u/mul-285_x1.jpg",
+        descripcion:"Multimetro",
+        categoria:"Electronica",
+        stock:6
+    }),
+    new Product ({
+        id:7,
+      imagen:"https://www.steren.com.mx/media/catalog/product/cache/8a4fdc7d203276e60b54a94f4f1e185b/m/o/mov-1070_x1pl.jpg",
+      descripcion:"Bateria",
+      categoria:"Electronica",
+      stock:15
+    }),
+    new Product ({
+        id:8,
+        imagen:"https://www.steren.com.mx/media/catalog/product/cache/8a4fdc7d203276e60b54a94f4f1e185b/a/u/aud-797_x1ne_2.jpg",
+        descripcion:"Audifonos",
+        categoria:"Audio",
+        stock:7
+    }),
+    new Product ({
+        id:9,
+      imagen:"https://www.steren.com.mx/media/catalog/product/cache/8a4fdc7d203276e60b54a94f4f1e185b/p/o/pod-147_x1.jpg",
+      descripcion:"Bluetooth",
+      categoria:"Audio",
+      stock:20
+    }),
+    new Product ({
+        id:10,
+        imagen:"https://www.steren.com.mx/media/catalog/product/cache/8a4fdc7d203276e60b54a94f4f1e185b/m/i/mic-650_x1_.jpg",
+        descripcion:"Microfono",
+        categoria:"Audio",
+        stock:16
+    }),
+    new Product ({
+        id:11,
+        imagen:"https://www.steren.com.mx/media/catalog/product/cache/8a4fdc7d203276e60b54a94f4f1e185b/r/e/rec-854_x1.jpg",
+        descripcion:"Grabadora",
+        categoria:"Audio",
+        stock:10
     })
 ]; 
 
