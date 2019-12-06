@@ -2,6 +2,9 @@ let table = document.getElementById('tablecat');
 let uid = 732019;
 let Usuarios = [];
 let dburl = 'http://localhost:3000/api/products';
+let idProducto = {
+  _id: ""
+}
 
 let us1 = {
   "id": uid,
@@ -236,9 +239,9 @@ sielibttn.onclick = function () { //Eliminar Equipos
     //DELETE DE EQUIPO USANDO Usuarios[ind]*******************************************************
     //INUTILIZADO POR BACKEND:  Usuarios.splice(ind, 1);
 
+    idProducto._id = Usuarios[ind]._id;
 
-
-    DELETEHTTP(Usuarios[ind]._id, 'http://localhost:3000/api/products',JSON.parse(localStorage.userToken).token, function (cb1) {
+    DELETEHTTP(idProducto, 'http://localhost:3000/api/products',JSON.parse(localStorage.userToken).token, function (cb1) {
       alert('Eliminación Completada Sin Errores');
       console.log('Eliminación Completada Sin Errores');
       
