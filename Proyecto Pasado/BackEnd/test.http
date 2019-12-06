@@ -9,10 +9,15 @@ Content-Type: application/json
     "sexo":"H",
     "fecha":"1997-05-12",
     "password":"123456",
-    "admin":"true"
+    "admin":"true",
+    "block":"false"
 }
 
 ###
+POST http://localhost:3000/api/products
+
+###
+
 
 GET http://localhost:3000/api/users
 
@@ -22,7 +27,7 @@ POST http://localhost:3000/api/login
 Content-Type: application/json
 
 {
-    "correo":"tasdf@tasdf.com",
+    "correo":"gggg@iteso.mx",
     "password":"123456"
 }
 
@@ -31,8 +36,17 @@ POST http://localhost:3000/api/users/info
 Content-Type: application/json
 
 {
-    "correo":"s@s.com",
+    "correo":"admin@iteso.mx",
     "password":"123456"
+}
+
+###
+POST http://localhost:3000/api/carrito/info
+Content-Type: application/json
+//x-auth-user: W8jBAqkT0J-5de9947e3d113a3e9443d46c
+
+{
+    "usuario":"5de9889e2c0d0f3aca4f21ae"
 }
 
 ###
@@ -47,6 +61,7 @@ x-auth-user: VwZTTKZBMe-5de6deff9694c431845c908e
 ###
 POST http://localhost:3000/api/carrito
 Content-Type: application/json
+
 {
   "items": {
     "id": 3,

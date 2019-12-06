@@ -41,25 +41,6 @@ function httpRequest(address, reqType, asyncProc) {
     return req;
 }
 
-/*$.ajax({
-    url: url2,
-    type: 'GET',
-    //accepts: "application/json",
-    //beforeSend: function(xhr){xhr.setRequestHeader('x-auth-user', 'hIGn7uEuPb-5de6deff9694c431845c908e');},
-    headers: {
-        'Access-Control-Allow-Origin': '*',
-        'x-auth-user':JSON.parse(localStorage.userToken),
-    },
-    dataType:JSON,
-    success: function(result){ 
-        console.log("resultado:",result)
-    },
-    error: function(error) {
-        console.log("error ", error)
-    }
-})*/
-
-
 function loadJSON(url, cbOk = callback_ok, cbErr) {
 
     // 1. Crear XMLHttpRequest object
@@ -68,11 +49,11 @@ function loadJSON(url, cbOk = callback_ok, cbErr) {
     // 2. Configurar: PUT actualizar archivo
     xhr.open('GET', url);
     console.log(url);
-    let cualquierMamada = JSON.parse(localStorage.userToken);
-    console.log(cualquierMamada.token);
+    let userTOKEN = JSON.parse(localStorage.userToken);
+    console.log(userTOKEN.token);
     console.log(localStorage.userToken);
     //xhr.setRequestHeader("Content-Type", "application/json"); 
-    xhr.setRequestHeader("x-auth-user", cualquierMamada.token);
+    xhr.setRequestHeader("x-auth-user", userTOKEN.token);
 
     console.log('Por llamar');
     // 4. Enviar solicitud

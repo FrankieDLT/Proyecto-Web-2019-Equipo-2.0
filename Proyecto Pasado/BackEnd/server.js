@@ -7,6 +7,7 @@ const productsRouter = require('./routes/products');
 const carritoRouter = require('./routes/carrito');
 const Token = require('./db/token');
 const User = require('./db/users');
+const Carrito = require('./db/carrito');
 const cors = require('cors');
 app.use(cors());
 
@@ -28,7 +29,7 @@ app.use('/api/products', authMiddleware);
 app.use('/api/products', productsRouter);
 
 app.use('/api/carrito', carritoRouter);
-app.use('/api/carrito', authMiddleware);
+//app.use('/api/carrito', authMiddleware);
 
 
 
@@ -73,6 +74,26 @@ app.post('/api/users/info', function (req, res) {
                 res.statusCode = 400;
                 res.end();
             }
+        })
+        .catch(reason => {
+            res.statusCode = 500;
+            res.end();
+        });
+    
+});
+
+app.post('/api/carrito/info', function (req, res) {
+    console.log ("LLegue a carrito info")
+    // Programar aquí lógica de token
+    Carrito.find({usuario: req.body.usuario})
+        .then(async items => {
+           
+                let items2 = items;
+
+                res.statusCode = 200;
+                res.send(JSON.stringify(items2));
+            
+          
         })
         .catch(reason => {
             res.statusCode = 500;

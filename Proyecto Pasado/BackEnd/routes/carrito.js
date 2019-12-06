@@ -17,7 +17,7 @@ router.route('/')
             });
     })
 
-    .post(async (req, res) => {
+    .post( async (req, res) => {
         let newItem = req.body; 
         if(!newItem.imagen || !newItem.descripcion || !newItem.categoria || !newUser.stock || !newItem.idProducto) {
             res.statusCode = 400;

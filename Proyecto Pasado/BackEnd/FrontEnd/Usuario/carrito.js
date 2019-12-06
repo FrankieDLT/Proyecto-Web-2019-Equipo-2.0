@@ -2,8 +2,7 @@ var cart = {
     items: []
 };
 
-
-
+ url = 'http://localhost:5000/api/carrito'
 //limpiar localStorage
  //localStorage.setItem('cart', JSON.stringify(cart));
 
@@ -53,6 +52,45 @@ function productListToHTML (productos){
     localStorage.setItem('cart', JSON.stringify(cart));
     location.reload();
  }
+
+ //--------------------Get cart-------------------------------
+ function loadJSONCart(url, cbOk = callback_ok, cbErr) {
+    // 1. Crear XMLHttpRequest object
+    let xhr = new XMLHttpRequest();
+
+    // 2. Configurar: PUT actualizar archivo
+    xhr.open('GET', url);
+    console.log(url);
+    let userTOKEN = JSON.parse(localStorage.userToken);
+    console.log(userTOKEN.token);
+    console.log(localStorage.userToken);
+    //xhr.setRequestHeader("Content-Type", "application/json"); 
+    xhr.setRequestHeader("x-auth-user", userTOKEN.token);
+
+    console.log('Por llamar');
+    // 4. Enviar solicitud
+    xhr.send();
+
+    // 5. Una vez recibida la respuesta del servidor
+    xhr.onload = function () {
+
+        if (xhr.status != 200) { // analizar el estatus de la respuesta HTTP
+            // Ocurrió un error
+            alert(xhr.status + ': ' + xhr.statusText); // e.g. 404: Not Found
+            cbErr(xhr.status + ': ' + xhr.statusText);
+
+            // ejecutar algo si error
+        } else {
+            let datos = JSON.parse(xhr.response); //esta es la línea que hay que probar
+
+            // Ejecutar algo si todo está correcto
+            console.log("Exito"); // Significa que fue exitoso
+            cbOk(datos);
+            cbOk_1(datos);
+        }
+    };
+}
+
 
 console.log(JSON.parse(localStorage.cart))
 
