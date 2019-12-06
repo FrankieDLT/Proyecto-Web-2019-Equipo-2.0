@@ -182,7 +182,7 @@ function productosInfoHTTP(datos, url, token, cbOk, cbErr) {
     xhr.open('POST', url);
     // 3. indicar tipo de datos JSON
     xhr.setRequestHeader('Content-Type', 'application/json');
-    console.log( " chinga tu madre ", JSON.parse(localStorage.userToken).token);
+    console.log( " TOKEN ", JSON.parse(localStorage.userToken).token);
     xhr.setRequestHeader('x-auth-user', token);
     
     // 4. Enviar solicitud al servidor
@@ -203,6 +203,7 @@ function productosInfoHTTP(datos, url, token, cbOk, cbErr) {
         }
     };
 }
-
-
 //-------------------------------------------------------------------------------------
+
+
+

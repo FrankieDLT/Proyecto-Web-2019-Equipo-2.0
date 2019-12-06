@@ -3,12 +3,12 @@ var cart = {
 };
 
 let productoList = {
+    user: "", 
     items: []
 }
 
  url = 'http://localhost:5000/api/carrito'
-//limpiar localStorage
- //localStorage.setItem('cart', JSON.stringify(cart));
+
 
 if(localStorage.cart) {
     cart = JSON.parse(localStorage.cart);
@@ -95,6 +95,85 @@ function productListToHTML (productos){
     };
 }
 
+//----------------------------------
+/*
+guardarCarrito(); 
+function guardarCarrito () { 
+    console.log("LLegue a guardar carrito 1")
+
+    loadJSONCart2(cart.items ,'http://localhost:3000/api/carrito', function (cb1){
+    let AllItems = cart.items; 
+    console.log(AllItems); 
+    let item = {
+        imagen: AllItems.imagen,
+        descripcion: AllItems.descripcion,
+        categoria: AllItems.categoria,
+        cantidad: 1,
+        stock: AllItems.stock
+    }
+
+    console.log(item);
+    console.log("LLegue a guardar carrito 2")
+    cart.items.push(item);
+    //localStorage.setItem('cart', JSON.stringify(cart));
+
+    }, function (cb2) {
+        alert("ERROR")
+        
+    });
+ }
+ */
+
+loadJSONCart2(cart.items ,'http://localhost:3000/api/carrito', function (cb1){
+}
+
+, function (cb2) {
+    alert("ERROR")
+    
+});
+
+ //--------------------HTTP Carrito--------------------------------------
+ function loadJSONCart2(datos ,url, cbOk, cbErr) {
+    console.log("LLegue a guardar carrito")
+
+    productoList.user = '5de9947e3d113a3e9443d46c'; 
+    productoList.items = datos; 
+    console.log (productoList);
+
+    // 1. Crear XMLHttpRequest object
+    let xhr = new XMLHttpRequest();
+
+    // 2. Configurar: PUT actualizar archivo
+    xhr.open('PUT', url);
+    console.log(url);
+   
+    //xhr.setRequestHeader("Content-Type", "application/json"); 
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+  
+    // 4. Enviar solicitud
+    xhr.send(JSON.stringify(productoList));
+
+    // 5. Una vez recibida la respuesta del servidor
+    xhr.onload = function () {
+
+        console.log(xhr.status);
+        if (xhr.status != 200 && xhr.status != 201) { // analizar el estatus de la respuesta HTTP
+            // Ocurrió un error
+            cbErr(xhr.status + ': ' + xhr.statusText);
+        } else {
+        
+            let datos = JSON.parse(xhr.responseText);
+            console.log(datos); // Significa que fue exitoso
+            cbOk(datos);
+        }
+    };
+}
+
+function sendCart() {
+    console.log ("dfkajklsdf")
+    //localStorage.setItem('cart', JSON.stringify(cart));
+}
 
 console.log(JSON.parse(localStorage.cart))
 
