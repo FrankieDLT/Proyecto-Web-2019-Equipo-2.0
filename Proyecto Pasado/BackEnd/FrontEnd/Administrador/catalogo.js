@@ -240,14 +240,17 @@ bttnRegistrar.onclick = function () {
 sielibttn.onclick = function () { //Eliminar Equipos
   event.preventDefault();
 
-  let ind = Usuarios.findIndex(obj => obj.nombre == Namel.value);
+  let ind = Usuarios.findIndex(obj => obj.descripcion == Namel.value);
   console.log(Usuarios[ind]);
 
   if (ind == -1) {
     alert('Equipo no Registrado');
   } else {
+
+    //DELETE DE EQUIPO USANDO Usuarios[ind]*******************************************************
     Usuarios.splice(ind, 1);
     userListToHTML(Usuarios);
+    //DELETE DE EQUIPO****************************************************************************
 
   }
 
@@ -299,10 +302,10 @@ editabutto.onclick = function () { //Editar Equipos*****************************
       }
 
 
-      //FUNCION DE PUT
+      //FUNCION DE PUT CON Usuarios[ind]
 
 
-      
+
       userListToHTML(Usuarios);
       //FUNCION DE PUT
 
