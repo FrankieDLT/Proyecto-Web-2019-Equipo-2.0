@@ -5,20 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Inventario</title>
+    <title>Detalle de Pedidos</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Temas-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
         integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-        <link rel="icon" type="image/x-icon" href="https://sso.iteso.mx/sso/XUI/favicon.ico?v=13.0.1-SNAPSHOT">
+    <link rel="icon" type="image/x-icon" href="https://sso.iteso.mx/sso/XUI/favicon.ico?v=13.0.1-SNAPSHOT">
     <link rel="shortcut icon" type="image/x-icon" href="https://sso.iteso.mx/sso/XUI/favicon.ico?v=13.0.1-SNAPSHOT">
 
 
     <style>
         body {
-            background-color: rgb(142, 185, 199);
+            background-image: url('https://iteso.mx/documents/11109/12605470/Campus++30.jpg/cafbc1b6-713b-460f-b22f-e3290ca0ed20?t=1533336672075');
+            background-repeat: repeat-y;
+            background-size: 100%;
             border: 5em;
             width: 100%;
             height: 500px;
@@ -53,9 +55,10 @@
 
         h3 {
             font-style: oblique;
-            color: darkblue;
+            color: whitesmoke;
             font-size: 3rem;
 
+            text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
         }
 
         /************************************************************************************/
@@ -102,48 +105,65 @@
 
         }
 
-        .titulo{
+        nav.navbar {
+            background-color: #004270;
+        }
+
+        div[id='nav'] {
+            align-content: center;
+        }
+
+        form[id=navSearch] {
+            margin-left: 200px;
+        }
+
+        img[id=Logo_iteso] {
+            width: 3em;
+            background-color: azure;
+        }
+
+        a[id=exit] {
+            padding-left: 100px;
+        }
+
+        a {
+            font-size: larger;
+            margin: 5px;
+
+        }
+
+        .titulo {
             margin-left: 10%;
             margin-right: 15%;
 
         }
 
-        .btnSolicitar{
+        .btnSolicitar {
             margin-left: 76%;
             margin-right: 5%;
             margin-top: 10px;
         }
     </style>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
+
 
 </head>
 
 <body>
 
 
-    <table border="0" width="100%" id="Main_Table">
-        <tr>
-            <td width="5%"><a href=""><img src="../../Imagenes/Logo_ITESO_normal.jpg" id="Logo_iteso"></a></td>
-            <td width="10%"><a href="home.html" target="home">Inicio</a></td>
-            <td width="10%"><a href="productos.html" target="home">Inventario</a></td>
-            <td width="10%"><a href="Deudores.html" target="FFra">Deudores</a></td>
-            <td width="10%">Historial de Problemas</td>
-            <td width="10%">Disponibilidad</td>
+    <nav class="navbar navbar-expand navbar-dark">
+        <div class="nav navbar-nav" id='nav'>
+            <img src="https://www.modutram.com/wp-content/uploads/2016/10/logo-iteso-min.png" id="Logo_iteso">
+            <a class="nav-item nav-link" href="../admin" data-target="home">Inventario</a>
+            <a class="nav-item nav-link" href="../admin/pedidos" data-target="FFra">Pedidos</a>
+            <a class="nav-item nav-link" id='exit' href='../' data-target="home">Cerrar Sesión</a>
 
-        </tr>
-    </table>
-    <br />
+        </div>
+    </nav>
+
 
     <div class="container" aria-hidden="true" width="100%">
-        <div class ="titulo">
+        <div class="titulo">
             <h3><b>Detalle de Pedidos</b></h3>
         </div>
     </div>
@@ -164,21 +184,21 @@
                 <td width="25%">Categoria</td>
                 <td width="25%">Cantidad</td>
 
-       
+
 
         </table>
 
-        <div class ="btnSolicitar">
-            <button  href="productos.html" target="home">
-              <b>  Solicitar Material</b>
+        <div class="btnSolicitar">
+            <button href="productos.html" target="home">
+                <b> Solicitar Material</b>
             </button>
         </div>
 
     </div>
 
 
-<!--JS y dependencias-->
-<script src="detallePedidos.js"></script>
+    <!--JS y dependencias-->
+    <script src="detallePedidos.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
