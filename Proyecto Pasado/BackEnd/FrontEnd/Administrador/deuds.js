@@ -122,7 +122,7 @@ function userToHTML(user) {
     //Inutilizado por backend:    deus.splice(ind, 1);
     deus[ind].block = false;
     PUTHTTP(deus[ind], 'http://localhost:3000/api/users',JSON.parse(localStorage.userToken).token,function (cb1) {
-      alert('SUCCESS')
+      
         userListToHTML(deus);
       
       }, function (cb2) {
