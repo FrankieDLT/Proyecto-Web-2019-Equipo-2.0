@@ -44,12 +44,9 @@ function loginAndRegisterHTTP(datos, url, cbOk, cbErr) {
             // Ocurrió un error
             cbErr(xhr.status + ': ' + xhr.statusText);
         } else {
-            if (xhr.status != 201) {
-                let datos = JSON.parse(xhr.responseText);
-                console.log(datos); // Significa que fue exitoso
-                cbOk(datos);
-            }
-
+            let datos = JSON.parse(xhr.responseText);
+            console.log(datos); // Significa que fue exitoso
+            cbOk(datos);
         }
     };
 }
@@ -98,17 +95,17 @@ function enableBtnRegister() {
                     form[4].style.border = "thin dotted red";
                     register = false;
                 }
-            }else if (i == 2 && form[2].value != '' && form[2].value != '') {
+            } else if (i == 2 && form[2].value != '' && form[2].value != '') {
                 let str = form[2].value;
-                    if (str.includes("@iteso.mx")) {
-                        form[2].style.border = "";
-                        register = true;
-                    } else {
-                        alert('El correo debe ser parte del dominio @iteso.mx')
-                        form[2].style.border = "thin dotted red";
-                        form[2].value = "";
-                        register = false;
-                    }
+                if (str.includes("@iteso.mx")) {
+                    form[2].style.border = "";
+                    register = true;
+                } else {
+                    alert('El correo debe ser parte del dominio @iteso.mx')
+                    form[2].style.border = "thin dotted red";
+                    form[2].value = "";
+                    register = false;
+                }
 
             } else {
                 if (form[i].checkValidity()) {
@@ -142,11 +139,13 @@ btnSubmit.onclick = function (event) {
     registerUser.fecha = form[5].value;
     registerUser.sexo = document.register.sexo.value;
     registerUser.url = form[8].value;
+    console.log(document.register.sexo.value);
     console.log(registerUser);
 
 
     loginAndRegisterHTTP(registerUser, 'http://localhost:3000/api/users', function (cb1) {
         alert('Usuario creado');
+        location.reload();
     }, function (cb2) {
         alert('El usuario ya existe');
     });
@@ -164,8 +163,6 @@ btnLogin.onclick = function (event) {
     console.log(loginUser.correo);
     loginUser.password = document.getElementById('idToken2').value;
     console.log(loginUser.password);
-
-    localStorage.userDetalle = JSON.stringify(registerUser);
 
     loginAndRegisterHTTP(loginUser, 'http://localhost:3000/api/login', function (cb1) {
 
@@ -185,7 +182,8 @@ btnLogin.onclick = function (event) {
         localStorage.userToken = JSON.stringify(cb1);
 
         loginAndRegisterHTTP(loginUser, 'http://localhost:3000/api/users/info', function (cb1) {
-
+            loginUser.password = '****';
+            localStorage.userDetalle = JSON.stringify(loginUser);
             if (cb1.admin == true) {
                 window.location.href = '../admin'
             } else if (cb1.block == true) {
@@ -202,7 +200,7 @@ btnLogin.onclick = function (event) {
         alert('Nombre de usuario o contraseña incorrecta');
     });
 
-    localStorage.userDetalle = JSON.stringify(loginUser);
+
 
 }
 

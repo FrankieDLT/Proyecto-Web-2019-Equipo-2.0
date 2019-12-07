@@ -1,32 +1,56 @@
 "use strict"
 //12 obj
-let url = "https://api.myjson.com/bins/1d05le";
+//let url = "https://api.myjson.com/bins/1d05le";
 
 let url2 = "http://localhost:3000/api/products"
 
-var cart = {
-    items: []
-};
+var cart;
+
+let usuarioInfo;
 
 let idProducto = {
     _id: ""
 }
 
 
+let usuario = {
+    correo: ""
+}
+
+let carritoFind = {
+    usuario: ""
+}
+
 //limpiar localStorage
 //localStorage.setItem('cart', JSON.stringify(cart));
 
-if (localStorage.cart) {
-    cart = JSON.parse(localStorage.cart);
-}
+let temp = JSON.parse(localStorage.userDetalle);
+
+usuario.correo = temp.correo;
+console.log(usuario);
+
+usersInfoHTTP(usuario, function (cb1) {
+    usuarioInfo = cb1;
+    carritoFind.usuario = usuarioInfo._id;
+    console.log(carritoFind);
+
+    carritoInfoHTTP(carritoFind, 'http://localhost:3000/api/carrito/info', function (cb1) {
+        cart = cb1[0];
+        console.log(cart);
+    }, function (cb2) {
+        alert(cb2);
+    });
+
+}, function (cb2) {
+    alert('not working');
+});
+
 
 let cbOk_1 = (data) => {
     console.log("Callback_OK");
     productos = data;
 
-    console.log("productos", productos);
     productListToHTML(productos);
-    console.log(productos[0].cantidad);
 };
 
 function httpRequest(address, reqType, asyncProc) {
@@ -38,7 +62,7 @@ function httpRequest(address, reqType, asyncProc) {
             }
         };
     } else {
-        req.timeout = 4000;  // Reduce default 2mn-like timeout to 4 s if synchronous
+        req.timeout = 4000; // Reduce default 2mn-like timeout to 4 s if synchronous
     }
     req.open(reqType, address, !(!asyncProc));
     req.send();
@@ -100,7 +124,6 @@ function initData() {
 initData();
 
 function productToHTML(productos) {
-    console.log(productos._id);
     let sResultado = `<div class="column">
     <div class="card" style="width: 15rem;">
         <img src="${productos.imagen}" class="card-img-top" alt="...">
@@ -123,7 +146,6 @@ function productListToHTML(productos) {
         productos.map(producto => {
             return productToHTML(producto)
         })
-    console.table(productsList);
     let html = productsList.join("");
 
     listaProductos.innerHTML += "" + html;
@@ -133,41 +155,42 @@ function productListToHTML(productos) {
 
 
 function agregarCarrito(id) {
-   
-    /*let index = cart.items.filter(function (item) {
+
+    console.log(cart.items);
+    
+    let index = cart.items.filter(function (item) {
         console.log("llegue carrito: " + id + " " + item.id);
         return item._id === id
     }).length;
-*/
 
-idProducto._id = id;
+    console.log(index);
 
-productosInfoHTTP(idProducto, 'http://localhost:3000/api/productos/info', JSON.parse(localStorage.userToken).token, function (cb1) {
-    let productosI = cb1[0];
-    console.log(productosI.imagen);
-    let producto = {
-        imagen: productosI.imagen,
-        descripcion: productosI.descripcion,
-        categoria: productosI.categoria,
-        cantidad: 1,
-        stock: productosI.stock
+    if (index == 0) {
+        idProducto._id = id;
+
+        productosInfoHTTP(idProducto, 'http://localhost:3000/api/productos/info', JSON.parse(localStorage.userToken).token, function (cb1) {
+            let producto = cb1[0];
+
+
+            console.log(producto);
+            cart.items.push(producto);
+            console.log(cart.items);
+
+                guardarCarrito(cart, 'http://localhost:3000/api/carrito', function (cb1) {
+                    alert("Tu producto se ha añadido al carrito!");
+                }, function (cb2) {
+                    alert(cb2);
+                });
+
+        }, function (cb2) {
+            alert(cb2);
+        });
+        //
+    } else {
+        //
+        alert("Este producto ya esta en tu carrito!");
     }
-
-    console.log(producto);
-    cart.items.push(producto);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    alert("Tu producto se ha añadido al carrito!");
-
-    }, function (cb2) {
-        alert('tum maama ');
-    });
-    //if (index === 0) {
-        
-
-    //} else {
-       // alert("Este producto ya esta en tu carrito!");
-
-    //}
+    //
 
 
 }
@@ -182,9 +205,9 @@ function productosInfoHTTP(datos, url, token, cbOk, cbErr) {
     xhr.open('POST', url);
     // 3. indicar tipo de datos JSON
     xhr.setRequestHeader('Content-Type', 'application/json');
-    console.log( " TOKEN ", JSON.parse(localStorage.userToken).token);
+    console.log(" TOKEN ", JSON.parse(localStorage.userToken).token);
     xhr.setRequestHeader('x-auth-user', token);
-    
+
     // 4. Enviar solicitud al servidor
     xhr.send(JSON.stringify(datos));
     // 5. Una vez recibida la respuesta del servidor
@@ -194,16 +217,101 @@ function productosInfoHTTP(datos, url, token, cbOk, cbErr) {
             // Ocurrió un error
             cbErr(xhr.status + ': ' + xhr.statusText);
         } else {
-        
-                let datos = JSON.parse(xhr.responseText);
-                console.log(datos); // Significa que fue exitoso
-                cbOk(datos);
-           
+
+            let datos = JSON.parse(xhr.responseText);
+            console.log(datos); // Significa que fue exitoso
+            cbOk(datos);
+
 
         }
     };
 }
+
+//--------------------HTTP Carrito--------------------------------------
+function guardarCarrito(datos, url, cbOk, cbErr) {
+    console.log("LLegue a guardar carrito")
+
+    // 1. Crear XMLHttpRequest object
+    let xhr = new XMLHttpRequest();
+
+    // 2. Configurar: PUT actualizar archivo
+    xhr.open('PUT', url);
+    console.log(url);
+
+    //xhr.setRequestHeader("Content-Type", "application/json"); 
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    // 4. Enviar solicitud
+    xhr.send(JSON.stringify(datos));
+
+    // 5. Una vez recibida la respuesta del servidor
+    xhr.onload = function () {
+
+        console.log(xhr.status);
+        if (xhr.status != 200 && xhr.status != 201) { // analizar el estatus de la respuesta HTTP
+            // Ocurrió un error
+            cbErr(xhr.status + ': ' + xhr.statusText);
+        } else {
+
+            let datos = JSON.parse(xhr.responseText);
+            console.log(datos); // Significa que fue exitoso
+            cbOk(datos);
+        }
+    };
+}
+
+//Esta funcion manda correo, verifica si el usuario existe o la contraseña es corecta.
+function usersInfoHTTP(datos, cbOk, cbErr) {
+    // 1. Crear XMLHttpRequest object
+    let xhr = new XMLHttpRequest();
+    // 2. Configurar:  PUT actualizar archivo
+    xhr.open('POST', 'http://localhost:3000/api/users/info');
+    // 3. indicar tipo de datos JSON
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    // 4. Enviar solicitud al servidor
+    xhr.send(JSON.stringify(datos));
+    // 5. Una vez recibida la respuesta del servidor
+    xhr.onload = function () {
+        console.log(xhr.status);
+        if (xhr.status != 200 && xhr.status != 201) { // analizar el estatus de la respuesta HTTP
+            // Ocurrió un error
+            cbErr(xhr.status + ': ' + xhr.statusText);
+        } else {
+
+            let datos = JSON.parse(xhr.responseText);
+            console.log(datos); // Significa que fue exitoso
+            cbOk(datos);
+
+
+        }
+    };
+}
+
+//Esta funcion manda usuario, descarga el carrito del usuario.
+function carritoInfoHTTP(datos, url, cbOk, cbErr) {
+    // 1. Crear XMLHttpRequest object
+    let xhr = new XMLHttpRequest();
+    // 2. Configurar:  PUT actualizar archivo
+    xhr.open('POST', url);
+    // 3. indicar tipo de datos JSON
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    // 4. Enviar solicitud al servidor
+    xhr.send(JSON.stringify(datos));
+    // 5. Una vez recibida la respuesta del servidor
+    xhr.onload = function () {
+        console.log(xhr.status);
+        if (xhr.status != 200 && xhr.status != 201) { // analizar el estatus de la respuesta HTTP
+            // Ocurrió un error
+            cbErr(xhr.status + ': ' + xhr.statusText);
+        } else {
+
+            let datos = JSON.parse(xhr.responseText);
+            cbOk(datos);
+
+
+        }
+    };
+}
+
+
 //-------------------------------------------------------------------------------------
-
-
-

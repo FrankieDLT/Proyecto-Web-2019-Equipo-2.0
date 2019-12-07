@@ -4,13 +4,13 @@ Content-Type: application/json
 {
     "nombre":"Luis",
     "apellido":"David",
-    "correo":"admin@iteso.mx",
+    "correo":"block@iteso.mx",
     "url": "https://randomuser.me/api/portraits/men/8.jpg",
     "sexo":"H",
     "fecha":"1997-05-12",
-    "password":"123456",
-    "admin":"true",
-    "block":"false"
+    "password":"123",
+    "admin":"false",
+    "block":"true"
 }
 
 ###
@@ -28,7 +28,7 @@ POST http://localhost:3000/api/users/info
 Content-Type: application/json
 
 {
-    "correo":"admin@iteso.mx"
+    "correo":"gggg@iteso.mx"
 }
 
 ###
@@ -37,7 +37,7 @@ Content-Type: application/json
 //x-auth-user: W8jBAqkT0J-5de9947e3d113a3e9443d46c
 
 {
-    "usuario":"5de9889e2c0d0f3aca4f21ae"
+    "usuario":"5de9947e3d113a3e9443d46c"
 }
 
 ###
@@ -121,14 +121,14 @@ x-auth-user: ZCI9JhR1wu-5de9889e2c0d0f3aca4f21ae
 
 { 
     "correo": "admin@iteso.mx",
-    "fecha": "2019-12-5",
+    "fecha": "2019-12-6",
     "fechaEntrega": "2019-12-10",
     "status": "No entregado",
     "items": {
         "imagen": "https://www.steren.com.mx/media/catalog/product/cache/8a4fdc7d203276e60b54a94f4f1e185b/m/g/mg-260_x1.jpg",
         "descripcion": "Megafono",
         "categoria": "Audio",
-        "stock": 3
+        "cantidad": 3
     }
 }
 
@@ -148,7 +148,7 @@ Content-Type: application/json
 x-auth-user: ZCI9JhR1wu-5de9889e2c0d0f3aca4f21ae
 
 { 
-    "_id": "5de9f79aca37844c38c2cb00",
+    "_id": "5debd63d49df0566b0ce3586",
     "correo": "admin@iteso.mx",
     "fecha": "2019-12-5",
     "fechaEntrega": "2019-12-6",

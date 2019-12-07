@@ -1,4 +1,4 @@
-console.log("asdfasdf ", productsGlobal);
+//console.log("asdfasdf ", productsGlobal);
 
 $('#pagination-demo').twbsPagination({
     totalPages: 5,

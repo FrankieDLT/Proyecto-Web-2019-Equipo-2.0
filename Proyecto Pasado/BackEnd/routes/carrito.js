@@ -17,8 +17,6 @@ router.route('/')
             });
     })
     .put(async function(req, res){
-        console.log(req.body);
-        
         if (req.body) {
             let carro = await Carrito.findOne({usuario: req.body.usuario});
 

@@ -1,141 +1,32 @@
-var cart = {
-    items: []
-};
+var cart;
+
+let usuarioInfo;
 
 let productoList = {
     usuario: "",
     items: []
 }
 
-url = 'http://localhost:5000/api/carrito'
-
-
-if (localStorage.cart) {
-    cart = JSON.parse(localStorage.cart);
+let usuario = {
+    correo: ""
 }
 
-function productToHTML(productos, pos) {
-    let sResultado = `         <tr id="info">
-    <td width="10%">${pos + 1}</td>
-    <td width="10%" align="center"><img src="${productos.imagen}"></td>
-    <td width="20%">${productos.descripcion}</td>
-    <td width="20%">${productos.categoria} </td>
-    <td width="25%"><input type="number" min="1" max="${productos.stock}" value=${productos.cantidad} style=" width:50px" ><br></td>
-    <td width="25%"><button type="button" class="btn btn-danger" onclick="deleteProduct(${productos.id})">Eliminar</button></td>
-    <td width="25%" class="text-center"> </td>
-</tr>`;
-
-
-    return sResultado;
+let carritoFind = {
+    usuario: ""
 }
 
-function productListToHTML(productos) {
-    
-    let cartList;
-    // Hacer get al carrito, mandar el usuario
-    // map al carrito en vez de al local
-    if (cart.items.length > 0) {
-        cartList = cart.items.map((producto, pos) => {
-            console.log(producto.stock);
-
-            return productToHTML(producto, pos)
-        })
-    }
-    console.table(cartList);
-    let html = cartList.join("");
-    carritoTabla.innerHTML += "" + html;
+let pedido = {
+    correo: "",
+    fecha: "",
+    fechaEntrega: "",
+    status: "",
+    items: []
 }
-
-productListToHTML()
-
-
-function deleteProduct(id) {
-    console.log(cart.items)
-    let deleteid = cart.items.findIndex(function (item) {
-        return item.id === id
-    });
-    console.log(deleteid);
-    cart.items.splice(deleteid, 1);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    location.reload();
-}
-
-//--------------------Get cart-------------------------------
-function loadJSONCart(url, cbOk = callback_ok, cbErr) {
-    // 1. Crear XMLHttpRequest object
-    let xhr = new XMLHttpRequest();
-
-    // 2. Configurar: PUT actualizar archivo
-    xhr.open('GET', url);
-    console.log(url);
-    let userTOKEN = JSON.parse(localStorage.userToken);
-    console.log(userTOKEN.token);
-    console.log(localStorage.userToken);
-    //xhr.setRequestHeader("Content-Type", "application/json"); 
-    xhr.setRequestHeader("x-auth-user", userTOKEN.token);
-
-    console.log('Por llamar');
-    // 4. Enviar solicitud
-    xhr.send();
-
-    // 5. Una vez recibida la respuesta del servidor
-    xhr.onload = function () {
-
-        if (xhr.status != 200) { // analizar el estatus de la respuesta HTTP
-            // Ocurrió un error
-            alert(xhr.status + ': ' + xhr.statusText); // e.g. 404: Not Found
-            cbErr(xhr.status + ': ' + xhr.statusText);
-
-            // ejecutar algo si error
-        } else {
-            let datos = JSON.parse(xhr.response); //esta es la línea que hay que probar
-
-            // Ejecutar algo si todo está correcto
-            console.log("Exito"); // Significa que fue exitoso
-            cbOk(datos);
-            cbOk_1(datos);
-        }
-    };
-}
-
-//----------------------------------
-/*
-guardarCarrito(); 
-function guardarCarrito () { 
-    console.log("LLegue a guardar carrito 1")
-
-    loadJSONCart2(cart.items ,'http://localhost:3000/api/carrito', function (cb1){
-    let AllItems = cart.items; 
-    console.log(AllItems); 
-    let item = {
-        imagen: AllItems.imagen,
-        descripcion: AllItems.descripcion,
-        categoria: AllItems.categoria,
-        cantidad: 1,
-        stock: AllItems.stock
-    }
-
-    console.log(item);
-    console.log("LLegue a guardar carrito 2")
-    cart.items.push(item);
-    //localStorage.setItem('cart', JSON.stringify(cart));
-
-    }, function (cb2) {
-        alert("ERROR")
-        
-    });
- }
- */
-
 
 
 //--------------------HTTP Carrito--------------------------------------
-function loadJSONCart2(datos, url, cbOk, cbErr) {
+function guardarCarrito(datos, url, cbOk, cbErr) {
     console.log("LLegue a guardar carrito")
-
-    productoList.usuario = ;
-    productoList.items = datos;
-    console.log(productoList);
 
     // 1. Crear XMLHttpRequest object
     let xhr = new XMLHttpRequest();
@@ -147,9 +38,8 @@ function loadJSONCart2(datos, url, cbOk, cbErr) {
     //xhr.setRequestHeader("Content-Type", "application/json"); 
     xhr.setRequestHeader('Content-Type', 'application/json');
 
-
     // 4. Enviar solicitud
-    xhr.send(JSON.stringify(productoList));
+    xhr.send(JSON.stringify(datos));
 
     // 5. Una vez recibida la respuesta del servidor
     xhr.onload = function () {
@@ -167,17 +57,196 @@ function loadJSONCart2(datos, url, cbOk, cbErr) {
     };
 }
 
-function sendCart() {
-    console.log("dfkajklsdf")
-    //localStorage.setItem('cart', JSON.stringify(cart));
+//Esta funcion manda correo, verifica si el usuario existe o la contraseña es corecta.
+function usersInfoHTTP(datos, cbOk, cbErr) {
+    // 1. Crear XMLHttpRequest object
+    let xhr = new XMLHttpRequest();
+    // 2. Configurar:  PUT actualizar archivo
+    xhr.open('POST', 'http://localhost:3000/api/users/info');
+    // 3. indicar tipo de datos JSON
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    // 4. Enviar solicitud al servidor
+    xhr.send(JSON.stringify(datos));
+    // 5. Una vez recibida la respuesta del servidor
+    xhr.onload = function () {
+        console.log(xhr.status);
+        if (xhr.status != 200 && xhr.status != 201) { // analizar el estatus de la respuesta HTTP
+            // Ocurrió un error
+            cbErr(xhr.status + ': ' + xhr.statusText);
+        } else {
+
+            let datos = JSON.parse(xhr.responseText);
+            console.log(datos); // Significa que fue exitoso
+            cbOk(datos);
+
+
+        }
+    };
 }
 
-loadJSONCart2(cart.items, 'http://localhost:3000/api/carrito', function (cb1) {
-        alert("enviado");
+//Esta funcion manda usuario, descarga el carrito del usuario.
+function carritoInfoHTTP(datos, url, cbOk, cbErr) {
+    // 1. Crear XMLHttpRequest object
+    let xhr = new XMLHttpRequest();
+    // 2. Configurar:  PUT actualizar archivo
+    xhr.open('POST', url);
+    // 3. indicar tipo de datos JSON
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    // 4. Enviar solicitud al servidor
+    xhr.send(JSON.stringify(datos));
+    // 5. Una vez recibida la respuesta del servidor
+    xhr.onload = function () {
+        console.log(xhr.status);
+        if (xhr.status != 200 && xhr.status != 201) { // analizar el estatus de la respuesta HTTP
+            // Ocurrió un error
+            cbErr(xhr.status + ': ' + xhr.statusText);
+        } else {
+
+            let datos = JSON.parse(xhr.responseText);
+            cbOk(datos);
+
+
+        }
+    };
+}
+
+//Esta funcion manda correo y contraseña, verifica si el usuario existe o la contraseña es corecta.
+function crearPedido(datos, url, cbOk, cbErr) {
+    // 1. Crear XMLHttpRequest object
+    let xhr = new XMLHttpRequest();
+    // 2. Configurar:  PUT actualizar archivo
+    xhr.open('POST', url);
+    // 3. indicar tipo de datos JSON
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    console.log(" TOKEN ", JSON.parse(localStorage.userToken).token);
+    xhr.setRequestHeader('x-auth-user', JSON.parse(localStorage.userToken).token);
+    // 4. Enviar solicitud al servidor
+    xhr.send([JSON.stringify(datos)]);
+    // 5. Una vez recibida la respuesta del servidor
+    xhr.onload = function () {
+        console.log(xhr.status);
+        if (xhr.status != 200 && xhr.status != 201) { // analizar el estatus de la respuesta HTTP
+            // Ocurrió un error
+            cbErr(xhr.status + ': ' + xhr.statusText);
+        } else {
+            let datos = JSON.parse(xhr.responseText);
+            console.log(datos); // Significa que fue exitoso
+            cbOk(datos);
+        }
+    };
+}
+
+
+let temp = JSON.parse(localStorage.userDetalle);
+
+usuario.correo = temp.correo;
+console.log(usuario);
+
+usersInfoHTTP(usuario, function (cb1) {
+    usuarioInfo = cb1;
+    carritoFind.usuario = usuarioInfo._id;
+    console.log(carritoFind);
+
+    carritoInfoHTTP(carritoFind, 'http://localhost:3000/api/carrito/info', function (cb1) {
+        cart = cb1[0];
+        console.log(cart);
+        productListToHTML()
+    }, function (cb2) {
+        alert("no cargo el carrito " + cb2);
+    });
+
+}, function (cb2) {
+    alert("no cargo el usuario " + cb2);
+});
+
+function productToHTML(productos, pos) {
+    let sResultado = `         <tr id="info">
+    <td width="10%">${pos + 1}</td>
+    <td width="10%" align="center"><img src="${productos.imagen}"></td>
+    <td width="20%">${productos.descripcion}</td>
+    <td width="20%">${productos.categoria} </td>
+    <td width="25%"><input type="number" id="cantidad" min="1" max="${productos.stock}" value=${productos.cantidad} style=" width:50px" ><br></td>
+    <td width="25%"><button type="button" class="btn btn-danger" onclick="deleteProduct(${productos.id})">Eliminar</button></td>
+    <td width="25%" class="text-center"> </td>
+</tr>`;
+
+
+    return sResultado;
+}
+
+function productListToHTML(productos) {
+
+    let cartList;
+    // Hacer get al carrito, mandar el usuario
+    // map al carrito en vez de al local
+    if (cart.items.length > 0) {
+        cartList = cart.items.map((producto, pos) => {
+            console.log(producto.stock);
+
+            return productToHTML(producto, pos)
+        })
+    }
+    console.table(cartList);
+    let html = cartList.join("");
+    carritoTabla.innerHTML += "" + html;
+}
+
+
+function deleteProduct(id) {
+    console.log(id);
+    console.log(cart.items)
+    let deleteid = cart.items.findIndex(function (item) {
+        return item.id === id
+    });
+    console.log(deleteid);
+    cart.items.splice(deleteid, 1);
+
+    guardarCarrito(cart, 'http://localhost:3000/api/carrito', function (cb1) {
+        alert("Se ha elminado del carrito");
     }, function (cb2) {
         alert(cb2);
     });
+    location.reload();
+}
 
-console.log(JSON.parse(localStorage.cart))
 
-console.log(cart.items)
+function sendCart() {
+    if (cart.items.length > 0) {
+
+        let hoy = (new Date());
+        hoy.setDate(hoy.getDate());
+        hoy.setMonth(hoy.getMonth());
+        hoy.setFullYear(hoy.getFullYear());
+        hoy.setHours(hoy.getHours());
+        hoy.setMinutes(hoy.getMinutes());
+        let fecha = new Date(hoy);
+        hoy.setDate(hoy.getDate() + 1);
+        let fechaEntrega = new Date(hoy);
+
+        pedido.correo = temp.correo;
+        pedido.fecha = fecha;
+        pedido.fechaEntrega = fechaEntrega;
+        pedido.status = "Material en proceso";
+        pedido.items = cart.items;
+
+        console.log(pedido);
+
+        crearPedido(pedido, 'http://localhost:3000/api/pedidos', function (cb1) {
+            alert('Pedido hecho exitosamente');
+            cart.items = [];
+
+            guardarCarrito(cart, 'http://localhost:3000/api/carrito', function (cb1) {
+                location.reload();
+            }, function (cb2) {
+                alert(cb2);
+            });
+    }, function (cb2) {
+        alert('Error en tu pedido');
+    });
+
+    } else {
+        alert('El carrito esta vacio');
+    }
+
+    //localStorage.setItem('cart', JSON.stringify(cart));
+}

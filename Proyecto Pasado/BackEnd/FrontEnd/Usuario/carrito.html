@@ -5,35 +5,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Inventario</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!-- Temas-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <title>Carrito</title>
+   
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-        <link rel="icon" type="image/x-icon" href="https://sso.iteso.mx/sso/XUI/favicon.ico?v=13.0.1-SNAPSHOT">
+    <link rel="icon" type="image/x-icon" href="https://sso.iteso.mx/sso/XUI/favicon.ico?v=13.0.1-SNAPSHOT">
     <link rel="shortcut icon" type="image/x-icon" href="https://sso.iteso.mx/sso/XUI/favicon.ico?v=13.0.1-SNAPSHOT">
 
     <style>
-            body {
-                /* background-image: url('https://iteso.mx/image/journal/article?img_id=7699185&t=1494435594945'); */
-                background-image: url('https://iteso.mx/documents/11109/12605470/Campus++30.jpg/cafbc1b6-713b-460f-b22f-e3290ca0ed20?t=1533336672075');
-                background-repeat: no-repeat;
-            }
-        </style>
-        
-    <style>
         body {
-            background-color: rgb(142, 185, 199);
-            border: 5em;
+            background-image: url('https://iteso.mx/documents/11109/12605470/Campus++30.jpg/cafbc1b6-713b-460f-b22f-e3290ca0ed20?t=1533336672075');
+            background-repeat: repeat-y;
+            border: 1em;
             width: 100%;
+            /*Ifra
+            me para los tres cuadros*/
             height: 500px;
         }
 
         img[id=Logo_iteso] {
             width: 5em;
         }
+
+        table[id=Main_Table] {
+            border-collapse: collapse;
+            position: fixed;
+        }
+
+        table[id=Main_Table] td {
+            text-align: center;
+            background-color: #004270;
+            color: whitesmoke;
+        }
+
+        table[id=Main_Table] td:first-child {
+            text-align: center;
+            background-color: whitesmoke;
+        }
+
+        label {
+            color: rgba(0, 0, 0, 0.5);
+            /*Color "semitrasparente" para el MC*/
+        }
+
+        h3 {
+            font-style: oblique;
+            color: white;
+            font-size: 3rem;
+            background-color: #004270;
+            width: 240px;
+
+        }
+
+        /************************************************************************************/
+
+        img[id=Logo_iteso] {
+            width: 3em;
+            background-color: azure;
+        }
+
+        a {
+            color: white;
+            text-align: center;
+            vertical-align: middle;
+            font-size: large;
+            text-indent: 1.5em
+        }
+
+        form[id=navSearch] {
+            margin-left: 50px;
+        }
+
+        a[id=exit] {
+            padding-left: 100px;
+        }
+
+        nav.navbar {
+            background-color: #004270;
+        }
+
+        a {
+            font-size: larger;
+            margin: 5px;
+
+        }
+
+        img[id=Logo_iteso] {
+            width: 3em;
+            background-color: azure;
+        }
+
+        div[id='nav'] {
+            align-content: center;
+        }
+
+        img {
+            width: 4em;
+        }
+
+        .card-img-top {
+            width: 200px;
+            margin-left: 20px;
+        }
+
+        /* Three image containers (use 25% for four, and 50% for two, etc) */
 
         table[id=Main_Table] {
             border-collapse: collapse;
@@ -60,7 +136,7 @@
 
         h3 {
             font-style: oblique;
-            color: darkblue;
+            color: whitesmoke;
             font-size: 3rem;
 
         }
@@ -109,48 +185,36 @@
 
         }
 
-        .titulo{
+        .titulo {
             margin-left: 10%;
             margin-right: 15%;
 
         }
 
-        .btnSolicitar{
+        .btnSolicitar {
             margin-left: 76%;
             margin-right: 5%;
             margin-top: 10px;
         }
     </style>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
 
 </head>
 
 <body>
+    <nav class="navbar navbar-expand navbar-dark">
+        <div class="nav navbar-nav">
+            <img src="https://www.modutram.com/wp-content/uploads/2016/10/logo-iteso-min.png" id="Logo_iteso">
+            <a class="nav-item nav-link" href="../home" data-target="home">Inicio</a>
+            <a class="nav-item nav-link" href="detalleUser.html" data-target="home">Mis Prestamos</a>
+            <a class="nav-item nav-link" href="userInfo.html">Configuración</a>
+            <a class="nav-item nav-link" id='exit' href='../' data-target="home">Cerrar Sesión</a>
 
-
-    <table border="0" width="100%" id="Main_Table">
-        <tr>
-            <td width="5%"><a href=""><img src="https://www.modutram.com/wp-content/uploads/2016/10/logo-iteso-min.png" id="Logo_iteso"></a></td>
-            <td width="10%"><a href="home.html" target="home">Inicio</a></td>
-            <td width="10%"><a href="productos.html" target="home">Inventario</a></td>
-            <td width="10%"><a href="Deudores.html" target="FFra">Deudores</a></td>
-            <td width="10%">Historial de Problemas</td>
-            <td width="10%">Disponibilidad</td>
-
-        </tr>
-    </table>
+        </div>
+    </nav>
     <br />
 
     <div class="container" aria-hidden="true" width="100%">
-        <div class ="titulo">
+        <div class="titulo">
             <h3><b>Mi carrito</b></h3>
         </div>
     </div>
@@ -171,21 +235,21 @@
                 <td width="25%">Categoria</td>
                 <td width="25%">Cantidad</td>
 
-       
+
 
         </table>
 
-        <div class ="btnSolicitar">
-            <button  href="productos.html" target="home" onclick="sendCart()">
-              <b>  Solicitar Material</b>
+        <div class="btnSolicitar">
+            <button href="productos.html" target="home" onclick="sendCart()">
+                <b> Solicitar Material</b>
             </button>
         </div>
 
     </div>
 
 
-<!--JS y dependencias-->
-<script src="carrito.js"></script>
+    <!--JS y dependencias-->
+    <script src="carrito.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">

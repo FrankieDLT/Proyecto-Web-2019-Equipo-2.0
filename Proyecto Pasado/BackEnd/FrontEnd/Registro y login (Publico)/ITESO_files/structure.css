@@ -88,55 +88,6 @@
     animation: spin 2s infinite linear
 }
 
-@-moz-keyframes spin {
-    0 {
-        -moz-transform: rotate(0)
-    }
-
-    100% {
-        -moz-transform: rotate(359deg)
-    }
-}
-
-@-webkit-keyframes spin {
-    0 {
-        -webkit-transform: rotate(0)
-    }
-
-    100% {
-        -webkit-transform: rotate(359deg)
-    }
-}
-
-@-o-keyframes spin {
-    0 {
-        -o-transform: rotate(0)
-    }
-
-    100% {
-        -o-transform: rotate(359deg)
-    }
-}
-
-@-ms-keyframes spin {
-    0 {
-        -ms-transform: rotate(0)
-    }
-
-    100% {
-        -ms-transform: rotate(359deg)
-    }
-}
-
-@keyframes spin {
-    0 {
-        transform: rotate(0)
-    }
-
-    100% {
-        transform: rotate(359deg)
-    }
-}
 
 /*!
  *  Font Awesome 4.3.0 by @davegandy - http://fontawesome.io - @fontawesome
@@ -5168,7 +5119,6 @@ table {
 @media (min-width:480px) {
     .login .remember-forgot ul li {
         display: inline;
-        margin-bottom: 0
     }
 }
 
