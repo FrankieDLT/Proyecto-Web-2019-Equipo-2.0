@@ -37,7 +37,6 @@ router.route('/')
         if (req.body) {
             let pedidos = await Pedidos.findOne({_id: req.body._id});
 
-            pedidos.fechaEntrega = req.body.fechaEntrega;
             pedidos.status = req.body.status;
 
             await pedidos.save();

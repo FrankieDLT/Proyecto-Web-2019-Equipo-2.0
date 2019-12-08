@@ -2,110 +2,106 @@
 <html lang="en">
 
 <head>
-    <title>Deudores</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Pedidos</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="icon" type="image/x-icon" href="https://sso.iteso.mx/sso/XUI/favicon.ico?v=13.0.1-SNAPSHOT">
-    <link rel="shortcut icon" type="image/x-icon" href="https://sso.iteso.mx/sso/XUI/favicon.ico?v=13.0.1-SNAPSHOT">
-        <style>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-                a {
-                  font-size: larger;
-                  margin: 5px;
-                  
-                }
-            
-                img[id=Logo_iteso] {
-                        width: 3em;
-                        background-color: azure;
-                    }
-            
-                div[id = 'nav']{
-                  align-content: center;
-                }
-            
-                img {
-                  width: 4em;
-                }
-            
-                table {
-                  width: 70%;
-                  margin-left: 15%;
-                  margin-right: 15%;
-                  background-color: whitesmoke;
-                }
-            
-                td[id=deudor] {
-                  background-color: #42B4E3;
-                  color: whitesmoke;
-                }
-            
-                tr[id=tr1] {
-                  background-color: #004270;
-                  color: whitesmoke;
-                }
-            
-                
-            
-                body {
-                  /* background-image: url('https://iteso.mx/image/journal/article?img_id=7699185&t=1494435594945'); */
-                  background-image: url('https://iteso.mx/documents/11109/12605470/Campus++30.jpg/cafbc1b6-713b-460f-b22f-e3290ca0ed20?t=1533336672075');
-                  background-repeat: no-repeat;
-                  background-size: 100%;
-                }
-            
-                
-            
-                button[id=dele] {
-                  background-color: #004270;
-                  margin-top: 2.5%;
-                  margin-left: 24.5%;
-                }
-            
-            
-                form[id=navSearch] {
-                  margin-left: 200px;
-                }
-            
-                a[id=exit] {
-                  padding-left: 100px;
-                }
-            
-                nav.navbar {
-                  background-color: #004270;
-                }
+  <link rel="icon" type="image/x-icon" href="https://sso.iteso.mx/sso/XUI/favicon.ico?v=13.0.1-SNAPSHOT">
+  <link rel="shortcut icon" type="image/x-icon" href="https://sso.iteso.mx/sso/XUI/favicon.ico?v=13.0.1-SNAPSHOT">
+  <style>
+    a {
+      font-size: larger;
+      margin: 5px;
+
+    }
+
+    img[id=Logo_iteso] {
+      width: 3em;
+      background-color: azure;
+    }
+
+    div[id='nav'] {
+      align-content: center;
+    }
+
+    img {
+      width: 4em;
+    }
+
+    table {
+      width: 80%;
+      margin-right: 10%;
+      margin-left: 10%;
+      background-color: whitesmoke;
+    }
+
+    td[id=deudor] {
+      background-color: #42B4E3;
+      color: whitesmoke;
+    }
+
+    tr[id=tr1] {
+      background-color: #004270;
+      color: whitesmoke;
+    }
 
 
-            
-              </style>
+
+    body {
+      /* background-image: url('https://iteso.mx/image/journal/article?img_id=7699185&t=1494435594945'); */
+      background-image: url('https://iteso.mx/documents/11109/12605470/Campus++30.jpg/cafbc1b6-713b-460f-b22f-e3290ca0ed20?t=1533336672075');
+      background-repeat: repeat-y;
+      background-size: 100%;
+    }
+
+
+
+    button[id=dele] {
+      background-color: #004270;
+      margin-top: 2.5%;
+      margin-left: 10%;
+    }
+
+
+    form[id=navSearch] {
+      margin-left: 200px;
+    }
+
+    a[id=exit] {
+      padding-left: 100px;
+    }
+
+    nav.navbar {
+      background-color: #004270;
+    }
+  </style>
 </head>
 
 
 <body>
-    <nav class="navbar navbar-expand navbar-dark">
-        <div class="nav navbar-nav">
-            <img src="https://www.modutram.com/wp-content/uploads/2016/10/logo-iteso-min.png" id="Logo_iteso">
-            <a class="nav-item nav-link" href="../admin" data-target="home">Inventario</a>
-            <a class="nav-item nav-link" href="../admin/pedidos" data-target="FFra">Pedidos</a>
-            <a class="nav-item nav-link" id='exit' href='../'
-                data-target="home">Cerrar Sesión</a>
+  <nav class="navbar navbar-expand navbar-dark">
+    <div class="nav navbar-nav">
+      <img src="https://www.modutram.com/wp-content/uploads/2016/10/logo-iteso-min.png" id="Logo_iteso">
+      <a class="nav-item nav-link" href="../admin" data-target="home">Inventario</a>
+      <a class="nav-item nav-link" href="../admin/pedidos" data-target="FFra">Pedidos</a>
+      <a class="nav-item nav-link" id='exit' href='../' data-target="home">Cerrar Sesión</a>
 
-        </div>
-    </nav>
+    </div>
+  </nav>
 
 
- <!-- Button trigger modal Buscar-->
- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#delete" id="dele">
+  <!-- Button trigger modal Buscar-->
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#delete" id="dele">
     Liberar Equipo
   </button>
 
-<!-- Modal Buscar-->
-<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <!-- Modal Buscar-->
+  <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -117,7 +113,7 @@
         <div class="modal-body">
           <form action="">
 
-            <input type="text" name="" id="namel" class="form-control" placeholder="Email" aria-describedby="helpId"
+            <input type="text" name="" id="namel" class="form-control" placeholder="Id del pedido" aria-describedby="helpId"
               required>
 
             <button type="button" class="btn btn-secondary mt-3" data-toggle="modal" data-target="#yesno" id="elimbutt">
@@ -134,54 +130,59 @@
 
 
 
-    <div class="container" width="100%" id="CD">
 
-        <table border="2" width="100%">
-            <tr>
-                <td colspan="5" align="center" id="deudor">Deudor</td>
-            </tr>
-            <tr id="tr1">
-                <td width="20%">Imagen</td>
-                <td width="20%">Nombre</td>
-                <td width="20%">Apellidos</td>
-                <td width="20%">Email</td>
-                <td width="20%">Equipo Prestado</td>
-            </tr>
+  <table border="2" width="100%">
+    <tr>
+      <td colspan="5" align="center" id="deudor">Pedidos</td>
+    </tr>
+    <tr id="tr1" align="center">
+      <td width="25%">Id</td>
+      <td width="25%">Fecha</td>
+      <td width="25%">Fecha de entrega</td>
+      <td width="9%">Status</td>
+      <td width="9%">Email</td>
+      <td width="7%">Equipo Prestado</td>
+    </tr>
 
-        </table>
+  </table>
 
-        <table border ="2" width ="100%" id="tabdeb">
+  <table border="2" width="100%" id="tabdeb">
 
-        </table>
-
-
-        <div id="info"></div>
+  </table>
 
 
-
-        <div class="container" width="100%" id="Mensajes">
-
-        </div>
+  <div id="info"></div>
 
 
 
+  <div class="container" width="100%" id="Mensajes">
 
-    </div>
+  </div>
 
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
-    <script src="deuds.js"></script>
+
+  </div>
+
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.0/moment.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.0/moment-with-locales.min.js"></script>
+
+  <script src="pedidos.js"></script>
 
 </body>
 
